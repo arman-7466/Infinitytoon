@@ -1,0 +1,477 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+body {
+    background-color: #030107 !important;
+    color: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: 
+        radial-gradient(circle at 10% 15%, rgba(123, 44, 191, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 90% 85%, rgba(0, 210, 255, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(216, 0, 255, 0.08) 0%, transparent 60%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.hero-background {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100vh;
+    background-size: cover; background-position: center;
+    filter: blur(12px) brightness(0.35);
+    transform: scale(1.1); z-index: -1; 
+    transition: background-image 0.6s ease-in-out;
+}
+
+/* Navbar */
+.anime-navbar {
+    display: flex; align-items: center; justify-content: space-between; padding: 0.7rem 2.2rem;
+    background: rgba(13, 13, 28, 0.65) !important;
+    backdrop-filter: blur(25px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+    position: sticky; top: 0; z-index: 100;
+}
+.nav-left, .nav-links { display: flex; align-items: center; gap: 2.5rem; flex-wrap: wrap; }
+.logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.logo-icon { background: linear-gradient(145deg, #a66bff, #6240b0); width: 36px; height: 36px; border-radius: 10px 4px 18px 4px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; color: white; box-shadow: 0 0 0 2px rgba(160, 120, 255, 0.3); }
+.logo-text { font-size: 1.5rem; font-weight: 700; background: linear-gradient(to right, #f0e9ff, #cbadff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.nav-links a { text-decoration: none; color: #ebebf0; font-weight: 500; display: flex; align-items: center; gap: 6px; transition: 0.2s; border-bottom: 2px solid transparent; padding-bottom: 4px; }
+.nav-links a:hover, .nav-links a.active { color: white; border-bottom-color: #b77dff; }
+
+.nav-right { display: flex; align-items: center; gap: 1.6rem; }
+.search-wrapper { background: rgba(255, 255, 255, 0.08) !important; backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.15) !important; border-radius: 100px; padding: 0.4rem 1.2rem; display: flex; align-items: center; gap: 0.5rem; }
+.search-wrapper input { background: transparent; border: none; outline: none; color: white; width: 180px; }
+.user-profile { display: flex; align-items: center; gap: 8px; background: rgba(40, 30, 60, 0.5); padding: 0.3rem 0.3rem 0.3rem 1rem; border-radius: 100px; border: 1px solid #3f2f6b; cursor: pointer; }
+.avatar { background: linear-gradient(145deg, #c49bff, #8555d4); width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #130b24; }
+
+/* Hero Banner */
+.hero-banner {
+    position: relative; width: 100%; height: 65vh;
+    display: flex; align-items: center; overflow: hidden; margin-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.hero-video {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    min-width: 100%; min-height: 100%; object-fit: cover; z-index: 0;
+}
+.hero-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to right, rgba(13, 13, 28, 0.9) 15%, rgba(13, 13, 28, 0.4) 60%, transparent 100%),
+                linear-gradient(to top, #030107 5%, transparent 40%);
+    z-index: 1;
+}
+.hero-content { position: relative; z-index: 2; padding: 0 4rem; max-width: 700px; }
+.hero-message { padding: 1.5rem 3rem 0.5rem; font-size: 1.2rem; font-weight: 300; }
+.hero-message span { color: #c5a9ff; font-weight: 600; }
+
+/* Anime Cards Grid */
+.cards-row {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)) !important;
+    gap: 2rem !important;
+    padding: 2.5rem 3rem !important;
+    background: rgba(14, 8, 24, 0.5);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 24px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    margin: 2rem 3rem;
+    box-sizing: border-box;
+}
+
+.premium-card {
+    width: 100% !important; display: flex !important; flex-direction: column !important;
+    background: rgba(25, 18, 42, 0.6) !important; backdrop-filter: blur(15px);
+    border: 1px solid rgba(166, 107, 255, 0.18) !important; border-radius: 16px !important;
+    overflow: hidden; text-decoration: none; transition: all 0.3s !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.premium-card:hover { transform: translateY(-8px) scale(1.02); border-color: rgba(166, 107, 255, 0.6) !important; }
+.card-img-wrapper { position: relative; width: 100%; height: 220px; overflow: hidden; }
+.card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.premium-card:hover .card-img { transform: scale(1.08); }
+.card-badges { position: absolute; top: 10px; left: 10px; display: flex; gap: 6px; z-index: 2; }
+.badge { background: rgba(0, 0, 0, 0.75); color: #fff; font-size: 0.65rem; padding: 3px 6px; border-radius: 4px; font-weight: bold; border: 1px solid rgba(255, 255, 255, 0.1); }
+.badge.sub { color: #cbadff; }
+.play-overlay {
+    position: absolute; inset: 0; background: rgba(14, 13, 23, 0.4);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: 0.3s; z-index: 2;
+}
+.premium-card:hover .play-overlay { opacity: 1; }
+.play-overlay i {
+    font-size: 1.5rem; color: white; background: linear-gradient(145deg, #a66bff, #6240b0);
+    width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; transform: scale(0.8); transition: 0.3s;
+}
+.premium-card:hover .play-overlay i { transform: scale(1); }
+.card-info { padding: 14px; background: linear-gradient(180deg, rgba(15, 10, 25, 0.8) 0%, rgba(10, 7, 18, 0.95) 100%); }
+.card-title { color: #f0ebff; font-size: 0.95rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* =========================================
+   GENRE & A-Z FILTER CSS (Restored)
+   ========================================= */
+#catalog-tools{margin:1.5rem 3rem 2rem;padding:1.5rem;border:1px solid rgba(166,107,255,.22);border-radius:20px;background:rgba(12,7,24,.72);backdrop-filter:blur(20px)}
+.catalog-heading h2{font-size:1.45rem;margin-bottom:.35rem}.catalog-heading p,.genre-status{color:#b9accf;font-size:.9rem}
+.genre-chips{display:flex;flex-wrap:wrap;gap:8px;margin:1.2rem 0}
+.genre-chip,.az-chip{color:#eee7ff;background:rgba(255,255,255,.06);border:1px solid rgba(190,150,255,.22);border-radius:999px;padding:8px 13px;cursor:pointer;transition:.2s}
+.genre-chip:hover,.genre-chip.active,.az-chip:hover,.az-chip.active{background:linear-gradient(135deg,#a66bff,#6240b0);border-color:#d7c2ff}
+.az-section{border-top:1px solid rgba(255,255,255,.1);padding-top:1rem}
+.az-title{color:#dcd0f7;margin-bottom:.7rem;font-weight:700}.az-title span{color:#9585b3;font-size:.8rem;font-weight:400}
+.az-list{display:flex;flex-wrap:wrap;gap:6px}
+.az-chip{min-width:40px;padding:7px 8px;border-radius:9px;display:flex;flex-direction:column;align-items:center;line-height:1.1}
+.az-chip small{color:#c9b7ee;font-size:.62rem;margin-top:3px}
+.az-chip.empty{opacity:.35;cursor:not-allowed}
+.card-genres{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.card-genres span{font-size:.65rem;color:#d9c5ff;background:rgba(166,107,255,.14);border:1px solid rgba(166,107,255,.18);border-radius:999px;padding:3px 6px}
+.premium-card[hidden]{display:none!important}
+.featured-dynamic-tag{display:inline-block;color:#d6bdff;background:rgba(166,107,255,.2);border:1px solid rgba(166,107,255,.45);padding:6px 12px;border-radius:20px;letter-spacing:1px;font-weight:800;font-size:.72rem;margin-bottom:8px}
+
+/* =========================================
+   EPISODE CARDS CSS (Images & Layout Restored)
+   ========================================= */
+.episode-anime-card{min-width:0; width:100%;}
+.episode-thumb{height:150px;background-size:cover;background-position:center;position:relative;display:flex;align-items:center;justify-content:center; border-radius: 10px 10px 0 0;}
+.episode-number{position:absolute;left:10px;bottom:10px;font-size:.7rem;font-weight:800;letter-spacing:.5px;text-shadow:0 2px 8px #000; color:white; background:rgba(0,0,0,0.6); padding:3px 8px; border-radius:10px;}
+.episode-play{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;color:white;background:rgba(166,107,255,.85);box-shadow:0 0 22px rgba(166,107,255,.55);}
+.episode-description{color:#bcaed4;font-size:.75rem;margin-top:6px}
+.episode-loading,.episode-empty{grid-column:1/-1;padding:28px;color:#e9ddff;background:rgba(15,8,27,.8);border:1px solid rgba(166,107,255,.2);border-radius:14px}
+.player-source-note{max-width:950px;margin:0 auto 1rem;padding:16px 20px;display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap;color:#e9ddff;background:rgba(24,13,42,.88);border:1px solid rgba(166,107,255,.3);border-radius:12px}
+.player-source-note span{flex-basis:100%;color:#c2b5d8;font-size:.9rem;line-height:1.6}
+
+
+/* ====================================================
+   MOBILE RESPONSIVE FIXES (Everything Fits Perfectly)
+   ==================================================== */
+@media screen and (max-width: 850px) {
+    /* Navbar aur Search box fix */
+    .anime-navbar {
+        flex-direction: column !important; padding: 15px 10px !important; gap: 15px;
+    }
+    .nav-left, .nav-right {
+        width: 100%; justify-content: center; flex-wrap: wrap; gap: 10px;
+    }
+    .nav-links {
+        display: flex; justify-content: center; gap: 15px !important; width: 100%;
+    }
+    .search-wrapper {
+        width: 100% !important; max-width: 350px; margin: 0 auto; justify-content: center;
+    }
+    .search-wrapper input { width: 100% !important; font-size: 16px; }
+
+    /* Hero Banner Mobile Fix - Video Box Ko Chota Kiya Hai */
+    .hero-banner {
+        height: 45vh !important; /* Video height choti ki gayi */
+        margin-bottom: 15px !important;
+    }
+    .hero-content {
+        padding: 0 1.5rem !important; text-align: center;
+    }
+    .hero-content h1 { font-size: 2.2rem !important; }
+    .hero-content p { font-size: 0.9rem !important; }
+    .hero-content div { justify-content: center; }
+
+    /* Catalog Tools (A-Z) Mobile Fix */
+    #catalog-tools {
+        margin: 1rem !important; padding: 1rem !important;
+    }
+    .az-chip { min-width: 32px; font-size: .75rem; }
+
+    /* Anime Cards Grid Mobile (2 Columns) */
+    .cards-row {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+        padding: 15px 10px !important;
+        margin: 10px !important;
+    }
+    .card-img-wrapper { height: 180px !important; }
+
+    /* Episode Player Mobile Fix */
+    .player-container { margin: 10px !important; }
+    #vidPlayer { height: 250px !important; }
+    
+    /* Episode Cards (Jo watch page pe neeche aate hain) Mobile Fix */
+    .episode-selector-section { margin: 10px !important; padding: 0 !important; }
+    .episode-grid-tray {
+        grid-template-columns: repeat(2, 1fr) !important; /* Mobile par episode 2 line mein */
+        padding: 8px !important;
+    }
+    .episode-thumb { height: 100px !important; } /* Image height mobile ke liye kam */
+
+    body { overflow-x: hidden !important; width: 100vw; }
+}
+
+@media screen and (max-width: 480px) {
+    .nav-links a { font-size: 0.85rem; }
+    .hero-message { font-size: 1rem; padding: 1rem 1rem 0; }
+    .hero-banner { height: 40vh !important; }
+    .cards-row { grid-template-columns: repeat(2, 1fr) !important; }
+    .episode-grid-tray { grid-template-columns: 1fr !important; } /* Chhote phone pe 1 column */
+}
+
+
+/* =========================================
+   HERO TAGS, BUTTONS & LOAD MORE FIX
+   ========================================= */
+
+/* 1. Hero Badges / Tags Fix (Overlapping hata dega) */
+.hero-content span, .featured-dynamic-tag {
+    display: inline-block !important;
+    white-space: nowrap !important;
+    margin: 5px 3px 10px !important;
+    vertical-align: middle;
+}
+
+/* 2. Hero Buttons Container Fix */
+.hero-content div[style*="display: flex"] {
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+/* 3. Watch Now & Details Buttons (Glassmorphism UI) */
+.btn-glass-play, .btn-glass-info {
+    padding: 12px 24px !important;
+    border-radius: 30px !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    outline: none !important;
+    font-family: inherit;
+}
+
+.btn-glass-play {
+    background: linear-gradient(135deg, #a66bff, #6240b0) !important;
+    color: white !important;
+    box-shadow: 0 8px 20px rgba(123, 44, 191, 0.4) !important;
+}
+.btn-glass-play:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 12px 25px rgba(123, 44, 191, 0.6) !important;
+}
+
+.btn-glass-info {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+.btn-glass-info:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    transform: scale(1.05) !important;
+}
+
+/* 4. Load More Anime Button Fix */
+#anilist-load-more {
+    background: linear-gradient(135deg, #a66bff, #6240b0) !important;
+    color: white !important;
+    border: none !important;
+    padding: 14px 35px !important;
+    border-radius: 30px !important;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    display: block !important;
+    margin: 40px auto !important;
+    transition: 0.3s !important;
+    box-shadow: 0 10px 25px rgba(123, 44, 191, 0.4) !important;
+    text-align: center;
+}
+#anilist-load-more:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 15px 30px rgba(123, 44, 191, 0.6) !important;
+}
+
+/* 5. Mobile Specifically For Buttons & Tags */
+@media screen and (max-width: 850px) {
+    .btn-glass-play, .btn-glass-info {
+        padding: 10px 20px !important;
+        font-size: 0.9rem !important;
+        flex: 1; /* Makes buttons equal width on mobile */
+        text-align: center;
+    }
+    .hero-content div[style*="display: flex"] {
+        justify-content: center !important;
+        width: 100%;
+    }
+    .hero-content span, .featured-dynamic-tag {
+        font-size: 0.7rem !important;
+        padding: 4px 10px !important;
+        margin: 3px !important;
+    }
+    #anilist-load-more {
+        width: 85% !important; /* Wider on phone */
+        font-size: 1rem !important;
+        padding: 12px 20px !important;
+    }
+}
+
+
+/* =========================================
+   TOP 10 MOST RATED ANIME (CRUNCHYROLL STYLE)
+   ========================================= */
+.top-rated-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 10px 3rem 25px;
+    scroll-behavior: smooth;
+}
+.top-rated-container::-webkit-scrollbar { display: none; }
+
+.top-card {
+    display: flex;
+    align-items: flex-end; /* Number ko image ke niche align karega */
+    position: relative;
+    transition: 0.3s ease;
+    min-width: 130px;
+}
+
+.top-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Crunchyroll Style Professional Numbers */
+.rank-number {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    -webkit-text-stroke: 1px #a66bff;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.9);
+    margin-right: -12px;
+    margin-bottom: -10px; /* Thoda sa image par overlay hoga */
+    z-index: 3;
+    line-height: 1;
+    font-family: 'Inter', sans-serif;
+}
+
+.top-img-box {
+    width: 110px;
+    height: 160px;
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 2;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: 0.3s;
+}
+
+.top-card:hover .top-img-box {
+    border-color: #a66bff;
+}
+
+.top-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Mobile Devices Ke Liye Fit */
+@media screen and (max-width: 850px) {
+    .top-rated-container {
+        padding: 10px 1.5rem 20px !important;
+    }
+    .top-card {
+        min-width: 110px;
+    }
+    .rank-number {
+        font-size: 2.8rem;
+        -webkit-text-stroke: 1px #a66bff;
+        margin-right: -8px;
+    }
+    .top-img-box {
+        width: 90px;
+        height: 130px;
+    }
+}
+
+
+/* =========================================
+   TOONSTREAM STYLE MOBILE SWIPE & HEADERS
+   ========================================= */
+
+.view-more-btn { display: none; }
+
+@media screen and (max-width: 850px) {
+    /* Navbar ko mobile ke liye compact karein bina search bar badle */
+    .anime-navbar {
+        padding: 8px 12px !important;
+    }
+    .nav-links { display: none !important; } /* Choti screen pe links hide (hamburger ya clean look ke liye) */
+    .search-wrapper {
+        width: 140px !important;
+        padding: 3px 10px !important;
+    }
+    .search-wrapper input { width: 100px !important; }
+
+    /* Horizontal Swipeable Cards Grid (API cards ke liye) */
+    .cards-row {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        gap: 12px !important;
+        padding: 10px 15px 20px !important;
+        scroll-snap-type: x mandatory;
+        margin: 0 !important;
+        border: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+    .cards-row::-webkit-scrollbar { display: none; }
+
+    /* Individual Card Style for Swipe */
+    .premium-card, .anilist-card {
+        flex: 0 0 120px !important;
+        scroll-snap-align: start;
+        border: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+    .card-img-wrapper { height: 170px !important; border-radius: 10px !important; }
+    
+    .card-info { padding: 6px 0 0 !important; background: transparent !important; }
+    .card-title { font-size: 0.8rem !important; font-weight: 500; color: #fff; }
+
+    /* Section Header with Purple Left Border & View More */
+    .section-header {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 15px 5px !important;
+        font-size: 1.1rem !important;
+        text-align: left;
+    }
+    .section-header span {
+        border-left: 3px solid #a66bff;
+        padding-left: 10px;
+        color: white;
+        font-weight: 700;
+    }
+    .view-more-btn {
+        display: block !important;
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 20px;
+        padding: 4px 12px;
+        font-size: 0.75rem;
+        color: #bcaed4;
+        text-decoration: none;
+    }
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="InfinityToons">
+    <link rel="apple-touch-icon" href="images/ios-icon.png">
+    
+    <title>Infinitytoonshub</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Yaha dhyan de: v=3 kar diya hai taki naya CSS load ho -->
+    <link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="anime-navbar">
+        <div class="nav-left">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">呪</div>
+                <span class="logo-text">Infinitytoonshub</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="active"><i class="fas fa-compass"></i> Browse</a>
+                <a href="series.html"><i class="fas fa-star"></i> Anime Series</a>
+                <a href="movies.html"><i class="fas fa-film"></i> Movies</a>
+                <a href="new.html"><i class="fas fa-calendar-alt"></i> New & AI</a>
+                <a href="about.html" class="active"><i class="fas fa-info-circle"></i> About Us</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+            </div>
+        </div>
+        <div class="nav-right">
+            <div class="search-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="animeSearch" placeholder="Search anime...">
+            </div>
+            <div class="user-profile">
+                <span>Rengoku</span>
+                <div class="avatar">炎</div>
+            </div>
+        </div>
+    </nav>
+
+   <!-- Netflix Style Hero Video Banner -->
+    <div class="hero-banner">
+        <video autoplay loop muted playsinline class="hero-video">
+            <source src="videos/animeclip (11).mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span style="background: rgba(166,107,255,0.2); border:1px solid rgba(166,107,255,0.5); backdrop-filter:blur(10px); color: #c5a9ff; padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 0.8rem; letter-spacing: 1px;">#1 TRENDING WORLDWIDE</span>
+            <h1 style="color: white; font-size: 3.8rem; margin: 12px 0; font-weight: 900; text-shadow: 0 10px 30px rgba(0,0,0,0.8);">Anime Universe</h1>
+            <p style="color: #d1c4e9; font-size: 1.05rem; line-height: 1.6; margin-bottom: 25px; font-weight: 300;">"Welcome to Infinitytoonshub—your ultimate gateway to the limitless universe of anime! Whether you are looking for the thrilling ninja action of Naruto, the epic battles of Attack on Titan, or the darkest curses in Jujutsu Kaisen, we bring you high-definition streaming right at your fingertips."</p>
+            <div style="display: flex; gap: 15px;">
+                <button class="btn-glass-play"><i class="fas fa-play"></i> Watch Now</button>
+                <button class="btn-glass-info"><i class="fas fa-info-circle"></i> Details</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================
+         1. TOP RATED ANIME SECTION (Hero ke theek neeche)
+         ===================================== -->
+    <div class="hero-message" style="margin-top: 15px;">
+        ⚡ <span>Top Rated Anime</span> — Fan Favorites <i class="fas fa-fire" style="color: #ff5722;"></i>
+    </div>
+    
+    <div class="top-rated-container">
+        <div class="top-card">
+            <div class="rank-number">1</div>
+            <div class="top-img-box"><a href="watch.html?anime=naruto%20shippuden"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20-YJvLbgJQPCoI.jpg" alt="Naruto"></a></div>
+        </div>
+        <div class="top-card">
+            <div class="rank-number">2</div>
+            <div class="top-img-box"><a href="watch.html?anime=attack%20on%20titan"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx16498-m5ZMNtFiCHQj.png" alt="AOT"></a></div>
+        </div>
+        <div class="top-card">
+            <div class="rank-number">3</div>
+            <div class="top-img-box"><a href="watch.html?anime=solo%20leveling"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx151807-m1gX3iwfIsLu.png" alt="Solo Leveling"></a></div>
+        </div>
+        <div class="top-card">
+            <div class="rank-number">4</div>
+            <div class="top-img-box"><a href="watch.html?anime=demon%20slayer"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx101922-PEn1CTc93DQl.jpg" alt="Demon Slayer"></a></div>
+        </div>
+        <div class="top-card">
+            <div class="rank-number">5</div>
+            <div class="top-img-box"><a href="watch.html?anime=death%20note"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1535-ZhzrVgi3A6vE.png" alt="Death Note"></a></div>
+        </div>
+    </div>
+
+    <!-- =====================================
+         2. FRESH DROP SECTION (Cards ke liye)
+         ===================================== -->
+    <div class="hero-message section-header">
+        <span>Fresh Drop & Trending</span>
+        <a href="series.html" class="view-more-btn">View more</a>
+    </div>
+
+    <!-- MAGIC CONTAINER (AniList API ke cards yahan aayenge) -->
+    <div class="cards-row" id="mixed-container" data-filter="ALL"></div>
+
+    <!-- =====================================
+         3. TARGET BOX FOR FILTERS (Sabse aakhir mein)
+         ===================================== -->
+    <div id="bottom-filter-destination"></div>
+
+    <!-- Master Scripts -->
+    <script src="script.js"></script>
+    <script src="infinitytoons-enhancements.js"></script>
+    <script src="background-video-rotator.js"></script>
+</body>
+</html>
