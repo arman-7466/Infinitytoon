@@ -850,10 +850,11 @@
         }, 500);
     }
 
-    function initPage() {
+   function initPage() {
         initAniList();
         initEpisodePlayer();
         initHeroVideoPosterFix();
+        initDynamicHomePage(); // <--- Yeh line add kar dena
         moveFiltersToBottom(); 
     }
 
@@ -864,4 +865,72 @@
     }
 })();
 
-   
+   // Yeh function aapke purane video links ko bina chhede, naye categories ke rows bana dega
+    async function fetchAnimeCategory(format, sort, title, containerId) {
+        const query = `
+            query {
+                Page(page: 1, perPage: 12) {
+                    media(type: ANIME, format: ${format}, sort: ${sort}) {
+                        id siteUrl format
+                        title { romaji english native }
+                        coverImage { extraLarge large }
+                    }
+                }
+            }
+        `;
+
+        try {
+            const response = await fetch("https://graphql.anilist.co", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                body: JSON.stringify({ query })
+            });
+
+            const result = await response.json();
+            if (result?.data?.Page?.media) {
+                renderCategorySection(title, result.data.Page.media, containerId);
+            }
+        } catch (error) {
+            console.error(`Error loading ${title}:`, error);
+        }
+    }
+
+    function createCardHTML(anime) {
+        const title = anime.title.english || anime.title.romaji || "Unknown";
+        const image = anime.coverImage?.extraLarge || anime.coverImage?.large || "";
+        return `
+            <a href="${escapeHTML(anime.siteUrl)}" class="premium-card anilist-card" data-title="${escapeHTML(title.toLowerCase())}" target="_blank">
+                <div class="card-img-wrapper">
+                    <img src="${escapeHTML(image)}" alt="${escapeHTML(title)}" class="card-img" loading="lazy">
+                    <div class="card-badges"><span class="badge sub">${anime.format === "MOVIE" ? "MOVIE" : "SERIES"}</span></div>
+                    <div class="play-overlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="card-info"><h3 class="card-title">${escapeHTML(title)}</h3></div>
+            </a>
+        `;
+    }
+
+    function renderCategorySection(title, animeList, containerId) {
+        const targetDiv = document.getElementById("dynamic-anime-sections");
+        if (!targetDiv) return;
+
+        const sectionHTML = `
+            <div class="hero-message section-header">
+                <span>${title}</span>
+                <a href="#" class="view-more-btn">View more</a>
+            </div>
+            <div class="cards-row" id="${containerId}">
+                ${animeList.map(a => createCardHTML(a)).join('')}
+            </div>
+        `;
+        targetDiv.insertAdjacentHTML("beforeend", sectionHTML);
+    }
+
+    function initDynamicHomePage() {
+        if (!document.getElementById("dynamic-anime-sections")) return;
+        
+        fetchAnimeCategory("TV", "TRENDING_DESC", "Anime Series", "row-series");
+        setTimeout(() => fetchAnimeCategory("MOVIE", "TRENDING_DESC", "Anime Movies", "row-movies"), 500);
+        setTimeout(() => fetchAnimeCategory("TV", "START_DATE_DESC", "New Arrivals", "row-new"), 1000);
+        setTimeout(() => fetchAnimeCategory("TV", "POPULARITY_DESC", "Most Viewed Anime", "row-popular"), 1500);
+    }
