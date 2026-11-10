@@ -133,18 +133,18 @@
   " ameku m.d.: doctor detective ": { 
             name: " Ameku M.D.: Doctor Detective", 
             episodes: { 
-                1: { server1: "https://player.abyssplayer.com/ZLNghlrGL", server2: " " }, 
-                2: { server1: "https://player.abyssplayer.com/h3EGNfXlc", server2: " " },
-                3: { server1: "https://player.abyssplayer.com/Ddr7xijDj", server2: " " }, 
-                4: { server1: "https://player.abyssplayer.com/Jc7uLOrP1", server2: " " },
-                5: { server1: "https://player.abyssplayer.com/m4pzlNy0r", server2: " " }, 
-                6: { server1: "https://player.abyssplayer.com/qlReVyatI", server2: " " },
-                7: { server1: "https://player.abyssplayer.com/Tfx8hCGjF ", server2: " " }, 
-                8: { server1: "https://player.abyssplayer.com/zSgreW-bp ", server2: " " },
-                9: { server1: "https://player.abyssplayer.com/rpCodjDWZ ", server2: " " }, 
-                10: { server1: "https://player.abyssplayer.com/96DSJJ1VO", server2: " " },
-                11: { server1: "https://player.abyssplayer.com/ObEov_J44 ", server2: " " }, 
-                12: { server1: "https://player.abyssplayer.com/kF-aIF8dg ", server2: " " }
+                1: { server1: "https://player.abyssplayer.com/ZLNghlrGL", server2: "https://playmogo.com/e/0xgtz7xs8p9n" }, 
+                2: { server1: "https://player.abyssplayer.com/h3EGNfXlc", server2: "https://playmogo.com/e/54fgmt9k1ykw" },
+                3: { server1: "https://player.abyssplayer.com/Ddr7xijDj", server2: "https://playmogo.com/e/xg5r0rhkylgz" }, 
+                4: { server1: "https://player.abyssplayer.com/Jc7uLOrP1", server2: "https://playmogo.com/e/5m4vg1mwplzd " },
+                5: { server1: "https://player.abyssplayer.com/m4pzlNy0r", server2: "https://playmogo.com/e/y7m8ggt3yubv " }, 
+                6: { server1: "https://player.abyssplayer.com/qlReVyatI", server2: "https://playmogo.com/e/txbnw0z5vo94 " },
+                7: { server1: "https://player.abyssplayer.com/Tfx8hCGjF ", server2: "https://playmogo.com/e/ocnu611ksmtg " }, 
+                8: { server1: "https://player.abyssplayer.com/zSgreW-bp ", server2: " https://playmogo.com/e/gepvdz69v1xe" },
+                9: { server1: "https://player.abyssplayer.com/rpCodjDWZ ", server2: "https://playmogo.com/e/lzohkjo8olhu " }, 
+                10: { server1: "https://player.abyssplayer.com/96DSJJ1VO", server2: " https://playmogo.com/e/91o4zjjaa7fz" },
+                11: { server1: "https://player.abyssplayer.com/ObEov_J44 ", server2: "https://playmogo.com/e/tdcu92lh4wvb " }, 
+                12: { server1: "https://player.abyssplayer.com/kF-aIF8dg ", server2: " https://playmogo.com/e/o73xubzi44uv" }
             }
         },
 
@@ -152,11 +152,11 @@
          "gantz": { 
             name: "Gantz", 
             episodes: { 
-                1: { server1: "https://player.abyssplayer.com/FFwdRs9e4", server2: " " }, 
-                2: { server1: "https://player.abyssplayer.com/k1ZnBe0gq", server2: " " },
-                3: { server1: "https://player.abyssplayer.com/05gdfEtHm", server2: " " }, 
-                4: { server1: "https://player.abyssplayer.com/Jc7uLOrP1", server2: " " },
-                5: { server1: "https://player.abyssplayer.com/m4pzlNy0r", server2: " " }, 
+                1: { server1: "https://player.abyssplayer.com/FFwdRs9e4", server2: "https://playmogo.com/e/3lb4andlii4t " }, 
+                2: { server1: "https://player.abyssplayer.com/k1ZnBe0gq", server2: "https://playmogo.com/e/o60ir330plvz " },
+                3: { server1: "https://player.abyssplayer.com/05gdfEtHm", server2: "https://playmogo.com/e/fl6ibutce4bg" }, 
+                4: { server1: "https://player.abyssplayer.com/lS7UVAuBuM", server2: " https://playmogo.com/e/nl85uq9df414" },
+                5: { server1: "https://player.abyssplayer.com/5SE1a5plu", server2: " " }, 
                 6: { server1: "https://player.abyssplayer.com/qlReVyatI", server2: " " },
                 7: { server1: "https://player.abyssplayer.com/Tfx8hCGjF ", server2: " " }, 
                 8: { server1: "https://player.abyssplayer.com/zSgreW-bp ", server2: " " },
@@ -169,8 +169,8 @@
 
 
 
-        "sakamoto days": { 
-            name: "Sakamoto Days", 
+        "sakamoto days season 2": { 
+            name: "Sakamoto Days Season 2", 
             episodes: { 
                 1: { server1: "https://playmogo.com/e/0jyi9678x5ug", server2: "https://player.abyssplayer.com/Eybm5vtGJ" }, 
                 2: { server1: "https://playmogo.com/e/f2ivxa6upekm", server2: "https://player.abyssplayer.com/kDFZJrRag" },
@@ -557,10 +557,29 @@
                 1: { server1: "https://playmogo.com/e/khyop3cgy6l4", server2: "https://playmogo.com/e/w1my8nj0euez" }
             } 
         },
+
+
+  " chainsaw man – the movie: reze arc": { 
+            name: " Chainsaw Man – The Movie: Reze Arc ", 
+            episodes: { 
+                1: { server1: "https://player.abyssplayer.com/TyoOC9q_J", server2: " " }
+            } 
+        },
+
+
+
+          "my oni girl": { 
+            name: "My Oni Girl", 
+            episodes: { 
+                1: { server1: "https://player.abyssplayer.com/O2tW2DgLB", server2: " " }
+            } 
+        },
+
+
         "i want to eat your pancreas": { 
             name: "I Want To Eat Your Pancreas", 
             episodes: { 
-                1: { server1: "https://playmogo.com/e/khyop3cgy6l4", server2: "https://playmogo.com/e/w1my8nj0euez" }
+                1: { server1: "https://player.abyssplayer.com/kLjhdu6po", server2: "" }
             } 
         },
         "weathering with you": { 
@@ -575,7 +594,7 @@
                 24: { server1: "https://playmogo.com/e/y1b3xapgxau1", server2: "https://playmogo.com/e/w1my8nj0euez" }
             } 
         },
-        "demon slayer: kimetsu no yaiba infinity castle": { 
+        " demon layer: kimetsu no yaiba infinity castle": { 
             name: "Demon Slayer: Kimetsu no Yaiba Infinity Castle", 
             episodes: { 
                 24: { server1: "https://playmogo.com/e/7n2ay5pz6agu", server2: "https://playmogo.com/e/7n2ay5pz6agu" }
