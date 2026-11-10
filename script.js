@@ -573,7 +573,7 @@
         return null;
     }
 
-    // 1. AniList API Request Function
+  // 1. AniList API Request Function
     async function fetchAnilistAnime(page, search, format, id) {
         const query = `
             query ($page: Int, $perPage: Int, $search: String, $format: MediaFormat) {
@@ -598,6 +598,122 @@
         const result = await response.json();
         if (id !== requestId) return null;
         return result.data.Page;
+    }
+
+    // 2. Jikan API (MyAnimeList) Search
+    async function fetchJikanAnime(search, page) {
+        try {
+            let url = `https://api.jikan.moe/v4/anime?page=${page}&limit=12`;
+            if (search) {
+                url += `&q=${encodeURIComponent(search)}`;
+            } else {
+                url += `&order_by=popularity&sort=asc`;
+            }
+
+            const response = await fetch(url);
+            if (!response.ok) return null;
+            const result = await response.json();
+
+            const formattedMedia = result.data.map(item => ({
+                id: item.mal_id,
+                siteUrl: item.url,
+                format: item.type === "Movie" ? "MOVIE" : "TV",
+                title: {
+                    romaji: item.title_japanese || item.title,
+                    english: item.title_english || item.title,
+                    native: item.title
+                },
+                coverImage: {
+                    large: item.images?.jpg?.large_image_url || item.images?.jpg?.image_url,
+                    extraLarge: item.images?.jpg?.large_image_url || item.images?.jpg?.image_url
+                }
+            }));
+
+            return formattedMedia;
+        } catch (e) {
+            console.error("Jikan API error:", e);
+            return [];
+        }
+    }
+
+    // 3. Kitsu API Search
+    async function fetchKitsuAnime(search) {
+        try {
+            let url = `https://kitsu.io/api/edge/anime?page[limit]=12`;
+            if (search) {
+                url += `&filter[text]=${encodeURIComponent(search)}`;
+            }
+
+            const response = await fetch(url);
+            if (!response.ok) return null;
+            const result = await response.json();
+
+            const formattedMedia = result.data.map(item => ({
+                id: item.id,
+                siteUrl: `https://kitsu.io/anime/${item.id}`,
+                format: item.attributes?.subtype === "movie" ? "MOVIE" : "TV",
+                title: {
+                    romaji: item.attributes?.canonicalTitle,
+                    english: item.attributes?.titles?.en || item.attributes?.canonicalTitle,
+                    native: item.attributes?.titles?.ja_jp || ""
+                },
+                coverImage: {
+                    large: item.attributes?.posterImage?.large || item.attributes?.posterImage?.original,
+                    extraLarge: item.attributes?.posterImage?.original || item.attributes?.posterImage?.large
+                }
+            }));
+
+            return formattedMedia;
+        } catch (e) {
+            console.error("Kitsu API error:", e);
+            return [];
+        }
+    }
+
+    // 4. Combined Multi-API Search & Fallback Aggregator
+    async function fetchAnimeCombined(page, search, format, id) {
+        try {
+            // Step A: Pehle AniList se data mangwayenge
+            const anilistData = await fetchAnilistAnime(page, search, format, id);
+            let combinedMedia = anilistData?.media || [];
+            let hasNext = anilistData?.pageInfo?.hasNextPage || false;
+
+            // Step B: Agar search karne par AniList par kam ya koi result nahi mila, toh Jikan aur Kitsu se bhi data utha laayenge
+            if (search && combinedMedia.length < 10) {
+                const [jikanResults, kitsuResults] = await Promise.all([
+                    fetchJikanAnime(search, page),
+                    fetchKitsuAnime(search)
+                ]);
+
+                // Sabhi APIs ke results ko ek sath mila dena (Duplicate titles hata kar)
+                const allFetched = [...combinedMedia, ...jikanResults, ...kitsuResults];
+                const uniqueMap = new Map();
+                
+                allFetched.forEach(item => {
+                    const titleKey = (item.title?.english || item.title?.romaji || "").toLowerCase().trim();
+                    if (titleKey && !uniqueMap.has(titleKey)) {
+                        uniqueMap.set(titleKey, item);
+                    }
+                });
+
+                combinedMedia = Array.from(uniqueMap.values());
+            }
+
+            return {
+                media: combinedMedia,
+                pageInfo: {
+                    currentPage: page,
+                    hasNextPage: hasNext
+                }
+            };
+        } catch (err) {
+            console.error("Multi-API error, falling back to Jikan:", err);
+            const fallbackJikan = await fetchJikanAnime(search, page);
+            return {
+                media: fallbackJikan,
+                pageInfo: { currentPage: page, hasNextPage: false }
+            };
+        }
     }
 
     // 2. Jikan API (MyAnimeList) Fallback / Alternative Search
