@@ -1,5 +1,5 @@
 /* ==========================================
-   INFINITYTOONS - ANILIST API INTEGRATION
+   INFINITYTOONS - ANILIST & JIKAN API INTEGRATION
    Anime Cards + Search + Episode Player
    ========================================== */
 
@@ -7,6 +7,7 @@
     "use strict";
 
     const API_URL = "https://graphql.anilist.co";
+    const JIKAN_API_URL = "https://api.jikan.moe/v4";
     const PER_PAGE = 24;
 
     // 3. VIDEO LINKS DATABASE WITH SERVER 1 & SERVER 2
@@ -86,11 +87,45 @@
                 5: { server1: "https://playmogo.com/e/1t7xw492sifu", server2: "https://playmogo.com/e/1t7xw492sifu" }, 
                 6: { server1: "https://playmogo.com/e/7iyf2zgmyz83", server2: "https://playmogo.com/e/7iyf2zgmyz83" },
                 7: { server1: "https://playmogo.com/e/nxjgas65xk8j", server2: "https://playmogo.com/e/nxjgas65xk8j" }, 
-                8: { server1: "https://www.youtube.com/embed/xyz", server2: "https://filemoon.org/embed/demo" },
-                9: { server1: "https://playmogo.com/e/nxjgas65xk8j", server2: "https://playmogo.com/e/nxjgas65xk8j" }, 
-                10: { server1: "https://playmogo.com/e/3omu0luzw2cl", server2: "https://playmogo.com/e/3omu0luzw2cl" },
-                11: { server1: "https://playmogo.com/e/nxjgas65xk8j", server2: "https://playmogo.com/e/nxjgas65xk8j" }, 
-                12: { server1: "https://playmogo.com/e/ukvo7z62flks", server2: "https://playmogo.com/e/ukvo7z62flks" }
+                8: { server1: " ", server2: " " },
+                9: { server1: " ", server2: " " }, 
+                10: { server1: " ", server2: " " },
+                11: { server1: " ", server2: " " }, 
+                12: { server1: " ", server2: " " }
+            }
+        },
+        "jujutsu kaisen ": { 
+            name: "Jujutsu Kaisen ", 
+            episodes: { 
+                1: { server1: "https://playmogo.com/e/o2ja8aok3ln2", server2: " " }, 
+                2: { server1: "https://playmogo.com/e/hksts3o794nw", server2: " " },
+                3: { server1: "", server2: " " }, 
+                4: { server1: "", server2: " " },
+                5: { server1: " ", server2: " " }, 
+                6: { server1: " ", server2: " " },
+                7: { server1: " ", server2: " " }, 
+                8: { server1: " ", server2: " " },
+                9: { server1: " ", server2: " " }, 
+                10: { server1: " ", server2: " " },
+                11: { server1: " ", server2: " " }, 
+                12: { server1: " ", server2: " " }
+            }
+        },
+        "dr.stone ": { 
+            name: "Dr.Stone ", 
+            episodes: { 
+                1: { server1: "https://playmogo.com/e/rzrspb9b9qob", server2: "https://player.abyssplayer.com/IRLtUmnUf" }, 
+                2: { server1: "https://playmogo.com/e/acd1mp915wpv", server2: "https://player.abyssplayer.com/vPzziMTVoE" },
+                3: { server1: "https://playmogo.com/e/dylgjy43wdb4", server2: " " }, 
+                4: { server1: "", server2: " " },
+                5: { server1: " ", server2: " " }, 
+                6: { server1: " ", server2: " " },
+                7: { server1: " ", server2: " " }, 
+                8: { server1: " ", server2: " " },
+                9: { server1: " ", server2: " " }, 
+                10: { server1: " ", server2: " " },
+                11: { server1: " ", server2: " " }, 
+                12: { server1: " ", server2: " " }
             }
         },
         "sakamoto days": { 
@@ -112,18 +147,18 @@
         "the drops of god": { 
             name: "The Drops Of God", 
             episodes: { 
-                1: { server1: "https://playmogo.com/e/ivjwkkrwgk3g", server2: "https://player.abyssplayer.com/Eybm5vtGJ" }, 
-                2: { server1: "https://playmogo.com/e/cb0wcooare8e", server2: "https://player.abyssplayer.com/kDFZJrRag" },
-                3: { server1: "https://playmogo.com/e/g1dezr32j5p3", server2: "https://player.abyssplayer.com/mtNxnx_E8" }, 
-                4: { server1: "https://playmogo.com/e/knjbqqtubio5", server2: "https://player.abyssplayer.com/IpMX629ZP" },
-                5: { server1: "https://playmogo.com/e/y8q8wjn1aj71", server2: "https://player.abyssplayer.com/VYwpxSQmd" }, 
-                6: { server1: "https://playmogo.com/e/y4xcxwua0jr3", server2: "https://player.abyssplayer.com/dziRI2Khx" },
-                7: { server1: "https://playmogo.com/e/zsmkcagp2jdv", server2: "https://player.abyssplayer.com/lBgv8D8Zm" }, 
-                8: { server1: "https://playmogo.com/e/s99ivqsao6rd", server2: "https://player.abyssplayer.com/72_PKeavG" },
-                9: { server1: "https://playmogo.com/e/loe33weji87d", server2: "https://playmogo.com/e/nxjgas65xk8j" }, 
-                10: { server1: "https://playmogo.com/e/7le68rp1m0hc", server2: "https://playmogo.com/e/3omu0luzw2cl" },
-                11: { server1: "https://playmogo.com/e/702diur809ph", server2: "https://playmogo.com/e/nxjgas65xk8j" },
-                12: { server1: "https://playmogo.com/e/frw10706ro3n", server2: "https://playmogo.com/e/ukvo7z62flks" }
+                1: { server1: "", server2: "https://player.abyssplayer.com/Eybm5vtGJ" }, 
+                2: { server1: " ", server2: "https://player.abyssplayer.com/kDFZJrRag" },
+                3: { server1: " ", server2: "https://player.abyssplayer.com/mtNxnx_E8" }, 
+                4: { server1: " ", server2: "https://player.abyssplayer.com/IpMX629ZP" },
+                5: { server1: " ", server2: "https://player.abyssplayer.com/VYwpxSQmd" }, 
+                6: { server1: " ", server2: "https://player.abyssplayer.com/dziRI2Khx" },
+                7: { server1: " ", server2: "https://player.abyssplayer.com/lBgv8D8Zm" }, 
+                8: { server1: " ", server2: "https://player.abyssplayer.com/72_PKeavG" },
+                9: { server1: " ", server2: "https://playmogo.com/e/nxjgas65xk8j" }, 
+                10: { server1: " ", server2: "https://playmogo.com/e/3omu0luzw2cl" },
+                11: { server1: " ", server2: "https://playmogo.com/e/nxjgas65xk8j" },
+                12: { server1: " ", server2: "https://playmogo.com/e/ukvo7z62flks" }
             }
         },
         "trillion game": { 
@@ -142,17 +177,19 @@
                 11: { server1: "https://playmogo.com/e/0aqzh9y6b6w7", server2: "https://playmogo.com/e/nxjgas65xk8j" },
                 12: { server1: "https://playmogo.com/e/waxn3x78zyxm", server2: "https://playmogo.com/e/ukvo7z62flks" },
                 13: { server1: "https://playmogo.com/e/53hbif9tlyi7", server2: "https://player.abyssplayer.com/EVflorCZE" }, 
-                14: { server1: "https://playmogo.com/e/000iibrr7nj5", server2: "https://player.abyssplayer.com/ePIOhePA_" },
+                14: { server1: "https://playmogo.com/d/10v1i7xkim13", server2: "https://player.abyssplayer.com/ePIOhePA_" },
                 15: { server1: "https://playmogo.com/e/nbp2s0447qae", server2: "https://player.abyssplayer.com/lSKJ8CfIW" }, 
                 16: { server1: "https://playmogo.com/e/rxstsxsl8pfj", server2: "https://player.abyssplayer.com/IpMX629ZP" },
-                17: { server1: "https://playmogo.com/e/9b10yw6hlpjy", server2: "https://player.abyssplayer.com/VYwpxSQmd" }, 
-                18: { server1: "https://playmogo.com/e/jq3rl9g0dunx", server2: "https://player.abyssplayer.com/dziRI2Khx" },
-                19: { server1: "https://playmogo.com/e/kdvahaffj4dy", server2: "https://player.abyssplayer.com/lBgv8D8Zm" }, 
-                20: { server1: "https://playmogo.com/e/eu80gmrygjcd", server2: "https://player.abyssplayer.com/72_PKeavG" },
-                21: { server1: "https://playmogo.com/e/lzoa21m9ff8b", server2: "https://playmogo.com/e/nxjgas65xk8j" }, 
-                22: { server1: "https://playmogo.com/e/8r8x4rqaydej", server2: "https://playmogo.com/e/3omu0luzw2cl" },
-                23: { server1: "https://playmogo.com/e/0aqzh9y6b6w7", server2: "https://playmogo.com/e/nxjgas65xk8j" },
-                24: { server1: "https://playmogo.com/e/waxn3x78zyxm", server2: "https://playmogo.com/e/ukvo7z62flks" }
+                17: { server1: "https://playmogo.com/e/2yndqk81vgtp", server2: "https://player.abyssplayer.com/VYwpxSQmd" }, 
+                18: { server1: "https://playmogo.com/e/7q5kgxka6l06", server2: "https://player.abyssplayer.com/dziRI2Khx" },
+                19: { server1: "https://playmogo.com/e/zotz3v6v903o", server2: "https://player.abyssplayer.com/lBgv8D8Zm" }, 
+                20: { server1: "https://playmogo.com/e/kqziwjaxra7i", server2: "https://player.abyssplayer.com/72_PKeavG" },
+                21: { server1: "https://playmogo.com/e/7vynznczt1u7", server2: "https://playmogo.com/e/nxjgas65xk8j" }, 
+                22: { server1: "https://playmogo.com/e/9ic3wsw80icl", server2: "https://playmogo.com/e/3omu0luzw2cl" },
+                23: { server1: "https://playmogo.com/e/e66rp8ub8gyg", server2: "https://playmogo.com/e/nxjgas65xk8j" },
+                24: { server1: "https://playmogo.com/e/ws649ttq3a35", server2: "https://playmogo.com/e/ukvo7z62flks" },
+                25: { server1: "https://playmogo.com/e/vbmaid4x3ruo", server2: "https://playmogo.com/e/nxjgas65xk8j" },
+                26: { server1: "https://playmogo.com/e/jsm2k6pz1sx8", server2: "https://playmogo.com/e/ukvo7z62flks" }
             }
         },
         "demon slayer": { 
@@ -317,7 +354,7 @@
                 140: { server1: "https://playmogo.com/e/ogmz1n0igo79", server2: "https://www.youtube.com/embed/xyz" },
                 141: { server1: "https://playmogo.com/e/5f47mf2igue2", server2: "https://www.youtube.com/embed/xyz" },
                 142: { server1: "https://playmogo.com/e/8u2ahbvd1jyu", server2: "https://www.youtube.com/embed/xyz" },
-                143: { server1: "https://filemoon.org/en/APVmaXbjGXo8/embed", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                143: { server1: "https://playmogo.com/e/61scgye4yiwo", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
                 144: { server1: "https://playmogo.com/e/bbiqp4z8pjbl", server2: "https://www.youtube.com/embed/xyz" },
                 145: { server1: "https://playmogo.com/e/js9lg81ir92a", server2: "https://www.youtube.com/embed/xyz" },
                 146: { server1: "https://playmogo.com/e/b5hoxhfk9f5s", server2: "https://www.youtube.com/embed/xyz" },
@@ -479,6 +516,12 @@
                 1: { server1: "https://playmogo.com/e/khyop3cgy6l4", server2: "https://playmogo.com/e/w1my8nj0euez" }
             } 
         },
+        "i want to eat your pancreas": { 
+            name: "I Want To Eat Your Pancreas", 
+            episodes: { 
+                1: { server1: "https://playmogo.com/e/khyop3cgy6l4", server2: "https://playmogo.com/e/w1my8nj0euez" }
+            } 
+        },
         "weathering with you": { 
             name: "Weathering With You", 
             episodes: { 
@@ -530,7 +573,8 @@
         return null;
     }
 
-    async function fetchAnime(page, search, format, id) {
+    // 1. AniList API Request Function
+    async function fetchAnilistAnime(page, search, format, id) {
         const query = `
             query ($page: Int, $perPage: Int, $search: String, $format: MediaFormat) {
                 Page(page: $page, perPage: $perPage) {
@@ -550,15 +594,72 @@
             body: JSON.stringify({ query, variables: { page, perPage: PER_PAGE, search: search || null, format: format || null } })
         });
 
-        if (!response.ok) throw new Error("API request failed: " + response.status);
+        if (!response.ok) throw new Error("AniList request failed");
         const result = await response.json();
-        if (result.errors) throw new Error(result.errors[0].message);
         if (id !== requestId) return null;
         return result.data.Page;
     }
 
+    // 2. Jikan API (MyAnimeList) Fallback / Alternative Search
+    async function fetchJikanAnime(search, page) {
+        try {
+            let url = `${JIKAN_API_URL}/anime?page=${page}&limit=${PER_PAGE}`;
+            if (search) {
+                url += `&q=${encodeURIComponent(search)}`;
+            } else {
+                url += `&order_by=popularity&sort=asc`;
+            }
+
+            const response = await fetch(url);
+            if (!response.ok) return null;
+            const result = await response.json();
+
+            // Format Jikan data to match AniList structure smoothly
+            const formattedMedia = result.data.map(item => ({
+                id: item.mal_id,
+                siteUrl: item.url,
+                format: item.type === "Movie" ? "MOVIE" : "TV",
+                title: {
+                    romaji: item.title_japanese || item.title,
+                    english: item.title_english || item.title,
+                    native: item.title
+                },
+                coverImage: {
+                    large: item.images?.jpg?.large_image_url || item.images?.jpg?.image_url,
+                    extraLarge: item.images?.jpg?.large_image_url || item.images?.jpg?.image_url
+                }
+            }));
+
+            return {
+                media: formattedMedia,
+                pageInfo: {
+                    currentPage: page,
+                    hasNextPage: result.pagination?.has_next_page || false
+                }
+            };
+        } catch (e) {
+            console.error("Jikan API error:", e);
+            return null;
+        }
+    }
+
+    async function fetchAnimeCombined(page, search, format, id) {
+        try {
+            // Pehle AniList se try karo
+            const anilistData = await fetchAnilistAnime(page, search, format, id);
+            if (anilistData && anilistData.media && anilistData.media.length > 0) {
+                return anilistData;
+            }
+        } catch (err) {
+            console.warn("AniList failed, falling back to Jikan API...");
+        }
+
+        // Agar AniList par results na mile ya error aaye, to Jikan (MyAnimeList) se fetch karo
+        return await fetchJikanAnime(search, page);
+    }
+
     function createCard(anime) {
-        const title = anime.title.english || anime.title.romaji || anime.title.native || "Unknown Anime";
+        const title = anime.title?.english || anime.title?.romaji || anime.title?.native || "Unknown Anime";
         const image = anime.coverImage?.extraLarge || anime.coverImage?.large || "";
         const local = typeof allAnimeData !== "undefined" ? allAnimeData.find(a => String(a.title || "").toLowerCase() === title.toLowerCase()) : null;
         const href = local ? local.link : anime.siteUrl;
@@ -599,13 +700,13 @@
         showStatus("Anime load ho rahe hain...");
 
         try {
-            const data = await fetchAnime(currentPage, currentSearch, getFormat(), id);
+            const data = await fetchAnimeCombined(currentPage, currentSearch, getFormat(), id);
             if (!data || id !== requestId) return;
 
             const existing = new Set(Array.from(grid.querySelectorAll(".anilist-card")).map(card => card.dataset.title));
             const local = new Set(localTitles());
             const cards = data.media.filter(anime => {
-                const title = (anime.title.english || anime.title.romaji || anime.title.native || "").toLowerCase();
+                const title = (anime.title?.english || anime.title?.romaji || anime.title?.native || "").toLowerCase();
                 return !existing.has(title) && !local.has(title) && anime.coverImage;
             });
 
@@ -615,7 +716,7 @@
             showStatus(grid.querySelector(".anilist-card") ? "" : "Koi naya result nahi mila.");
             if (moreButton) moreButton.style.display = hasNextPage ? "block" : "none";
         } catch (error) {
-            console.error("AniList error:", error);
+            console.error("Fetch error:", error);
             showStatus("Anime load nahi hue. Internet check karke dobara try karo.");
         } finally {
             loading = false;
@@ -731,7 +832,6 @@
 
         if (!videoUrl || typeof videoUrl !== "string") {
             player.removeAttribute("src");
-            console.warn("Video URL nahi mila is episode ke liye:", matchedKey, episode);
             return;
         }
 
@@ -753,7 +853,6 @@
         const trayContainer = document.getElementById("episodeTray");
         if (trayContainer && animeObj?.episodes) {
             trayContainer.innerHTML = "";
-            
             const episodeNumbers = Object.keys(animeObj.episodes).map(Number).sort((a, b) => a - b);
             
             episodeNumbers.forEach(i => {
@@ -805,7 +904,6 @@
 
         if (targetUrl) {
             player.src = targetUrl;
-            
             const params = new URLSearchParams(window.location.search);
             params.set("server", serverName);
             window.history.replaceState({}, '', `${location.pathname}?${params.toString()}`);
@@ -828,33 +926,26 @@
         updateBackground();
     }
 
-    // NAYA FUNCTION: Filter box (Find Your Anime & A-Z) ko sabse neeche bhejne ke liye
-  // NAYA STRONG FUNCTION: Filter box ko definitely sabse neeche bhejega
     function moveFiltersToBottom() {
-        // Yeh har 0.5 second mein check karega ki filter generate hua ya nahi
         let checkInterval = setInterval(() => {
             const catalogTools = document.getElementById("catalog-tools");
             const destination = document.getElementById("bottom-filter-destination");
-            
-            // Jaise hi usko filter wala box milega...
             if (catalogTools) {
-                // ...woh usko seedha bottom-filter-destination (sabse neeche) daal dega
                 if (destination) {
                     destination.appendChild(catalogTools);
                 } else {
                     document.body.appendChild(catalogTools);
                 }
-                // Kaam khatam hone par check karna band kar dega
                 clearInterval(checkInterval); 
             }
         }, 500);
     }
 
-   function initPage() {
+    function initPage() {
         initAniList();
         initEpisodePlayer();
         initHeroVideoPosterFix();
-        initDynamicHomePage(); // <--- Yeh line add kar dena
+        initDynamicHomePage();
         moveFiltersToBottom(); 
     }
 
@@ -863,9 +954,7 @@
     } else {
         initPage();
     }
-})();
 
-   // Yeh function aapke purane video links ko bina chhede, naye categories ke rows bana dega
     async function fetchAnimeCategory(format, sort, title, containerId) {
         const query = `
             query {
@@ -934,3 +1023,4 @@
         setTimeout(() => fetchAnimeCategory("TV", "START_DATE_DESC", "New Arrivals", "row-new"), 1000);
         setTimeout(() => fetchAnimeCategory("TV", "POPULARITY_DESC", "Most Viewed Anime", "row-popular"), 1500);
     }
+})();
