@@ -1,6 +1,5 @@
 /* ==========================================
-   INFINITYTOONS - FULLY OPTIMIZED & FIXED ENGINE
-   AniList Pure Anime Top 10 + Universal Search + All Links Intact
+   INFINITYTOONS - FINAL FIXED SCRIPT ENGINE
    ========================================== */
 
 (() => {
@@ -48,7 +47,7 @@
                 22: { server1: "https://playmogo.com/e/14lsewvb9onq", server2: "https://www.youtube.com/embed/xyz" },
                 23: { server1: "https://playmogo.com/e/gln2rqwdldcq", server2: "https://www.youtube.com/embed/xyz" },
                 24: { server1: "https://playmogo.com/e/5chc3cma1t4n", server2: "https://www.youtube.com/embed/xyz" },
-                25: { server1: "https://playmogo.com/e/ahl84o1b01fp", server2: "https://www.youtube.com/embed/w1my8nj0euez" }, 
+                25: { server1: "https://playmogo.com/e/ahl84o1b01fp", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
                 26: { server1: "https://playmogo.com/e/ul9nsqzrjpps", server2: "https://www.youtube.com/embed/xyz" },
                 27: { server1: "https://playmogo.com/e/oybkl22yhozb", server2: "https://www.youtube.com/embed/xyz" },
                 28: { server1: "https://playmogo.com/e/3rpvv0zbte9b", server2: "https://www.youtube.com/embed/xyz" },
@@ -158,7 +157,7 @@
                 132: { server1: "https://playmogo.com/e/3yvdkfugmrth", server2: "https://www.youtube.com/embed/xyz" },
                 133: { server1: "https://playmogo.com/e/rymvl44qgj7b", server2: "https://www.youtube.com/embed/xyz" },
                 134: { server1: "https://playmogo.com/e/qfzqwd3uf83h", server2: "https://www.youtube.com/embed/xyz" },
-                135: { server1: "https://playmogo.com/e/pp5zrwt41ime", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                135: { server1: "https://playmogo.com/e/pp5zrwt41ime", server2: "https://www.youtube.com/embed/w1my8nj0euez" }, 
                 136: { server1: "https://playmogo.com/e/e9sgppt5g38w", server2: "https://www.youtube.com/embed/xyz" },
                 137: { server1: "https://playmogo.com/e/639gwrh0zeqa", server2: "https://www.youtube.com/embed/xyz" },
                 138: { server1: "https://playmogo.com/e/o49bfanzj417", server2: "https://www.youtube.com/embed/xyz" },
@@ -172,7 +171,7 @@
                 146: { server1: "https://playmogo.com/e/b5hoxhfk9f5s", server2: "https://www.youtube.com/embed/xyz" },
                 147: { server1: "https://playmogo.com/e/64n9phpsxl8b", server2: "https://www.youtube.com/embed/xyz" },
                 148: { server1: "https://playmogo.com/e/fx099jb5q44t", server2: "https://www.youtube.com/embed/xyz" },
-                149: { server1: "https://playmogo.com/e/g08t878nskqq", server2: "https://playmogo.com/e/w1my8nj0euez" },
+                149: { server1: "https://playmogo.com/e/g08t878nskqq", server2: "https://www.youtube.com/embed/xyz" },
                 150: { server1: "https://playmogo.com/e/yhf6exi6zgr7", server2: "https://www.youtube.com/embed/xyz" },
                 151: { server1: "https://playmogo.com/e/gtimmhb2dr59", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
                 152: { server1: "https://playmogo.com/e/ry5yo6kyzyhx", server2: "https://www.youtube.com/embed/xyz" },
@@ -238,7 +237,7 @@
                 386: { server1: "https://filemoon.org/en/qLQ36rXw319j/embed", server2: "https://www.youtube.com/embed/xyz" },
                 387: { server1: "https://filemoon.org/en/M2BGwpLNmj40/embed", server2: "https://www.youtube.com/embed/xyz" },
                 388: { server1: "https://filemoon.org/en/EL73gXkEz9Ba/embed", server2: "https://www.youtube.com/embed/xyz" }
-            }
+            } 
         },
         "mob psycho 100 ii": { 
             name: "Mob Psycho 100 II", 
@@ -454,7 +453,7 @@
         }
     }
 
-    // 5. Pure Anime Top 10 Using AniList GraphQL (Guaranteed No Live Action)
+    // 5. Pure Anime Top 10 Using AniList GraphQL
     async function loadTopRatedAnime() {
         const topContainer = document.querySelector(".top-rated-container");
         if (!topContainer) return;
@@ -486,7 +485,7 @@
                     const poster = item.coverImage?.extraLarge || item.coverImage?.large || "";
                     const rank = index + 1;
                     return `
-                        <a href="watch.html?anime=${encodeURIComponent(title)}" class="top-card" target="_blank">
+                        <a href="watch.html?anime=${encodeURIComponent(title)}&episode=1" class="top-card">
                             <div class="rank-number">${rank}</div>
                             <div class="top-img-box">
                                 <img src="${escapeHTML(poster)}" alt="${escapeHTML(title)}" loading="lazy">
@@ -500,7 +499,7 @@
         }
     }
 
-    // 6. Ultimate Combined Aggregator (Fast & Responsive)
+    // 6. Ultimate Combined Aggregator
     async function fetchAnimeCombined(page, search, format, id) {
         const promises = [fetchAnilist(page, search, format, id)];
         if (search) {
@@ -535,36 +534,15 @@
         };
     }
 
- function createCard(anime) {
+    function createCard(anime) {
         const title = anime.title?.english || anime.title?.romaji || anime.title?.native || "Unknown Anime";
         const image = anime.coverImage?.extraLarge || anime.coverImage?.large || "";
-        
-        // Hamesha aapke apne watch.html player par redirect karega
         const href = `watch.html?anime=${encodeURIComponent(title)}&episode=1`;
 
         return `
             <a href="${escapeHTML(href)}" class="premium-card search-item anilist-card" data-title="${escapeHTML(title.toLowerCase())}">
                 <div class="card-img-wrapper">
                     <img src="${escapeHTML(image)}" alt="${escapeHTML(title)}" class="card-img" loading="lazy" onerror="this.style.visibility='hidden'">
-                    <div class="card-badges"><span class="badge sub">${anime.format === "MOVIE" ? "MOVIE" : "SERIES"}</span></div>
-                    <div class="play-overlay"><i class="fas fa-play"></i></div>
-                </div>
-                <div class="card-info"><h3 class="card-title">${escapeHTML(title)}</h3></div>
-            </a>
-        `;
-    }
-
-    function createCardHTML(anime) {
-        const title = anime.title.english || anime.title.romaji || "Unknown";
-        const image = anime.coverImage?.extraLarge || anime.coverImage?.large || "";
-        
-        // Yeh bhi direct watch.html par bhejega
-        const href = `watch.html?anime=${encodeURIComponent(title)}&episode=1`;
-
-        return `
-            <a href="${escapeHTML(href)}" class="premium-card anilist-card" data-title="${escapeHTML(title.toLowerCase())}">
-                <div class="card-img-wrapper">
-                    <img src="${escapeHTML(image)}" alt="${escapeHTML(title)}" class="card-img" loading="lazy">
                     <div class="card-badges"><span class="badge sub">${anime.format === "MOVIE" ? "MOVIE" : "SERIES"}</span></div>
                     <div class="play-overlay"><i class="fas fa-play"></i></div>
                 </div>
@@ -601,10 +579,9 @@
             if (!data || id !== requestId) return;
 
             const existing = new Set(Array.from(grid.querySelectorAll(".anilist-card")).map(card => card.dataset.title));
-            const local = new Set(localTitles());
             const cards = data.media.filter(anime => {
                 const title = (anime.title?.english || anime.title?.romaji || anime.title?.native || "").toLowerCase();
-                return !existing.has(title) && !local.has(title) && anime.coverImage;
+                return !existing.has(title) && anime.coverImage;
             });
 
             grid.insertAdjacentHTML("beforeend", cards.map(createCard).join(""));
@@ -644,7 +621,7 @@
             loadMoreBtn.addEventListener("click", () => loadAnime());
         }
 
-        // Universal search binding for all pages (#animeSearch and any input)
+        // Universal search bar binding for all pages
         const inputs = document.querySelectorAll("#animeSearch, input[type='search'], input[name='search']");
         inputs.forEach(input => {
             input.addEventListener("input", (e) => {
@@ -848,23 +825,13 @@
         }, 500);
     }
 
-    function applyPageLayoutFixes() {
-        const path = location.pathname.toLowerCase();
-        if (path.includes("series") || path.includes("movies")) {
-            if (!document.body.style.backgroundImage) {
-                document.body.style.backgroundColor = "#030107";
-            }
-        }
-    }
-
     function initPage() {
         initAnimeSystem();
         initEpisodePlayer();
         initHeroVideoPosterFix();
         initDynamicHomePage();
         loadTopRatedAnime();
-        moveFiltersToBottom();
-        applyPageLayoutFixes();
+        moveFiltersToBottom(); 
     }
 
     if (document.readyState === "loading") {
@@ -887,7 +854,7 @@
         `;
 
         try {
-            const response = await fetch("https://graphql.anilist.co", {
+            const response = await fetch(ANILIST_URL, {
                 method: "POST",
                 headers: { "Content-Type": "application/json", "Accept": "application/json" },
                 body: JSON.stringify({ query })
@@ -905,8 +872,10 @@
     function createCardHTML(anime) {
         const title = anime.title.english || anime.title.romaji || "Unknown";
         const image = anime.coverImage?.extraLarge || anime.coverImage?.large || "";
+        const href = `watch.html?anime=${encodeURIComponent(title)}&episode=1`;
+
         return `
-            <a href="${escapeHTML(anime.siteUrl)}" class="premium-card anilist-card" data-title="${escapeHTML(title.toLowerCase())}" target="_blank">
+            <a href="${escapeHTML(href)}" class="premium-card anilist-card" data-title="${escapeHTML(title.toLowerCase())}">
                 <div class="card-img-wrapper">
                     <img src="${escapeHTML(image)}" alt="${escapeHTML(title)}" class="card-img" loading="lazy">
                     <div class="card-badges"><span class="badge sub">${anime.format === "MOVIE" ? "MOVIE" : "SERIES"}</span></div>
