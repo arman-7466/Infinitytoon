@@ -11,38 +11,35 @@
     <title>Infinitytoonshub - Watch</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=6">
 
     <style>
-        /* Cinematic Streaming Layout Styles */
+        /* Pure Glass Liquid Spatial UI Styles */
         .watch-hero-container {
             position: relative;
-            width: 94%;
-            max-width: 1400px;
-            margin: 25px auto;
-            min-height: 75vh;
-            border-radius: 32px;
+            width: 92%;
+            max-width: 1350px;
+            margin: 30px auto;
+            min-height: 70vh;
+            border-radius: 30px;
             overflow: hidden;
-            background: rgba(15, 10, 25, 0.6);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(40px) saturate(200%);
+            -webkit-backdrop-filter: blur(40px) saturate(200%);
             border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.85);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.2);
             display: grid;
             grid-template-columns: 1fr 380px;
             gap: 20px;
         }
 
         @media screen and (max-width: 1024px) {
-            .watch-hero-container {
-                grid-template-columns: 1fr;
-                height: auto;
-            }
+            .watch-hero-container { grid-template-columns: 1fr; height: auto; }
         }
 
         .watch-main-content {
             position: relative;
-            padding: 3.5rem;
+            padding: 3rem;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -53,62 +50,63 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(0deg, #0b0714 10%, rgba(11,7,20,0.8) 50%, rgba(11,7,20,0.2) 100%);
+            background: linear-gradient(0deg, #0b0714 15%, rgba(11,7,20,0.7) 50%, transparent 100%);
             z-index: -1;
         }
 
         .season-badge {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             padding: 6px 16px;
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 700;
             letter-spacing: 1px;
-            color: #d7c2ff;
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 15px;
             width: fit-content;
         }
 
         .anime-main-title {
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             font-weight: 900;
             color: #ffffff;
             line-height: 1.1;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             letter-spacing: -1px;
             text-shadow: 0 10px 30px rgba(0,0,0,0.9);
         }
 
         .anime-description {
-            font-size: 1.05rem;
+            font-size: 1rem;
             line-height: 1.7;
-            color: rgba(255, 255, 255, 0.8);
-            max-width: 700px;
-            margin-bottom: 25px;
-            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 650px;
+            margin-bottom: 20px;
         }
 
         .rating-box {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .imdb-badge {
-            background: #f5c518;
-            color: #000;
-            font-weight: 900;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            font-weight: 800;
             font-size: 0.75rem;
-            padding: 3px 8px;
-            border-radius: 4px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
         }
 
         .rating-text {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 800;
             color: #fff;
         }
@@ -119,10 +117,12 @@
             flex-wrap: wrap;
         }
 
+        /* Pure Liquid Glass Buttons */
         .btn-watch-primary {
-            background: #e50914;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
             color: white;
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.4);
             padding: 14px 32px;
             border-radius: 30px;
             font-size: 1rem;
@@ -131,21 +131,20 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 10px 25px rgba(229, 9, 20, 0.5);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.4);
             transition: 0.3s;
             text-decoration: none;
         }
-
         .btn-watch-primary:hover {
+            background: rgba(255, 255, 255, 0.3);
             transform: scale(1.05);
-            background: #f40612;
         }
 
         .btn-add-list {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(20px);
             color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             padding: 14px 28px;
             border-radius: 30px;
             font-size: 1rem;
@@ -156,155 +155,79 @@
             gap: 10px;
             transition: 0.3s;
         }
+        .btn-add-list:hover { background: rgba(255, 255, 255, 0.15); }
 
-        .btn-add-list:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Right Side Episodes Sidebar (Disney+/Netflix style stack) */
+        /* Right Side Episodes Sidebar (Glass Panel) */
         .episodes-sidebar {
-            background: rgba(11, 7, 20, 0.75);
-            backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(30px);
             border-left: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 25px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            max-height: 75vh;
+            gap: 12px;
+            max-height: 70vh;
             overflow-y: auto;
         }
-
         .sidebar-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 5px;
+            font-size: 1.1rem; font-weight: 700; color: #fff;
+            display: flex; align-items: center; gap: 8px; margin-bottom: 5px;
         }
-
         .ep-side-card {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: rgba(25, 18, 42, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 14px;
-            padding: 10px;
-            text-decoration: none;
-            transition: 0.3s;
-            position: relative;
-            overflow: hidden;
+            display: flex; align-items: center; gap: 12px;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px; padding: 8px; text-decoration: none; transition: 0.3s;
         }
-
         .ep-side-card:hover {
-            background: rgba(166, 107, 255, 0.2);
-            border-color: rgba(166, 107, 255, 0.5);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.25);
             transform: translateX(4px);
         }
-
         .ep-side-card.active-ep {
-            background: linear-gradient(135deg, rgba(166,107,255,0.4), rgba(98,64,176,0.4));
-            border-color: #00d2ff;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: inset 0 1px 1px rgba(255,255,255,0.3);
         }
-
         .ep-thumb-box {
-            width: 100px;
-            height: 60px;
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-            flex-shrink: 0;
-            background: #1a1a1a;
+            width: 90px; height: 55px; border-radius: 10px; overflow: hidden; position: relative; flex-shrink: 0; background: #111;
         }
+        .ep-thumb-box img { width: 100%; height: 100%; object-fit: cover; }
+        .ep-info-box h4 { font-size: 0.85rem; color: #fff; font-weight: 600; margin-bottom: 3px; }
+        .ep-info-box span { font-size: 0.7rem; color: rgba(255,255,255,0.6); }
 
-        .ep-thumb-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .ep-thumb-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0.3);
-            display: grid;
-            place-items: center;
-            color: white;
-            font-size: 0.9rem;
-        }
-
-        .ep-info-box h4 {
-            font-size: 0.9rem;
-            color: #fff;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .ep-info-box span {
-            font-size: 0.75rem;
-            color: rgba(255,255,255,0.6);
-        }
-
-        /* Player Section Modal / Box */
+        /* Transparent Liquid Glass Video Player Container */
         .player-drop-container {
-            max-width: 1400px;
-            width: 94%;
+            max-width: 1350px;
+            width: 92%;
             margin: 0 auto 3rem;
-            background: rgba(15, 10, 25, 0.7);
-            backdrop-filter: blur(30px);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(40px) saturate(200%);
+            -webkit-backdrop-filter: blur(40px) saturate(200%);
             border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 28px;
+            border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
-            display: none; /* Show when player active */
+            box-shadow: 0 40px 80px rgba(0,0,0,0.85), inset 0 1px 2px rgba(255,255,255,0.2);
         }
-
         .player-wrapper {
-            position: relative;
-            width: 100%;
-            background: #000;
-            aspect-ratio: 16/9;
+            position: relative; width: 100%; background: #000; aspect-ratio: 16/9;
         }
-
-        .player-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
+        .player-wrapper iframe { width: 100%; height: 100%; border: none; }
         .player-controls-bar {
             padding: 20px 25px;
-            background: rgba(10, 5, 18, 0.9);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
+            background: rgba(10, 5, 18, 0.85);
+            backdrop-filter: blur(20px);
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;
             border-top: 1px solid rgba(255,255,255,0.08);
         }
-
         .server-btn {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.15);
-            color: white;
-            padding: 8px 18px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: 0.3s;
+            background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+            color: white; padding: 8px 18px; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: 0.3s;
         }
-
         .server-btn.active {
-            background: linear-gradient(135deg, #a66bff, #6240b0);
-            border-color: white;
-        }
-
-        @media screen and (max-width: 850px) {
-            .watch-main-content { padding: 2rem 1.5rem; }
-            .anime-main-title { font-size: 2.3rem; }
-            .watch-hero-container { width: 95% !important; margin: 15px auto !important; }
+            background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.4);
+            box-shadow: inset 0 1px 1px rgba(255,255,255,0.3);
         }
     </style>
 </head>
@@ -338,36 +261,36 @@
         </div>
     </nav>
 
-    <!-- CINEMATIC STREAMING HERO SECTION (Screenshot Style) -->
-    <div class="watch-hero-container" id="heroDetailsBox">
+    <!-- STREAMING HERO SECTION (Transparent Glass) -->
+    <div class="watch-hero-container">
         <div class="watch-main-content">
-            <div class="season-badge" id="seasonBadgeText">FEATURED SERIES</div>
+            <div class="season-badge">FEATURED COLLECTION</div>
             <h1 class="anime-main-title" id="animeNameText">Loading...</h1>
-            <p class="anime-description" id="animeDescText">Streaming high-definition anime seamlessly without interruptions. Explore episodes and choose your server to begin watching instantly.</p>
+            <p class="anime-description" id="animeDescText">Experience high-definition spatial anime streaming. Select an episode from the right sidebar and enjoy smooth playback.</p>
             
             <div class="rating-box">
-                <span class="imdb-badge">IMDb</span>
-                <span class="rating-text" id="imdbRatingText">9.2/10</span>
+                <span class="imdb-badge">RATING</span>
+                <span class="rating-text" id="imdbRatingText">9.4/10</span>
             </div>
 
             <div class="action-buttons">
                 <button class="btn-watch-primary" onclick="scrollToPlayer()">
-                    <i class="fas fa-play"></i> Watch Now
+                    <i class="fas fa-play"></i> Stream Now
                 </button>
-                <button class="btn-add-list" onclick="alert('Added to your watchlist!')">
-                    <i class="fas fa-plus"></i> Add to List
+                <button class="btn-add-list" onclick="alert('Added to watchlist!')">
+                    <i class="fas fa-plus"></i> Watchlist
                 </button>
             </div>
         </div>
 
-        <!-- Right Side Stacked Episode Thumbnails (Screenshot style) -->
-        <div class="episodes-sidebar" id="sidebarEpisodeTray">
-            <div class="sidebar-title"><i class="fas fa-film" style="color: #a66bff;"></i> Episodes</div>
-            <!-- Dynamic episode cards injected via script.js -->
+        <!-- Right Side Stacked Episodes Sidebar -->
+        <div class="episodes-sidebar" id="episodeTray">
+            <div class="sidebar-title"><i class="fas fa-list-ul" style="color: rgba(255,255,255,0.8);"></i> Episodes</div>
+            <!-- Dynamic cards injected here -->
         </div>
     </div>
 
-    <!-- VIDEO PLAYER BOX (Appears when Watch Now is clicked) -->
+    <!-- TRANSPARENT LIQUID GLASS VIDEO PLAYER -->
     <div class="player-drop-container" id="playerSection">
         <div class="player-wrapper">
             <iframe id="vidPlayer" src="" allowfullscreen></iframe>
@@ -381,7 +304,7 @@
                     <button id="srv1Btn" onclick="switchServer('server1')" class="server-btn active">Server 1</button>
                     <button id="srv2Btn" onclick="switchServer('server2')" class="server-btn">Server 2</button>
                 </div>
-                <button id="nextEpBtn" style="display:none; background:#e50914; color:white; border:none; padding: 8px 18px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 0.85rem;">
+                <button id="nextEpBtn" style="display:none; background: rgba(255,255,255,0.2); backdrop-filter:blur(10px); color:white; border:1px solid rgba(255,255,255,0.4); padding: 8px 18px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 0.85rem;">
                     Next <i class="fas fa-forward"></i>
                 </button>
             </div>
@@ -401,7 +324,6 @@
     <script>
         function scrollToPlayer() {
             const playerBox = document.getElementById("playerSection");
-            playerBox.style.display = "block";
             playerBox.scrollIntoView({ behavior: 'smooth' });
         }
     </script>
