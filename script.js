@@ -499,61 +499,42 @@
         }
     }
 
-    // 6. Ultimate Combined Aggregator
+// 5. Super-Fast & Optimized Combined Aggregator
     async function fetchAnimeCombined(page, search, format, id) {
-        const promises = [fetchAnilist(page, search, format, id)];
-        if (search) {
-            promises.push(fetchJikan(search, page), fetchKitsu(search), fetchTMDB(search));
+        // Agar search khali hai toh sirf AniList se fast load karo
+        if (!search) {
+            const anilistData = await fetchAnilist(page, search, format, id);
+            return {
+                media: anilistData?.media || [],
+                pageInfo: anilistData?.pageInfo || { currentPage: page, hasNextPage: false }
+            };
         }
 
-        const results = await Promise.all(promises);
-        const anilistData = results[0];
-        let mediaList = anilistData?.media || [];
-        let hasNext = anilistData?.pageInfo?.hasNextPage || false;
+        // Search karne par sabse pehle AniList aur Jikan laayenge taaki turant result dikhe
+        const primaryResults = await Promise.all([
+            fetchAnilist(page, search, format, id),
+            fetchJikan(search, page)
+        ]);
 
-        if (search) {
-            const jikanRes = results[1] || [];
-            const kitsuRes = results[2] || [];
-            const tmdbRes = results[3] || [];
-            const merged = [...mediaList, ...jikanRes, ...kitsuRes, ...tmdbRes];
-            const uniqueMap = new Map();
+        const anilistMedia = primaryResults[0]?.media || [];
+        const jikanMedia = primaryResults[1] || [];
+        
+        let mediaList = [...anilistMedia, ...jikanMedia];
+        let hasNext = primaryResults[0]?.pageInfo?.hasNextPage || false;
 
-            merged.forEach(item => {
-                const titleKey = (item.title?.english || item.title?.romaji || item.title?.native || "").toLowerCase().trim();
-                if (titleKey && !uniqueMap.has(titleKey)) {
-                    uniqueMap.set(titleKey, item);
-                }
-            });
-
-            mediaList = Array.from(uniqueMap.values());
-        }
+        // Duplicate names filter karein
+        const uniqueMap = new Map();
+        mediaList.forEach(item => {
+            const titleKey = (item.title?.english || item.title?.romaji || "").toLowerCase().trim();
+            if (titleKey && !uniqueMap.has(titleKey)) {
+                uniqueMap.set(titleKey, item);
+            }
+        });
 
         return {
-            media: mediaList,
+            media: Array.from(uniqueMap.values()),
             pageInfo: { currentPage: page, hasNextPage: hasNext }
         };
-    }
-
-    function createCard(anime) {
-        const title = anime.title?.english || anime.title?.romaji || anime.title?.native || "Unknown Anime";
-        const image = anime.coverImage?.extraLarge || anime.coverImage?.large || "";
-        const href = `watch.html?anime=${encodeURIComponent(title)}&episode=1`;
-
-        return `
-            <a href="${escapeHTML(href)}" class="premium-card search-item anilist-card" data-title="${escapeHTML(title.toLowerCase())}">
-                <div class="card-img-wrapper">
-                    <img src="${escapeHTML(image)}" alt="${escapeHTML(title)}" class="card-img" loading="lazy" onerror="this.style.visibility='hidden'">
-                    <div class="card-badges"><span class="badge sub">${anime.format === "MOVIE" ? "MOVIE" : "SERIES"}</span></div>
-                    <div class="play-overlay"><i class="fas fa-play"></i></div>
-                </div>
-                <div class="card-info"><h3 class="card-title">${escapeHTML(title)}</h3></div>
-            </a>
-        `;
-    }
-
-    function showStatus(message) {
-        const status = document.getElementById("anilist-status");
-        if (status) status.textContent = message;
     }
 
     async function loadAnime(reset = false) {
@@ -565,39 +546,43 @@
         if (reset) {
             currentPage = 1;
             hasNextPage = true;
-            grid.innerHTML = "";
+            grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: #bcaed4; padding: 20px;">Searching instantly...</div>`;
         }
 
         if (!hasNextPage && !reset) return;
         loading = true;
         const id = ++requestId;
         if (moreButton) moreButton.disabled = true;
-        showStatus("Duniya bhar ke shows search ho rahe hain...");
 
         try {
             const data = await fetchAnimeCombined(currentPage, currentSearch, getFormat(), id);
             if (!data || id !== requestId) return;
 
+            if (reset) grid.innerHTML = "";
+
             const existing = new Set(Array.from(grid.querySelectorAll(".anilist-card")).map(card => card.dataset.title));
             const cards = data.media.filter(anime => {
                 const title = (anime.title?.english || anime.title?.romaji || anime.title?.native || "").toLowerCase();
+                if (!title) return false;
                 return !existing.has(title) && anime.coverImage;
             });
 
-            grid.insertAdjacentHTML("beforeend", cards.map(createCard).join(""));
+            if (cards.length === 0 && reset) {
+                grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: #bcaed4; padding: 30px;">Koi anime nahi mila. Speling check karein!</div>`;
+            } else {
+                grid.insertAdjacentHTML("beforeend", cards.map(createCard).join(""));
+            }
+
             hasNextPage = data.pageInfo.hasNextPage;
             currentPage = data.pageInfo.currentPage + 1;
-            showStatus(grid.querySelector(".anilist-card") ? "" : "Koi result nahi mila.");
             if (moreButton) moreButton.style.display = hasNextPage ? "block" : "none";
         } catch (error) {
             console.error("Search error:", error);
-            showStatus("Search mein error aayi.");
         } finally {
             loading = false;
             if (moreButton) moreButton.disabled = false;
         }
     }
-
     function initAnimeSystem() {
         let grid = document.getElementById("anilist-results-grid") || document.getElementById("mixed-container");
         const container = document.getElementById("mixed-container");
