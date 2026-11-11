@@ -8,7 +8,7 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
-    padding-bottom: 70px; /* Space for mobile bottom bar */
+    padding-bottom: 90px; /* Space for floating mobile bar */
 }
 
 body::before {
@@ -75,7 +75,7 @@ body::before {
 .hero-message { padding: 1.5rem 3rem 0.5rem; font-size: 1.2rem; font-weight: 300; }
 .hero-message span { color: #c5a9ff; font-weight: 600; }
 
-/* Anime Cards Grid - Fixed to prevent single line stacking */
+/* Anime Cards Grid - Fixed Grid Layout with Morphic Intro Effect */
 .cards-row, #anilist-results-grid, #mixed-container {
     display: grid !important;
     grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)) !important;
@@ -95,9 +95,21 @@ body::before {
     width: 100% !important; display: flex !important; flex-direction: column !important;
     background: rgba(25, 18, 42, 0.6) !important; backdrop-filter: blur(15px);
     border: 1px solid rgba(166, 107, 255, 0.18) !important; border-radius: 16px !important;
-    overflow: hidden; text-decoration: none; transition: all 0.3s !important;
+    overflow: hidden; text-decoration: none; 
+    /* Morphic scroll intro animation */
+    animation: cardMorphIntro 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
+
+@keyframes cardMorphIntro {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
 .premium-card:hover { transform: translateY(-8px) scale(1.02); border-color: rgba(166, 107, 255, 0.6) !important; }
 .card-img-wrapper { position: relative; width: 100%; height: 220px; overflow: hidden; }
 .card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
@@ -120,8 +132,77 @@ body::before {
 .card-info { padding: 14px; background: linear-gradient(180deg, rgba(15, 10, 25, 0.8) 0%, rgba(10, 7, 18, 0.95) 100%); }
 .card-title { color: #f0ebff; font-size: 0.95rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
+/* =========================================
+   GENRE & A-Z FILTER CSS (Restored)
+   ========================================= */
+#catalog-tools {
+    margin: 1.5rem 3rem 2rem; padding: 1.5rem;
+    border: 1px solid rgba(166,107,255,.22); border-radius: 20px;
+    background: rgba(12,7,24,.72); backdrop-filter: blur(20px);
+}
+.catalog-heading h2 { font-size: 1.45rem; margin-bottom: .35rem; }
+.catalog-heading p, .genre-status { color: #b9accf; font-size: .9rem; }
+.genre-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 1.2rem 0; }
+.genre-chip, .az-chip {
+    color: #eee7ff; background: rgba(255,255,255,.06);
+    border: 1px solid rgba(190,150,255,.22); border-radius: 999px;
+    padding: 8px 13px; cursor: pointer; transition: .2s;
+}
+.genre-chip:hover, .genre-chip.active, .az-chip:hover, .az-chip.active {
+    background: linear-gradient(135deg,#a66bff,#6240b0); border-color: #d7c2ff;
+}
+.az-section { border-top: 1px solid rgba(255,255,255,.1); padding-top: 1rem; }
+.az-title { color: #dcd0f7; margin-bottom: .7rem; font-weight: 700; }
+.az-title span { color: #9585b3; font-size: .8rem; font-weight: 400; }
+.az-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.az-chip {
+    min-width: 40px; padding: 7px 8px; border-radius: 9px;
+    display: flex; flex-direction: column; align-items: center; line-height: 1.1;
+}
+.az-chip small { color: #c9b7ee; font-size: .62rem; margin-top: 3px; }
+.az-chip.empty { opacity: .35; cursor: not-allowed; }
+.card-genres { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+.card-genres span {
+    font-size: .65rem; color: #d9c5ff; background: rgba(166,107,255,.14);
+    border: 1px solid rgba(166,107,255,.18); border-radius: 999px; padding: 3px 6px;
+}
+.premium-card[hidden] { display: none !important; }
+.featured-dynamic-tag {
+    display: inline-block; color: #d6bdff; background: rgba(166,107,255,.2);
+    border: 1px solid rgba(166,107,255,.45); padding: 6px 12px;
+    border-radius: 20px; letter-spacing: 1px; font-weight: 800; font-size: .72rem; margin-bottom: 8px;
+}
+
+/* =========================================
+   EPISODE CARDS CSS
+   ========================================= */
+.episode-anime-card { min-width: 0; width: 100%; }
+.episode-thumb {
+    height: 150px; background-size: cover; background-position: center;
+    position: relative; display: flex; align-items: center; justify-content: center; border-radius: 10px 10px 0 0;
+}
+.episode-number {
+    position: absolute; left: 10px; bottom: 10px; font-size: .7rem; font-weight: 800;
+    letter-spacing: .5px; text-shadow: 0 2px 8px #000; color: white; background: rgba(0,0,0,0.6); padding: 3px 8px; border-radius: 10px;
+}
+.episode-play {
+    width: 42px; height: 42px; display: grid; place-items: center;
+    border-radius: 50%; color: white; background: rgba(166,107,255,.85); box-shadow: 0 0 22px rgba(166,107,255,.55);
+}
+.episode-description { color: #bcaed4; font-size: .75rem; margin-top: 6px; }
+.episode-loading, .episode-empty {
+    grid-column: 1/-1; padding: 28px; color: #e9ddff;
+    background: rgba(15,8,27,.8); border: 1px solid rgba(166,107,255,.2); border-radius: 14px;
+}
+.player-source-note {
+    max-width: 950px; margin: 0 auto 1rem; padding: 16px 20px; display: flex; gap: 12px;
+    align-items: flex-start; flex-wrap: wrap; color: #e9ddff; background: rgba(24,13,42,.88); border: 1px solid rgba(166,107,255,.3); border-radius: 12px;
+}
+.player-source-note span { flex-basis: 100%; color: #c2b5d8; font-size: .9rem; line-height: 1.6; }
+
+
 /* ====================================================
-   JIOHOTSTAR STYLE MOBILE BOTTOM BAR
+   LIQUID GLASS FLOATING MOBILE BOTTOM NAVIGATION (JioHotstar Style)
    ==================================================== */
 .mobile-bottom-nav {
     display: none;
@@ -129,73 +210,190 @@ body::before {
 
 @media screen and (max-width: 850px) {
     .anime-navbar {
-        flex-direction: column !important; padding: 10px 15px !important; gap: 10px;
+        flex-direction: column !important; padding: 12px 15px !important; gap: 12px;
     }
     .nav-left, .nav-right {
         width: 100%; justify-content: space-between; flex-wrap: wrap; gap: 10px;
     }
-    .nav-links {
-        display: none !important; /* Hidden on phone in favor of bottom bar */
-    }
+    .nav-links { display: none !important; }
+    
     .search-wrapper {
         width: 100% !important; max-width: 100%; margin: 0 auto; justify-content: flex-start;
     }
     .search-wrapper input { width: 100% !important; font-size: 16px; }
 
     .hero-banner {
-        height: 40vh !important;
-        margin-bottom: 10px !important;
+        height: 42vh !important;
+        margin-bottom: 15px !important;
     }
     .hero-content {
-        padding: 0 1rem !important; text-align: center;
+        padding: 0 1.2rem !important; text-align: center;
     }
-    .hero-content h1 { font-size: 1.8rem !important; }
-    .hero-content p { font-size: 0.8rem !important; }
+    .hero-content h1 { font-size: 2rem !important; }
+    .hero-content p { font-size: 0.85rem !important; }
 
-    /* Mobile Grid Layout Fix (2 Columns) */
+    #catalog-tools {
+        margin: 1rem !important; padding: 1rem !important;
+    }
+    .az-chip { min-width: 32px; font-size: .75rem; }
+
+    /* Mobile Grid Layout (2 columns, proper spacing) */
     .cards-row, #anilist-results-grid, #mixed-container {
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 10px !important;
-        padding: 12px 10px !important;
-        margin: 8px !important;
+        gap: 12px !important;
+        padding: 15px 12px !important;
+        margin: 10px !important;
         background: rgba(14, 8, 24, 0.7) !important;
-        border-radius: 14px !important;
+        border-radius: 16px !important;
     }
-    .card-img-wrapper { height: 170px !important; }
+    .card-img-wrapper { height: 190px !important; }
 
-    /* JioHotstar Style Bottom Navigation Bar */
+    .player-container { margin: 10px !important; }
+    #vidPlayer { height: 250px !important; }
+    
+    /* Liquid Glass Floating Bottom Navigation Bar */
     .mobile-bottom-nav {
         display: flex !important;
         position: fixed;
-        bottom: 0; left: 0; width: 100%;
-        height: 62px;
-        background: rgba(10, 5, 18, 0.92) !important;
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-top: 1px solid rgba(166, 107, 255, 0.2);
+        bottom: 15px; left: 50%;
+        transform: translateX(-50%);
+        width: 92%;
+        max-width: 450px;
+        height: 65px;
+        background: rgba(20, 10, 35, 0.65) !important;
+        backdrop-filter: blur(25px) saturate(180%);
+        -webkit-backdrop-filter: blur(25px) saturate(180%);
+        border: 1px solid rgba(166, 107, 255, 0.25);
+        border-radius: 35px;
         z-index: 1000;
         justify-content: space-around;
         align-items: center;
-        box-shadow: 0 -10px 25px rgba(0,0,0,0.8);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.15);
     }
     .mobile-bottom-nav a {
         display: flex;
         flex-direction: column;
         align-items: center;
         text-decoration: none;
-        color: #bfaee0;
+        color: #d1c4e9;
         font-size: 0.7rem;
         font-weight: 500;
         gap: 3px;
-        transition: 0.2s;
+        transition: 0.3s;
     }
     .mobile-bottom-nav a i {
         font-size: 1.2rem;
+        transition: 0.3s;
     }
     .mobile-bottom-nav a.active, .mobile-bottom-nav a:hover {
         color: #00d2ff;
+        text-shadow: 0 0 10px rgba(0, 210, 255, 0.6);
+    }
+    .mobile-bottom-nav a.active i {
+        transform: translateY(-2px);
+    }
+
+    body { overflow-x: hidden !important; width: 100vw; }
+}
+
+
+/* =========================================
+   HERO TAGS, BUTTONS & LOAD MORE FIX
+   ========================================= */
+.hero-content span, .featured-dynamic-tag {
+    display: inline-block !important;
+    white-space: nowrap !important;
+    margin: 5px 3px 10px !important;
+    vertical-align: middle;
+}
+
+.hero-content div[style*="display: flex"] {
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.btn-glass-play, .btn-glass-info {
+    padding: 12px 24px !important;
+    border-radius: 30px !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    outline: none !important;
+    font-family: inherit;
+}
+
+.btn-glass-play {
+    background: linear-gradient(135deg, #a66bff, #6240b0) !important;
+    color: white !important;
+    box-shadow: 0 8px 20px rgba(123, 44, 191, 0.4) !important;
+}
+.btn-glass-play:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 12px 25px rgba(123, 44, 191, 0.6) !important;
+}
+
+.btn-glass-info {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+.btn-glass-info:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    transform: scale(1.05) !important;
+}
+
+#anilist-load-more {
+    background: linear-gradient(135deg, #a66bff, #6240b0) !important;
+    color: white !important;
+    border: none !important;
+    padding: 14px 35px !important;
+    border-radius: 30px !important;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    display: block !important;
+    margin: 40px auto !important;
+    transition: 0.3s !important;
+    box-shadow: 0 10px 25px rgba(123, 44, 191, 0.4) !important;
+    text-align: center;
+}
+#anilist-load-more:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 15px 30px rgba(123, 44, 191, 0.6) !important;
+}
+
+@media screen and (max-width: 850px) {
+    .btn-glass-play, .btn-glass-info {
+        padding: 10px 20px !important;
+        font-size: 0.9rem !important;
+        flex: 1;
+        text-align: center;
+    }
+    .hero-content div[style*="display: flex"] {
+        justify-content: center !important;
+        width: 100%;
+    }
+    .hero-content span, .featured-dynamic-tag {
+        font-size: 0.7rem !important;
+        padding: 4px 10px !important;
+        margin: 3px !important;
+    }
+    #anilist-load-more {
+        width: 85% !important;
+        font-size: 1rem !important;
+        padding: 12px 20px !important;
     }
 }
+
 
 /* =========================================
    TOP 10 MOST RATED ANIME (PURE ANIME)
