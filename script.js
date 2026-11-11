@@ -535,16 +535,36 @@
         };
     }
 
-    function createCard(anime) {
+ function createCard(anime) {
         const title = anime.title?.english || anime.title?.romaji || anime.title?.native || "Unknown Anime";
         const image = anime.coverImage?.extraLarge || anime.coverImage?.large || "";
-        const local = typeof allAnimeData !== "undefined" ? allAnimeData.find(a => String(a.title || "").toLowerCase() === title.toLowerCase()) : null;
-        const href = local ? local.link : anime.siteUrl;
+        
+        // Hamesha aapke apne watch.html player par redirect karega
+        const href = `watch.html?anime=${encodeURIComponent(title)}&episode=1`;
 
         return `
-            <a href="${escapeHTML(href)}" class="premium-card search-item anilist-card" data-title="${escapeHTML(title.toLowerCase())}" target="${local ? "_self" : "_blank"}" rel="noopener noreferrer">
+            <a href="${escapeHTML(href)}" class="premium-card search-item anilist-card" data-title="${escapeHTML(title.toLowerCase())}">
                 <div class="card-img-wrapper">
                     <img src="${escapeHTML(image)}" alt="${escapeHTML(title)}" class="card-img" loading="lazy" onerror="this.style.visibility='hidden'">
+                    <div class="card-badges"><span class="badge sub">${anime.format === "MOVIE" ? "MOVIE" : "SERIES"}</span></div>
+                    <div class="play-overlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="card-info"><h3 class="card-title">${escapeHTML(title)}</h3></div>
+            </a>
+        `;
+    }
+
+    function createCardHTML(anime) {
+        const title = anime.title.english || anime.title.romaji || "Unknown";
+        const image = anime.coverImage?.extraLarge || anime.coverImage?.large || "";
+        
+        // Yeh bhi direct watch.html par bhejega
+        const href = `watch.html?anime=${encodeURIComponent(title)}&episode=1`;
+
+        return `
+            <a href="${escapeHTML(href)}" class="premium-card anilist-card" data-title="${escapeHTML(title.toLowerCase())}">
+                <div class="card-img-wrapper">
+                    <img src="${escapeHTML(image)}" alt="${escapeHTML(title)}" class="card-img" loading="lazy">
                     <div class="card-badges"><span class="badge sub">${anime.format === "MOVIE" ? "MOVIE" : "SERIES"}</span></div>
                     <div class="play-overlay"><i class="fas fa-play"></i></div>
                 </div>
