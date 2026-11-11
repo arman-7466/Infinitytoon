@@ -1,5 +1,5 @@
 /* ==========================================
-   INFINITYTOONS - COMPLETE LINKS & GLOBAL MULTI-API ENGINE
+   INFINITYTOONS - OPTIMIZED STABLE MULTI-API ENGINE
    AniList + Jikan + Kitsu + TMDB + All Links Intact
    ========================================== */
 
@@ -19,6 +19,225 @@
             episodes: { 
                 1: { server1: "https://www.youtube.com/embed/MGRm4IzK1SQ", server2: "https://filemoon.org/embed/demo" }, 
                 2: { server1: "https://www.youtube.com/embed/xyz", server2: "https://filemoon.org/embed/demo" }
+            }
+        },
+        "naruto shippuden": { 
+            name: "Naruto Shippuden", 
+            episodes: { 
+                1: { server1: "https://filemoon.org/en/APVmaXbjGXo8/embed", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                2: { server1: "https://filemoon.org/en/ex5z2DXlmKqk/embed", server2: "https://www.youtube.com/embed/xyz" },
+                3: { server1: "https://filemoon.org/en/ZvqzlDpYzaD2/embed", server2: "https://www.youtube.com/embed/xyz" },
+                4: { server1: "https://filemoon.org/en/N2p3DKdVmMa5/embed", server2: "https://www.youtube.com/embed/xyz" },
+                5: { server1: "https://filemoon.org/en/RMKGJ9W8z1oP/embed", server2: "https://www.youtube.com/embed/xyz" },
+                6: { server1: "https://filemoon.org/en/qLQ36rXw319j/embed", server2: "https://www.youtube.com/embed/xyz" },
+                7: { server1: "https://filemoon.org/en/M2BGwpLNmj40/embed", server2: "https://www.youtube.com/embed/xyz" },
+                8: { server1: "https://filemoon.org/en/EL73gXkEz9Ba/embed", server2: "https://www.youtube.com/embed/xyz" },
+                9: { server1: "https://filemoon.org/en/APVmaXbjGXo8/embed", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                10: { server1: "https://filemoon.org/en/ex5z2DXlmKqk/embed", server2: "https://www.youtube.com/embed/xyz" },
+                11: { server1: "https://filemoon.org/en/ZvqzlDpYzaD2/embed", server2: "https://www.youtube.com/embed/xyz" },
+                12: { server1: "https://filemoon.org/en/N2p3DKdVmMa5/embed", server2: "https://www.youtube.com/embed/xyz" },
+                13: { server1: "https://filemoon.org/en/RMKGJ9W8z1oP/embed", server2: "https://www.youtube.com/embed/xyz" },
+                14: { server1: "https://filemoon.org/en/qLQ36rXw319j/embed", server2: "https://www.youtube.com/embed/xyz" },
+                15: { server1: "https://filemoon.org/en/M2BGwpLNmj40/embed", server2: "https://www.youtube.com/embed/xyz" },
+                16: { server1: "https://filemoon.org/en/EL73gXkEz9Ba/embed", server2: "https://www.youtube.com/embed/xyz" },
+                17: { server1: "https://filemoon.org/en/APVmaXbjGXo8/embed", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                18: { server1: "https://filemoon.org/en/ex5z2DXlmKqk/embed", server2: "https://www.youtube.com/embed/xyz" },
+                19: { server1: "https://filemoon.org/en/ZvqzlDpYzaD2/embed", server2: "https://www.youtube.com/embed/xyz" },
+                20: { server1: "https://filemoon.org/en/N2p3DKdVmMa5/embed", server2: "https://www.youtube.com/embed/xyz" },
+                21: { server1: "https://playmogo.com/e/3t4t1uk90yje", server2: "https://www.youtube.com/embed/xyz" },
+                22: { server1: "https://playmogo.com/e/14lsewvb9onq", server2: "https://www.youtube.com/embed/xyz" },
+                23: { server1: "https://playmogo.com/e/gln2rqwdldcq", server2: "https://www.youtube.com/embed/xyz" },
+                24: { server1: "https://playmogo.com/e/5chc3cma1t4n", server2: "https://www.youtube.com/embed/xyz" },
+                25: { server1: "https://playmogo.com/e/ahl84o1b01fp", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                26: { server1: "https://playmogo.com/e/ul9nsqzrjpps", server2: "https://www.youtube.com/embed/xyz" },
+                27: { server1: "https://playmogo.com/e/oybkl22yhozb", server2: "https://www.youtube.com/embed/xyz" },
+                28: { server1: "https://playmogo.com/e/3rpvv0zbte9b", server2: "https://www.youtube.com/embed/xyz" },
+                29: { server1: "https://playmogo.com/e/xkkutf694m7m", server2: "https://www.youtube.com/embed/xyz" },
+                30: { server1: "https://playmogo.com/e/o0vpm9agyz2q", server2: "https://www.youtube.com/embed/xyz" },
+                31: { server1: "https://playmogo.com/e/r06zurxelnwj", server2: "https://www.youtube.com/embed/xyz" },
+                32: { server1: "https://playmogo.com/e/v9cwdjh5gt3k", server2: "https://www.youtube.com/embed/xyz" },
+                33: { server1: "https://playmogo.com/e/nwg3l34w16xa", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                34: { server1: "https://playmogo.com/e/5i5i0rvc22d6", server2: "https://www.youtube.com/embed/xyz" },
+                35: { server1: "https://playmogo.com/e/juauvlqujjf1", server2: "https://www.youtube.com/embed/xyz" },
+                36: { server1: "https://playmogo.com/e/l9xdv8gmpaqk", server2: "https://www.youtube.com/embed/xyz" },
+                37: { server1: "https://playmogo.com/e/313w5se68mr1", server2: "https://www.youtube.com/embed/xyz" },
+                38: { server1: "https://playmogo.com/e/9klteaymj8h0", server2: "https://www.youtube.com/embed/xyz" },
+                39: { server1: "https://playmogo.com/e/haxnku9e9m0s", server2: "https://www.youtube.com/embed/xyz" },
+                40: { server1: "https://playmogo.com/e/tg3y3uq1xtvv", server2: "https://www.youtube.com/embed/xyz" },
+                41: { server1: "https://playmogo.com/e/evn1742qvqh7", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                42: { server1: "https://playmogo.com/e/e9fwmaht2er1", server2: "https://www.youtube.com/embed/xyz" },
+                43: { server1: "https://playmogo.com/e/qcu5t3hynes9", server2: "https://www.youtube.com/embed/xyz" },
+                44: { server1: "https://playmogo.com/e/4wppmpf2lrkf", server2: "https://www.youtube.com/embed/xyz" },
+                45: { server1: "https://playmogo.com/e/dnclc6ix7t83", server2: "https://www.youtube.com/embed/xyz" },
+                46: { server1: "https://playmogo.com/e/rpmfjy1v76c1", server2: "https://www.youtube.com/embed/xyz" },
+                47: { server1: "https://playmogo.com/e/98w9rt0yaipm", server2: "https://www.youtube.com/embed/xyz" },
+                48: { server1: "https://playmogo.com/e/3o8jjjbfnr4p", server2: "https://www.youtube.com/embed/xyz" },
+                49: { server1: "https://playmogo.com/e/g08t878nskqq", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                50: { server1: "https://playmogo.com/e/bzuo9fz9khmn", server2: "https://www.youtube.com/embed/xyz" },
+                51: { server1: "https://playmogo.com/e/gtimmhb2dr59", server2: "https://www.youtube.com/embed/xyz" },
+                52: { server1: "https://playmogo.com/e/2pwcfriadmfq", server2: "https://www.youtube.com/embed/xyz" },
+                53: { server1: "https://playmogo.com/e/z18vgegl6xwf", server2: "https://www.youtube.com/embed/xyz" },
+                54: { server1: "https://playmogo.com/e/g1jn1mmpzilt", server2: "https://www.youtube.com/embed/xyz" },
+                55: { server1: "https://playmogo.com/e/eztw2bx9jqej", server2: "https://www.youtube.com/embed/xyz" },
+                56: { server1: "https://playmogo.com/e/emacq319witg", server2: "https://www.youtube.com/embed/xyz" },
+                57: { server1: "https://playmogo.com/e/q1vb5vaizjqy", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                58: { server1: "https://playmogo.com/e/qx89udx8ua11", server2: "https://www.youtube.com/embed/xyz" },
+                59: { server1: "https://playmogo.com/e/f4o497olr04o", server2: "https://www.youtube.com/embed/xyz" },
+                60: { server1: "https://playmogo.com/e/y392wmwt5ou1", server2: "https://www.youtube.com/embed/xyz" },
+                61: { server1: "https://playmogo.com/e/sn6vez4fgno4", server2: "https://www.youtube.com/embed/xyz" },
+                62: { server1: "https://playmogo.com/e/1oak998osokz", server2: "https://www.youtube.com/embed/xyz" },
+                63: { server1: "https://playmogo.com/e/ic6w1hgzwm4l", server2: "https://www.youtube.com/embed/xyz" },
+                64: { server1: "https://playmogo.com/e/yuw1wpnwrdyl", server2: "https://www.youtube.com/embed/xyz" },
+                65: { server1: "https://playmogo.com/e/0dz956x4g85b", server2: "https://www.youtube.com/embed/xyz" },
+                66: { server1: "https://playmogo.com/e/1lemm5u846vv", server2: "https://www.youtube.com/embed/xyz" },
+                67: { server1: "https://playmogo.com/e/h535htvjjyhd", server2: "https://www.youtube.com/embed/xyz" },
+                68: { server1: "https://playmogo.com/e/h5jl2on36fpu", server2: "https://www.youtube.com/embed/xyz" },
+                69: { server1: "https://playmogo.com/e/7jzknavuoqqt", server2: "https://www.youtube.com/embed/xyz" },
+                70: { server1: "https://playmogo.com/e/19a2xwswavhl", server2: "https://www.youtube.com/embed/xyz" },
+                71: { server1: "https://playmogo.com/e/b4og3az2t14i", server2: "https://www.youtube.com/embed/xyz" },
+                72: { server1: "https://playmogo.com/e/qtilnp5em4u0", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                73: { server1: "https://playmogo.com/e/qfme856e5edz", server2: "https://www.youtube.com/embed/xyz" },
+                74: { server1: "https://playmogo.com/e/hwivpswq6rpr", server2: "https://www.youtube.com/embed/xyz" },
+                75: { server1: "https://playmogo.com/e/645s3js3yyar", server2: "https://www.youtube.com/embed/xyz" },
+                76: { server1: "https://playmogo.com/e/nuxov5nlojr5", server2: "https://www.youtube.com/embed/xyz" },
+                77: { server1: "https://playmogo.com/e/c4aomiehmdus", server2: "https://www.youtube.com/embed/xyz" },
+                78: { server1: "https://playmogo.com/e/tfjukk2g94zu", server2: "https://www.youtube.com/embed/xyz" },
+                79: { server1: "https://playmogo.com/e/sz2kxbpjercx", server2: "https://www.youtube.com/embed/xyz" },
+                80: { server1: "https://playmogo.com/e/6aiv2r7hy9jx", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                81: { server1: "https://playmogo.com/e/vfqj2n39czbl", server2: "https://www.youtube.com/embed/xyz" },
+                82: { server1: "https://playmogo.com/e/urymym8kqneg", server2: "https://www.youtube.com/embed/xyz" },
+                83: { server1: "https://playmogo.com/e/ctzgrnsq77nj", server2: "https://www.youtube.com/embed/xyz" },
+                84: { server1: "https://playmogo.com/e/opo38yq5wkrh", server2: "https://www.youtube.com/embed/xyz" },
+                85: { server1: "https://playmogo.com/e/hftyin78jdvi", server2: "https://www.youtube.com/embed/xyz" },
+                86: { server1: "https://playmogo.com/e/3ay4z7zixawv", server2: "https://www.youtube.com/embed/xyz" },
+                87: { server1: "https://playmogo.com/e/lysekoi0vet1", server2: "https://www.youtube.com/embed/xyz" },
+                88: { server1: "https://playmogo.com/e/iv0t6oyl9mir", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                89: { server1: "https://playmogo.com/e/duq4amw1zaqa", server2: "https://www.youtube.com/embed/xyz" },
+                90: { server1: "https://playmogo.com/e/hckxvztw7njy", server2: "https://www.youtube.com/embed/xyz" },
+                91: { server1: "https://playmogo.com/e/ybpngpdd2loz", server2: "https://www.youtube.com/embed/xyz" },
+                92: { server1: "https://playmogo.com/e/3id87s8hab1n", server2: "https://www.youtube.com/embed/xyz" },
+                93: { server1: "https://playmogo.com/e/4xupgzj29ezm", server2: "https://www.youtube.com/embed/xyz" },
+                94: { server1: "https://playmogo.com/e/s6turja41p65", server2: "https://www.youtube.com/embed/xyz" },
+                95: { server1: "https://playmogo.com/e/0pc07qxfza1q", server2: "https://www.youtube.com/embed/xyz" },
+                96: { server1: "https://playmogo.com/e/ty45oc0kty4o", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                97: { server1: "https://playmogo.com/e/zrwd1un39y2z", server2: "https://www.youtube.com/embed/xyz" },
+                98: { server1: "https://playmogo.com/e/62r6itxpdxqh", server2: "https://www.youtube.com/embed/xyz" },
+                99: { server1: "https://playmogo.com/e/lfzmft5dtlvo", server2: "https://www.youtube.com/embed/xyz" },
+                100: { server1: "https://playmogo.com/e/klryt8dikn85", server2: "https://www.youtube.com/embed/xyz" },
+                101: { server1: "https://playmogo.com/e/muirt54labbh", server2: "https://www.youtube.com/embed/xyz" },
+                102: { server1: "https://playmogo.com/e/1j87tm59h3rh", server2: "https://www.youtube.com/embed/xyz" },
+                103: { server1: "https://playmogo.com/e/bplek34i4at5", server2: "https://www.youtube.com/embed/xyz" },
+                104: { server1: "https://playmogo.com/e/66pkphc1tamw", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                105: { server1: "https://playmogo.com/e/5k9cbnx7z4un", server2: "https://www.youtube.com/embed/xyz" },
+                106: { server1: "https://playmogo.com/e/yvcvva1wn9ze", server2: "https://www.youtube.com/embed/xyz" },
+                107: { server1: "https://playmogo.com/e/hn5p2gn6xbme", server2: "https://www.youtube.com/embed/xyz" },
+                108: { server1: "https://playmogo.com/e/yidwhrihyvwz", server2: "https://www.youtube.com/embed/xyz" },
+                109: { server1: "https://playmogo.com/e/4rh7g8l17s0r", server2: "https://www.youtube.com/embed/xyz" },
+                110: { server1: "https://playmogo.com/e/r3ny0ctekzne", server2: "https://www.youtube.com/embed/xyz" },
+                111: { server1: "https://playmogo.com/e/vwdnuapq4s0p", server2: "https://www.youtube.com/embed/xyz" },
+                112: { server1: "https://playmogo.com/e/b2y7etvhv1iv", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                113: { server1: "https://playmogo.com/e/6lplc2kzivcs", server2: "https://www.youtube.com/embed/xyz" },
+                114: { server1: "https://playmogo.com/e/75fpvc0ak2sk", server2: "https://www.youtube.com/embed/xyz" },
+                115: { server1: "https://playmogo.com/e/ndwl9ecoma9v", server2: "https://www.youtube.com/embed/xyz" },
+                116: { server1: "https://playmogo.com/e/4jm4g6ofy881", server2: "https://www.youtube.com/embed/xyz" },
+                117: { server1: "https://playmogo.com/e/tasxq9ju98bb", server2: "https://www.youtube.com/embed/xyz" },
+                118: { server1: "https://playmogo.com/e/gz9iyl9avm1m", server2: "https://www.youtube.com/embed/xyz" },
+                119: { server1: "https://playmogo.com/e/l555wgnqq5nf", server2: "https://www.youtube.com/embed/xyz" },
+                120: { server1: "https://playmogo.com/e/t3qzrv2k901x", server2: "https://www.youtube.com/embed/xyz" },
+                121: { server1: "https://playmogo.com/e/1knh1g46urcd", server2: "https://www.youtube.com/embed/xyz" },
+                122: { server1: "https://playmogo.com/e/cqj01esv7cts", server2: "https://www.youtube.com/embed/xyz" },
+                123: { server1: "https://playmogo.com/e/pzomc6ho23va", server2: "https://www.youtube.com/embed/xyz" },
+                124: { server1: "https://playmogo.com/e/1918o0ct24gb", server2: "https://www.youtube.com/embed/xyz" },
+                125: { server1: "https://playmogo.com/e/30wo2bvso11o", server2: "https://www.youtube.com/embed/xyz" },
+                126: { server1: "https://playmogo.com/e/vcp2pub0qnh7", server2: "https://www.youtube.com/embed/xyz" },
+                127: { server1: "https://playmogo.com/e/kfqv9e3fads5", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                128: { server1: "https://playmogo.com/e/01wwqlj5vpvv", server2: "https://www.youtube.com/embed/xyz" },
+                129: { server1: "https://playmogo.com/e/muo13k5bgwv5", server2: "https://www.youtube.com/embed/xyz" },
+                130: { server1: "https://playmogo.com/e/lm1iqxyjixh6", server2: "https://www.youtube.com/embed/xyz" },
+                131: { server1: "https://playmogo.com/e/qpbgrdu6c7xh", server2: "https://www.youtube.com/embed/xyz" },
+                132: { server1: "https://playmogo.com/e/3yvdkfugmrth", server2: "https://www.youtube.com/embed/xyz" },
+                133: { server1: "https://playmogo.com/e/rymvl44qgj7b", server2: "https://www.youtube.com/embed/xyz" },
+                134: { server1: "https://playmogo.com/e/qfzqwd3uf83h", server2: "https://www.youtube.com/embed/xyz" },
+                135: { server1: "https://playmogo.com/e/pp5zrwt41ime", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                136: { server1: "https://playmogo.com/e/e9sgppt5g38w", server2: "https://www.youtube.com/embed/xyz" },
+                137: { server1: "https://playmogo.com/e/639gwrh0zeqa", server2: "https://www.youtube.com/embed/xyz" },
+                138: { server1: "https://playmogo.com/e/o49bfanzj417", server2: "https://www.youtube.com/embed/xyz" },
+                139: { server1: "https://playmogo.com/e/xpjcm0ny9aq8", server2: "https://www.youtube.com/embed/xyz" },
+                140: { server1: "https://playmogo.com/e/ogmz1n0igo79", server2: "https://www.youtube.com/embed/xyz" },
+                141: { server1: "https://playmogo.com/e/5f47mf2igue2", server2: "https://www.youtube.com/embed/xyz" },
+                142: { server1: "https://playmogo.com/e/8u2ahbvd1jyu", server2: "https://www.youtube.com/embed/xyz" },
+                143: { server1: "https://playmogo.com/e/61scgye4yiwo", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                144: { server1: "https://playmogo.com/e/bbiqp4z8pjbl", server2: "https://www.youtube.com/embed/xyz" },
+                145: { server1: "https://playmogo.com/e/js9lg81ir92a", server2: "https://www.youtube.com/embed/xyz" },
+                146: { server1: "https://playmogo.com/e/b5hoxhfk9f5s", server2: "https://www.youtube.com/embed/xyz" },
+                147: { server1: "https://playmogo.com/e/64n9phpsxl8b", server2: "https://www.youtube.com/embed/xyz" },
+                148: { server1: "https://playmogo.com/e/fx099jb5q44t", server2: "https://www.youtube.com/embed/xyz" },
+                149: { server1: "https://playmogo.com/e/g08t878nskqq", server2: "https://playmogo.com/e/w1my8nj0euez" },
+                150: { server1: "https://playmogo.com/e/yhf6exi6zgr7", server2: "https://www.youtube.com/embed/xyz" },
+                151: { server1: "https://playmogo.com/e/gtimmhb2dr59", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                152: { server1: "https://playmogo.com/e/ry5yo6kyzyhx", server2: "https://www.youtube.com/embed/xyz" },
+                153: { server1: "https://playmogo.com/e/uksb8wmlayb8", server2: "https://www.youtube.com/embed/xyz" },
+                154: { server1: "https://playmogo.com/e/hpp9wc52p83x", server2: "https://www.youtube.com/embed/xyz" },
+                155: { server1: "https://playmogo.com/e/m19eg6x35e4d", server2: "https://www.youtube.com/embed/xyz" },
+                156: { server1: "https://playmogo.com/e/idojmkowh75c", server2: "https://www.youtube.com/embed/xyz" },
+                157: { server1: "https://playmogo.com/e/qjh6jn33dok4", server2: "https://www.youtube.com/embed/xyz" },
+                158: { server1: "https://playmogo.com/e/3z54k8jsjrar", server2: "https://www.youtube.com/embed/xyz" },
+                159: { server1: "https://playmogo.com/e/dhcy19k42cha", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                160: { server1: "https://playmogo.com/e/xjxe05pcdelr", server2: "https://www.youtube.com/embed/xyz" },
+                161: { server1: "https://playmogo.com/e/t7k458i2aecu", server2: "https://www.youtube.com/embed/xyz" },
+                162: { server1: "https://filemoon.org/en/N2p3DKdVmMa5/embed", server2: "https://www.youtube.com/embed/xyz" },
+                163: { server1: "https://filemoon.org/en/RMKGJ9W8z1oP/embed", server2: "https://www.youtube.com/embed/xyz" },
+                164: { server1: "https://filemoon.org/en/qLQ36rXw319j/embed", server2: "https://www.youtube.com/embed/xyz" },
+                165: { server1: "https://filemoon.org/en/M2BGwpLNmj40/embed", server2: "https://www.youtube.com/embed/xyz" },
+                166: { server1: "https://filemoon.org/en/EL73gXkEz9Ba/embed", server2: "https://www.youtube.com/embed/xyz" },
+                167: { server1: "https://filemoon.org/en/APVmaXbjGXo8/embed", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                168: { server1: "https://filemoon.org/en/ex5z2DXlmKqk/embed", server2: "https://www.youtube.com/embed/xyz" },
+                169: { server1: "https://filemoon.org/en/ZvqzlDpYzaD2/embed", server2: "https://www.youtube.com/embed/xyz" },
+                170: { server1: "https://filemoon.org/en/N2p3DKdVmMa5/embed", server2: "https://www.youtube.com/embed/xyz" },
+                171: { server1: "https://filemoon.org/en/RMKGJ9W8z1oP/embed", server2: "https://www.youtube.com/embed/xyz" },
+                172: { server1: "https://filemoon.org/en/qLQ36rXw319j/embed", server2: "https://www.youtube.com/embed/xyz" },
+                173: { server1: "https://filemoon.org/en/M2BGwpLNmj40/embed", server2: "https://www.youtube.com/embed/xyz" },
+                174: { server1: "https://filemoon.org/en/EL73gXkEz9Ba/embed", server2: "https://www.youtube.com/embed/xyz" },
+                349: { server1: "https://playmogo.com/e/3dxest1x5dcw", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                350: { server1: "https://playmogo.com/e/ek70b0wghywy", server2: "https://www.youtube.com/embed/xyz" },
+                351: { server1: "https://playmogo.com/e/utyxyvlz212p", server2: "https://www.youtube.com/embed/xyz" },
+                352: { server1: "https://playmogo.com/e/f9weocunwmcm", server2: "https://www.youtube.com/embed/xyz" },
+                353: { server1: "https://playmogo.com/e/nlbdxuyvig0f", server2: "https://www.youtube.com/embed/xyz" },
+                354: { server1: "https://playmogo.com/e/1pjwvmxramkp", server2: "https://www.youtube.com/embed/xyz" },
+                355: { server1: "https://playmogo.com/e/emv7g04hcnab", server2: "https://www.youtube.com/embed/xyz" },
+                356: { server1: "https://playmogo.com/e/ngd51v5y338o", server2: "https://www.youtube.com/embed/xyz" },
+                357: { server1: "https://playmogo.com/e/rqcclvvvopo9", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                358: { server1: "https://playmogo.com/e/kaga8fcmtk8u", server2: "https://www.youtube.com/embed/xyz" },
+                359: { server1: "https://playmogo.com/e/esordfdc5whi", server2: "https://www.youtube.com/embed/xyz" },
+                360: { server1: "https://playmogo.com/e/6jul8jb2no1l", server2: "https://www.youtube.com/embed/xyz" },
+                361: { server1: "https://playmogo.com/e/6xcckypdxxn9", server2: "https://www.youtube.com/embed/xyz" },
+                362: { server1: "https://playmogo.com/e/abiwqv51lql6", server2: "https://www.youtube.com/embed/xyz" },
+                363: { server1: "https://playmogo.com/e/4e5dhtwccq15", server2: "https://www.youtube.com/embed/xyz" },
+                364: { server1: "https://playmogo.com/e/0pb1r355zd8r", server2: "https://www.youtube.com/embed/xyz" },
+                365: { server1: "https://playmogo.com/e/pwu18nvesere", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                366: { server1: "https://playmogo.com/e/os3fdam7miwh", server2: "https://www.youtube.com/embed/xyz" },
+                367: { server1: "https://playmogo.com/e/g9egi4qdax5v", server2: "https://www.youtube.com/embed/xyz" },
+                368: { server1: "https://playmogo.com/e/0vbvwt474fy7", server2: "https://www.youtube.com/embed/xyz" },
+                369: { server1: "https://playmogo.com/e/mddqhqi55un5", server2: "https://www.youtube.com/embed/xyz" },
+                370: { server1: "https://playmogo.com/e/y6970qpvamw5", server2: "https://www.youtube.com/embed/xyz" },
+                371: { server1: "https://playmogo.com/e/24jxl7e7pyps", server2: "https://www.youtube.com/embed/xyz" },
+                372: { server1: "https://playmogo.com/e/o7hzia6gugzs", server2: "https://www.youtube.com/embed/xyz" },
+                373: { server1: "https://playmogo.com/e/rshflyt7ifuf", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                374: { server1: "https://playmogo.com/e/m1hiw00f81ts", server2: "https://www.youtube.com/embed/xyz" },
+                375: { server1: "https://filemoon.org/en/ZvqzlDpYzaD2/embed", server2: "https://www.youtube.com/embed/xyz" },
+                376: { server1: "https://filemoon.org/en/N2p3DKdVmMa5/embed", server2: "https://www.youtube.com/embed/xyz" },
+                377: { server1: "https://filemoon.org/en/RMKGJ9W8z1oP/embed", server2: "https://www.youtube.com/embed/xyz" },
+                378: { server1: "https://filemoon.org/en/qLQ36rXw319j/embed", server2: "https://www.youtube.com/embed/xyz" },
+                379: { server1: "https://filemoon.org/en/M2BGwpLNmj40/embed", server2: "https://www.youtube.com/embed/xyz" },
+                380: { server1: "https://filemoon.org/en/EL73gXkEz9Ba/embed", server2: "https://www.youtube.com/embed/xyz" },
+                381: { server1: "https://filemoon.org/en/APVmaXbjGXo8/embed", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                382: { server1: "https://filemoon.org/en/ex5z2DXlmKqk/embed", server2: "https://www.youtube.com/embed/xyz" },
+                383: { server1: "https://filemoon.org/en/ZvqzlDpYzaD2/embed", server2: "https://www.youtube.com/embed/xyz" },
+                384: { server1: "https://filemoon.org/en/N2p3DKdVmMa5/embed", server2: "https://www.youtube.com/embed/xyz" },
+                385: { server1: "https://filemoon.org/en/RMKGJ9W8z1oP/embed", server2: "https://www.youtube.com/embed/xyz" },
+                386: { server1: "https://filemoon.org/en/qLQ36rXw319j/embed", server2: "https://www.youtube.com/embed/xyz" },
+                387: { server1: "https://filemoon.org/en/M2BGwpLNmj40/embed", server2: "https://www.youtube.com/embed/xyz" },
+                388: { server1: "https://filemoon.org/en/EL73gXkEz9Ba/embed", server2: "https://www.youtube.com/embed/xyz" }
             }
         },
         "tomb raider king": { 
@@ -144,7 +363,9 @@
                 9: { server1: "https://player.abyssplayer.com/m1TzY9L3z ", server2: " " }, 
                 10: { server1: "https://player.abyssplayer.com/ag__k0Lah ", server2: " " },
                 11: { server1: "https://player.abyssplayer.com/DZiTtUmVQ_a ", server2: " " }, 
-                12: { server1: "https://player.abyssplayer.com/B3FCbgy-d ", server2: " " }
+                12: { server1: "https://player.abyssplayer.com/B3FCbgy-d ", server2: " " },
+                13: { server1: "https://player.abyssplayer.com/xsJmduVs1", server2: ""},
+                14: { server1: "https://player.abyssplayer.com/tjcxeaInp", server2: ""}
             }
         },
         " ameku m.d.: doctor detective ": { 
@@ -484,7 +705,7 @@
         }
     }
 
-  // 3. Kitsu Fetcher
+    // 3. Kitsu Fetcher
     async function fetchKitsu(search) {
         try {
             let url = `${KITSU_URL}/anime?page[limit]=10`;
@@ -541,29 +762,34 @@
         }
     }
 
-    // 5. Ultimate Combined Aggregator (All 4 APIs)
+    // 5. Ultimate Combined Aggregator (Fast & Responsive)
     async function fetchAnimeCombined(page, search, format, id) {
-        const anilistData = await fetchAnilist(page, search, format, id);
+        const promises = [fetchAnilist(page, search, format, id)];
+        if (search) {
+            promises.push(fetchJikan(search, page), fetchKitsu(search), fetchTMDB(search));
+        }
+
+        const results = await Promise.all(promises);
+        const anilistData = results[0];
         let mediaList = anilistData?.media || [];
         let hasNext = anilistData?.pageInfo?.hasNextPage || false;
 
-        const [jikanRes, kitsuRes, tmdbRes] = await Promise.all([
-            fetchJikan(search, page),
-            fetchKitsu(search),
-            fetchTMDB(search)
-        ]);
+        if (search) {
+            const jikanRes = results[1] || [];
+            const kitsuRes = results[2] || [];
+            const tmdbRes = results[3] || [];
+            const merged = [...mediaList, ...jikanRes, ...kitsuRes, ...tmdbRes];
+            const uniqueMap = new Map();
 
-        const merged = [...mediaList, ...jikanRes, ...kitsuRes, ...tmdbRes];
-        const uniqueMap = new Map();
+            merged.forEach(item => {
+                const titleKey = (item.title?.english || item.title?.romaji || item.title?.native || "").toLowerCase().trim();
+                if (titleKey && !uniqueMap.has(titleKey)) {
+                    uniqueMap.set(titleKey, item);
+                }
+            });
 
-        merged.forEach(item => {
-            const titleKey = (item.title?.english || item.title?.romaji || item.title?.native || "").toLowerCase().trim();
-            if (titleKey && !uniqueMap.has(titleKey)) {
-                uniqueMap.set(titleKey, item);
-            }
-        });
-
-        mediaList = Array.from(uniqueMap.values());
+            mediaList = Array.from(uniqueMap.values());
+        }
 
         return {
             media: mediaList,
@@ -641,6 +867,7 @@
         let grid = document.getElementById("anilist-results-grid");
         const container = document.getElementById("mixed-container");
 
+        // Proper Grid layout injection for pages without anilist-results-grid
         if (!grid) {
             const targetParent = container || document.querySelector("main") || document.body;
             const section = document.createElement("section");
@@ -669,7 +896,7 @@
                     requestId++;
                     loading = false;
                     loadAnime(true);
-                }, 400);
+                }, 300);
             });
         }
 
@@ -926,11 +1153,10 @@
         if (!targetDiv) return;
 
         const sectionHTML = `
-            <div class="hero-message section-header">
+            <div class="hero-message section-header" style="width:100%; display:flex; justify-content:space-between; margin-bottom:12px;">
                 <span>${title}</span>
-                <a href="#" class="view-more-btn">View more</a>
             </div>
-            <div class="cards-row" id="${containerId}">
+            <div class="cards-row" id="${containerId}" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(145px,1fr)); gap:16px; margin-bottom:30px;">
                 ${animeList.map(a => createCardHTML(a)).join('')}
             </div>
         `;
