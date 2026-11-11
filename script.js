@@ -1,6 +1,6 @@
 /* ==========================================
-   INFINITYTOONS - OPTIMIZED STABLE MULTI-API ENGINE
-   AniList + Jikan + Kitsu + TMDB + All Links Intact
+   INFINITYTOONS - FULLY OPTIMIZED & FIXED ENGINE
+   AniList + Jikan + Kitsu + TMDB + Dynamic Top 10 + All Links Intact
    ========================================== */
 
 (() => {
@@ -158,7 +158,7 @@
                 132: { server1: "https://playmogo.com/e/3yvdkfugmrth", server2: "https://www.youtube.com/embed/xyz" },
                 133: { server1: "https://playmogo.com/e/rymvl44qgj7b", server2: "https://www.youtube.com/embed/xyz" },
                 134: { server1: "https://playmogo.com/e/qfzqwd3uf83h", server2: "https://www.youtube.com/embed/xyz" },
-                135: { server1: "https://playmogo.com/e/pp5zrwt41ime", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                135: { server1: "https://playmogo.com/e/pp5zrwt41ime", server2: "https://www.youtube.com/embed/w1my8nj0euez" }, 
                 136: { server1: "https://playmogo.com/e/e9sgppt5g38w", server2: "https://www.youtube.com/embed/xyz" },
                 137: { server1: "https://playmogo.com/e/639gwrh0zeqa", server2: "https://www.youtube.com/embed/xyz" },
                 138: { server1: "https://playmogo.com/e/o49bfanzj417", server2: "https://www.youtube.com/embed/xyz" },
@@ -172,7 +172,7 @@
                 146: { server1: "https://playmogo.com/e/b5hoxhfk9f5s", server2: "https://www.youtube.com/embed/xyz" },
                 147: { server1: "https://playmogo.com/e/64n9phpsxl8b", server2: "https://www.youtube.com/embed/xyz" },
                 148: { server1: "https://playmogo.com/e/fx099jb5q44t", server2: "https://www.youtube.com/embed/xyz" },
-                149: { server1: "https://playmogo.com/e/g08t878nskqq", server2: "https://playmogo.com/e/w1my8nj0euez" },
+                149: { server1: "https://playmogo.com/e/g08t878nskqq", server2: "https://www.youtube.com/embed/xyz" },
                 150: { server1: "https://playmogo.com/e/yhf6exi6zgr7", server2: "https://www.youtube.com/embed/xyz" },
                 151: { server1: "https://playmogo.com/e/gtimmhb2dr59", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
                 152: { server1: "https://playmogo.com/e/ry5yo6kyzyhx", server2: "https://www.youtube.com/embed/xyz" },
@@ -762,7 +762,39 @@
         }
     }
 
-    // 5. Ultimate Combined Aggregator (Fast & Responsive)
+    // 5. Automatic Top Rated TMDB Fetcher for Top 10 Section
+    async function loadTopRatedTMDB() {
+        const topContainer = document.querySelector(".top-rated-container");
+        if (!topContainer) return;
+
+        try {
+            let url = `https://api.themoviedb.org/3/tv/top_rated?api_key=${TMDB_API_KEY}&language=en-US&page=1`;
+            const res = await fetch(url);
+            if (!res.ok) return;
+            const data = await res.json();
+            const results = (data.results || []).slice(0, 10);
+
+            if (results.length > 0) {
+                topContainer.innerHTML = results.map((item, index) => {
+                    const poster = item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : "";
+                    const title = item.name || "Top Rated";
+                    const rank = index + 1;
+                    return `
+                        <a href="watch.html?anime=${encodeURIComponent(title)}" class="top-card" target="_blank">
+                            <div class="rank-number">${rank}</div>
+                            <div class="top-img-box">
+                                <img src="${escapeHTML(poster)}" alt="${escapeHTML(title)}" loading="lazy">
+                            </div>
+                        </a>
+                    `;
+                }).join("");
+            }
+        } catch (e) {
+            console.error("Top Rated TMDB load error:", e);
+        }
+    }
+
+    // 6. Ultimate Combined Aggregator (Fast & Responsive)
     async function fetchAnimeCombined(page, search, format, id) {
         const promises = [fetchAnilist(page, search, format, id)];
         if (search) {
@@ -867,7 +899,6 @@
         let grid = document.getElementById("anilist-results-grid");
         const container = document.getElementById("mixed-container");
 
-        // Proper Grid layout injection for pages without anilist-results-grid
         if (!grid) {
             const targetParent = container || document.querySelector("main") || document.body;
             const section = document.createElement("section");
@@ -887,18 +918,19 @@
             loadMoreBtn.addEventListener("click", () => loadAnime());
         }
 
-        const input = document.getElementById("animeSearch");
-        if (input) {
-            input.addEventListener("input", () => {
+        // Universal search binding for all pages (#animeSearch and any input)
+        const inputs = document.querySelectorAll("#animeSearch, input[type='search'], input[name='search']");
+        inputs.forEach(input => {
+            input.addEventListener("input", (e) => {
                 clearTimeout(searchTimer);
                 searchTimer = setTimeout(() => {
-                    currentSearch = input.value.trim();
+                    currentSearch = e.target.value.trim();
                     requestId++;
                     loading = false;
                     loadAnime(true);
                 }, 300);
             });
-        }
+        });
 
         loadAnime(true);
     }
@@ -1090,12 +1122,24 @@
         }, 500);
     }
 
+    // Series/Movies page background and layout consistency fix
+    function applyPageLayoutFixes() {
+        const path = location.pathname.toLowerCase();
+        if (path.includes("series") || path.includes("movies")) {
+            if (!document.body.style.backgroundImage) {
+                document.body.style.backgroundColor = "#030107";
+            }
+        }
+    }
+
     function initPage() {
         initAnimeSystem();
         initEpisodePlayer();
         initHeroVideoPosterFix();
         initDynamicHomePage();
-        moveFiltersToBottom(); 
+        loadTopRatedTMDB();
+        moveFiltersToBottom();
+        applyPageLayoutFixes();
     }
 
     if (document.readyState === "loading") {
