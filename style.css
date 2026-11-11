@@ -3,7 +3,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
 
 body {
-    background-color: #0b0714 !important;
+    background-color: #080511 !important;
     color: #ffffff;
     min-height: 100vh;
     overflow-x: hidden;
@@ -11,15 +11,15 @@ body {
     padding-bottom: 90px;
 }
 
-/* Spatial Glass Background Ambient Glow */
+/* Pure Neutral Glass Ambient Glow (No Purple Tint) */
 body::before {
     content: '';
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
     background: 
-        radial-gradient(circle at 20% 20%, rgba(138, 43, 226, 0.25) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(0, 210, 255, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(75, 0, 130, 0.2) 0%, transparent 70%);
+        radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 85% 85%, rgba(0, 210, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(100, 100, 150, 0.06) 0%, transparent 70%);
     z-index: -1;
     pointer-events: none;
 }
@@ -28,30 +28,29 @@ body::before {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100vh;
     background-size: cover; background-position: center;
-    filter: blur(20px) brightness(0.25);
+    filter: blur(25px) brightness(0.2);
     transform: scale(1.1); z-index: -1; 
 }
 
 /* =========================================
-   APPLE VISIONOS / GLASSMORPHISM NAVBAR
+   LIQUID GLASS NAVBAR
    ========================================= */
 .anime-navbar {
     display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 2.5rem;
     background: rgba(255, 255, 255, 0.03) !important;
-    backdrop-filter: blur(30px) saturate(200%) !important;
-    -webkit-backdrop-filter: blur(30px) saturate(200%) !important;
+    backdrop-filter: blur(35px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(35px) saturate(200%) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-    border-radius: 0 0 24px 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
     position: sticky; top: 0; z-index: 100;
 }
 .nav-left, .nav-links { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
 .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .logo-icon { 
-    background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(10px);
     width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; 
-    font-size: 1.4rem; font-weight: 700; color: white; border: 1px solid rgba(255, 255, 255, 0.2); 
-    box-shadow: inset 0 2px 4px rgba(255,255,255,0.2);
+    font-size: 1.4rem; font-weight: 700; color: white; border: 1px solid rgba(255, 255, 255, 0.15); 
+    box-shadow: inset 0 1px 2px rgba(255,255,255,0.2);
 }
 .logo-text { font-size: 1.4rem; font-weight: 700; color: #ffffff; letter-spacing: -0.5px; }
 .nav-links a { 
@@ -61,58 +60,58 @@ body::before {
 }
 .nav-links a:hover, .nav-links a.active { 
     color: white; background: rgba(255, 255, 255, 0.08); 
-    border-color: rgba(255, 255, 255, 0.15); box-shadow: inset 0 1px 2px rgba(255,255,255,0.2);
+    border-color: rgba(255, 255, 255, 0.18); box-shadow: inset 0 1px 2px rgba(255,255,255,0.2);
 }
 
 .nav-right { display: flex; align-items: center; gap: 1.5rem; }
 .search-wrapper { 
-    background: rgba(255, 255, 255, 0.06) !important; backdrop-filter: blur(20px); 
-    border: 1px solid rgba(255, 255, 255, 0.12) !important; border-radius: 100px; padding: 0.5rem 1.4rem; 
+    background: rgba(255, 255, 255, 0.05) !important; backdrop-filter: blur(20px); 
+    border: 1px solid rgba(255, 255, 255, 0.1) !important; border-radius: 100px; padding: 0.5rem 1.4rem; 
     display: flex; align-items: center; gap: 0.6rem; box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
 }
 .search-wrapper input { background: transparent; border: none; outline: none; color: white; width: 200px; font-size: 0.9rem; }
 .user-profile { 
-    display: flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.06); 
-    padding: 0.3rem 0.3rem 0.3rem 1.1rem; border-radius: 100px; border: 1px solid rgba(255, 255, 255, 0.12); cursor: pointer; 
+    display: flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.05); 
+    padding: 0.3rem 0.3rem 0.3rem 1.1rem; border-radius: 100px; border: 1px solid rgba(255, 255, 255, 0.1); cursor: pointer; 
 }
-.avatar { background: rgba(255, 255, 255, 0.15); width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: white; border: 1px solid rgba(255,255,255,0.3); }
+.avatar { background: rgba(255, 255, 255, 0.12); width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: white; border: 1px solid rgba(255,255,255,0.25); }
 
 /* =========================================
-   SPATIAL GLASS HERO BANNER
+   LIQUID GLASS HERO BANNER
    ========================================= */
 .hero-banner {
     position: relative; width: 92%; max-width: 1300px; height: 55vh; margin: 30px auto;
     display: flex; align-items: center; overflow: hidden; border-radius: 30px;
-    background: rgba(25, 18, 42, 0.4); backdrop-filter: blur(30px);
-    border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+    background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(35px);
+    border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 30px 60px rgba(0,0,0,0.7), inset 0 1px 2px rgba(255,255,255,0.15);
 }
 .hero-video {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    min-width: 100%; min-height: 100%; object-fit: cover; z-index: 0; filter: brightness(0.7);
+    min-width: 100%; min-height: 100%; object-fit: cover; z-index: 0; filter: brightness(0.65);
 }
 .hero-overlay {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(90deg, rgba(11, 7, 20, 0.9) 10%, rgba(11, 7, 20, 0.4) 60%, transparent 100%);
+    background: linear-gradient(90deg, rgba(8, 5, 17, 0.9) 10%, rgba(8, 5, 17, 0.4) 60%, transparent 100%);
     z-index: 1;
 }
 .hero-content { position: relative; z-index: 2; padding: 0 3.5rem; max-width: 650px; }
 .hero-message { padding: 1.5rem 3.5rem 0.5rem; font-size: 1.2rem; font-weight: 300; }
-.hero-message span { color: #d7c2ff; font-weight: 600; }
+.hero-message span { color: #ffffff; font-weight: 600; }
 
 /* =========================================
-   SPATIAL GLASS CARDS GRID (Multi-column)
+   LIQUID GLASS CARDS GRID (Multi-column)
    ========================================= */
 .cards-row, #anilist-results-grid, #mixed-container {
     display: grid !important;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important;
     gap: 2rem !important;
     padding: 2.5rem !important;
-    background: rgba(20, 12, 35, 0.45) !important;
-    backdrop-filter: blur(35px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(35px) saturate(180%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background: rgba(255, 255, 255, 0.025) !important;
+    backdrop-filter: blur(40px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
     border-radius: 28px !important;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.15);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.12);
     margin: 2rem auto;
     width: 92% !important;
     max-width: 1300px !important;
@@ -122,35 +121,35 @@ body::before {
 .premium-card {
     width: 100% !important; display: flex !important; flex-direction: column !important;
     background: rgba(255, 255, 255, 0.04) !important; backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1) !important; border-radius: 20px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important; border-radius: 20px !important;
     overflow: hidden; text-decoration: none; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.2);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.15);
 }
 .premium-card:hover { 
     transform: translateY(-8px) scale(1.03); 
     background: rgba(255, 255, 255, 0.08) !important;
-    border-color: rgba(255, 255, 255, 0.25) !important; 
-    box-shadow: 0 20px 45px rgba(0,0,0,0.7), inset 0 1px 2px rgba(255,255,255,0.3);
+    border-color: rgba(255, 255, 255, 0.22) !important; 
+    box-shadow: 0 20px 45px rgba(0,0,0,0.7), inset 0 1px 2px rgba(255,255,255,0.25);
 }
 .card-img-wrapper { position: relative; width: 100%; height: 230px; overflow: hidden; }
 .card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
 .premium-card:hover .card-img { transform: scale(1.08); }
 .card-badges { position: absolute; top: 12px; left: 12px; display: flex; gap: 6px; z-index: 2; }
-.badge { background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(10px); color: #fff; font-size: 0.65rem; padding: 4px 8px; border-radius: 8px; font-weight: bold; border: 1px solid rgba(255, 255, 255, 0.15); }
-.badge.sub { color: #d7c2ff; }
+.badge { background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(10px); color: #fff; font-size: 0.65rem; padding: 4px 8px; border-radius: 8px; font-weight: bold; border: 1px solid rgba(255, 255, 255, 0.12); }
+.badge.sub { color: #ffffff; }
 .play-overlay {
-    position: absolute; inset: 0; background: rgba(11, 7, 20, 0.4); backdrop-filter: blur(4px);
+    position: absolute; inset: 0; background: rgba(8, 5, 17, 0.35); backdrop-filter: blur(4px);
     display: flex; align-items: center; justify-content: center;
     opacity: 0; transition: 0.3s; z-index: 2;
 }
 .premium-card:hover .play-overlay { opacity: 1; }
 .play-overlay i {
-    font-size: 1.4rem; color: white; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(15px);
+    font-size: 1.4rem; color: white; background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(15px);
     width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;
-    border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.3); transform: scale(0.8); transition: 0.3s;
+    border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.25); transform: scale(0.8); transition: 0.3s;
 }
 .premium-card:hover .play-overlay i { transform: scale(1); }
-.card-info { padding: 14px; background: rgba(15, 10, 25, 0.6); }
+.card-info { padding: 14px; background: rgba(20, 15, 30, 0.5); }
 .card-title { color: #ffffff; font-size: 0.95rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 /* =========================================
@@ -158,45 +157,45 @@ body::before {
    ========================================= */
 #catalog-tools {
     margin: 1.5rem auto; width: 92%; max-width: 1300px; padding: 1.8rem;
-    border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px;
-    background: rgba(20, 12, 35, 0.45); backdrop-filter: blur(30px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px;
+    background: rgba(255, 255, 255, 0.025); backdrop-filter: blur(35px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1);
 }
 .catalog-heading h2 { font-size: 1.45rem; margin-bottom: .35rem; color: #fff; }
 .catalog-heading p, .genre-status { color: rgba(255,255,255,0.6); font-size: .9rem; }
 .genre-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 1.2rem 0; }
 .genre-chip, .az-chip {
-    color: #fff; background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 999px;
+    color: #fff; background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 999px;
     padding: 8px 14px; cursor: pointer; transition: .3s; backdrop-filter: blur(10px);
 }
 .genre-chip:hover, .genre-chip.active, .az-chip:hover, .az-chip.active {
-    background: rgba(255, 255, 255, 0.18); border-color: rgba(255, 255, 255, 0.35); box-shadow: 0 0 15px rgba(166,107,255,0.3);
+    background: rgba(255, 255, 255, 0.15); border-color: rgba(255, 255, 255, 0.3); box-shadow: 0 0 15px rgba(255,255,255,0.15);
 }
-.az-section { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.2rem; }
+.az-section { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.2rem; }
 .az-title { color: #fff; margin-bottom: .7rem; font-weight: 700; }
-.az-title span { color: rgba(255,255,255,0.5); font-size: .8rem; font-weight: 400; }
+.az-title span { color: rgba(255,255,255,0.4); font-size: .8rem; font-weight: 400; }
 .az-list { display: flex; flex-wrap: wrap; gap: 6px; }
 .az-chip {
     min-width: 40px; padding: 7px 8px; border-radius: 12px;
     display: flex; flex-direction: column; align-items: center; line-height: 1.1;
 }
-.az-chip small { color: rgba(255,255,255,0.6); font-size: .62rem; margin-top: 3px; }
-.az-chip.empty { opacity: .3; cursor: not-allowed; }
+.az-chip small { color: rgba(255,255,255,0.5); font-size: .62rem; margin-top: 3px; }
+.az-chip.empty { opacity: .25; cursor: not-allowed; }
 .card-genres { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
 .card-genres span {
-    font-size: .65rem; color: #d7c2ff; background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15); border-radius: 999px; padding: 3px 8px;
+    font-size: .65rem; color: #fff; background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 999px; padding: 3px 8px;
 }
 .premium-card[hidden] { display: none !important; }
 .featured-dynamic-tag {
-    display: inline-block; color: #d7c2ff; background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.2); padding: 6px 14px;
+    display: inline-block; color: #fff; background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15); padding: 6px 14px;
     border-radius: 20px; letter-spacing: 1px; font-weight: 800; font-size: .72rem; margin-bottom: 8px; backdrop-filter: blur(10px);
 }
 
 /* ====================================================
-   APPLE VISION / LIQUID GLASS FLOATING MOBILE BOTTOM NAVIGATION
+   LIQUID GLASS FLOATING MOBILE BOTTOM NAVIGATION
    ==================================================== */
 .mobile-bottom-nav {
     display: none;
@@ -231,14 +230,14 @@ body::before {
     }
     .az-chip { min-width: 32px; font-size: .75rem; }
 
-    /* Mobile Grid Layout (2 columns, proper spacing) */
+    /* Mobile Grid Layout (2 columns) */
     .cards-row, #anilist-results-grid, #mixed-container {
         width: 95% !important;
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 12px !important;
         padding: 15px 12px !important;
         margin: 10px auto !important;
-        background: rgba(20, 12, 35, 0.6) !important;
+        background: rgba(255, 255, 255, 0.03) !important;
         border-radius: 20px !important;
     }
     .card-img-wrapper { height: 175px !important; }
@@ -255,15 +254,15 @@ body::before {
         width: 92%;
         max-width: 420px;
         height: 65px;
-        background: rgba(25, 15, 45, 0.6) !important;
-        backdrop-filter: blur(30px) saturate(200%);
-        -webkit-backdrop-filter: blur(30px) saturate(200%);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(20, 15, 35, 0.55) !important;
+        backdrop-filter: blur(35px) saturate(200%);
+        -webkit-backdrop-filter: blur(35px) saturate(200%);
+        border: 1px solid rgba(255, 255, 255, 0.18);
         border-radius: 35px;
         z-index: 1000;
         justify-content: space-around;
         align-items: center;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.25);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.2);
     }
     .mobile-bottom-nav a {
         display: flex;
@@ -281,8 +280,8 @@ body::before {
         transition: 0.3s;
     }
     .mobile-bottom-nav a.active, .mobile-bottom-nav a:hover {
-        color: #00d2ff;
-        text-shadow: 0 0 12px rgba(0, 210, 255, 0.8);
+        color: #ffffff;
+        text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
     }
     .mobile-bottom-nav a.active i {
         transform: translateY(-2px);
@@ -327,8 +326,8 @@ body::before {
     background: rgba(255, 255, 255, 0.2) !important;
     backdrop-filter: blur(20px) !important;
     color: white !important;
-    border: 1px solid rgba(255, 255, 255, 0.4) !important;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.35) !important;
 }
 .btn-glass-play:hover {
     background: rgba(255, 255, 255, 0.3) !important;
@@ -347,10 +346,10 @@ body::before {
 }
 
 #anilist-load-more {
-    background: rgba(255, 255, 255, 0.1) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
     backdrop-filter: blur(20px) !important;
     color: white !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
     padding: 14px 35px !important;
     border-radius: 30px !important;
     font-size: 1.1rem !important;
@@ -359,11 +358,11 @@ body::before {
     display: block !important;
     margin: 40px auto !important;
     transition: 0.3s !important;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255,255,255,0.2) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255,255,255,0.15) !important;
     text-align: center;
 }
 #anilist-load-more:hover {
-    background: rgba(255, 255, 255, 0.2) !important;
+    background: rgba(255, 255, 255, 0.18) !important;
     transform: translateY(-4px) !important;
 }
 
@@ -399,7 +398,7 @@ body::before {
     font-size: 3.5rem;
     font-weight: 900;
     color: rgba(255, 255, 255, 0.9);
-    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.6);
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.5);
     text-shadow: 0 10px 20px rgba(0,0,0,0.8);
     margin-right: -12px;
     margin-bottom: -10px;
@@ -414,16 +413,16 @@ body::before {
     border-radius: 16px;
     overflow: hidden;
     z-index: 2;
-    background: rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.04);
     backdrop-filter: blur(10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.7), inset 0 1px 1px rgba(255,255,255,0.2);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.7), inset 0 1px 1px rgba(255,255,255,0.15);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     transition: 0.3s;
 }
 
 .top-card:hover .top-img-box {
-    border-color: rgba(255, 255, 255, 0.4);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 1px 2px rgba(255,255,255,0.4);
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 1px 2px rgba(255,255,255,0.3);
 }
 
 .top-img-box img {
@@ -442,7 +441,7 @@ body::before {
     }
     .rank-number {
         font-size: 2.8rem;
-        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6);
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
         margin-right: -8px;
     }
     .top-img-box {
