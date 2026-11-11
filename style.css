@@ -74,8 +74,8 @@ body::before {
 .hero-message { padding: 1.5rem 3rem 0.5rem; font-size: 1.2rem; font-weight: 300; }
 .hero-message span { color: #c5a9ff; font-weight: 600; }
 
-/* Anime Cards Grid */
-.cards-row {
+/* Anime Cards Grid - Fixed to prevent single line stacking */
+.cards-row, #anilist-results-grid {
     display: grid !important;
     grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)) !important;
     gap: 2rem !important;
@@ -139,7 +139,7 @@ body::before {
 .featured-dynamic-tag{display:inline-block;color:#d6bdff;background:rgba(166,107,255,.2);border:1px solid rgba(166,107,255,.45);padding:6px 12px;border-radius:20px;letter-spacing:1px;font-weight:800;font-size:.72rem;margin-bottom:8px}
 
 /* =========================================
-   EPISODE CARDS CSS (Images & Layout Restored)
+   EPISODE CARDS CSS
    ========================================= */
 .episode-anime-card{min-width:0; width:100%;}
 .episode-thumb{height:150px;background-size:cover;background-position:center;position:relative;display:flex;align-items:center;justify-content:center; border-radius: 10px 10px 0 0;}
@@ -152,62 +152,58 @@ body::before {
 
 
 /* ====================================================
-   MOBILE RESPONSIVE FIXES (Everything Fits Perfectly)
+   MOBILE RESPONSIVE FIXES (Phone Optimized)
    ==================================================== */
 @media screen and (max-width: 850px) {
-    /* Navbar aur Search box fix */
     .anime-navbar {
-        flex-direction: column !important; padding: 15px 10px !important; gap: 15px;
+        flex-direction: column !important; padding: 12px 15px !important; gap: 12px;
     }
     .nav-left, .nav-right {
-        width: 100%; justify-content: center; flex-wrap: wrap; gap: 10px;
+        width: 100%; justify-content: space-between; flex-wrap: wrap; gap: 10px;
     }
     .nav-links {
         display: flex; justify-content: center; gap: 15px !important; width: 100%;
     }
     .search-wrapper {
-        width: 100% !important; max-width: 350px; margin: 0 auto; justify-content: center;
+        width: 100% !important; max-width: 100%; margin: 0 auto; justify-content: flex-start;
     }
     .search-wrapper input { width: 100% !important; font-size: 16px; }
 
-    /* Hero Banner Mobile Fix - Video Box Ko Chota Kiya Hai */
     .hero-banner {
-        height: 45vh !important; /* Video height choti ki gayi */
+        height: 45vh !important;
         margin-bottom: 15px !important;
     }
     .hero-content {
         padding: 0 1.5rem !important; text-align: center;
     }
-    .hero-content h1 { font-size: 2.2rem !important; }
+    .hero-content h1 { font-size: 2rem !important; }
     .hero-content p { font-size: 0.9rem !important; }
-    .hero-content div { justify-content: center; }
 
-    /* Catalog Tools (A-Z) Mobile Fix */
     #catalog-tools {
         margin: 1rem !important; padding: 1rem !important;
     }
     .az-chip { min-width: 32px; font-size: .75rem; }
 
-    /* Anime Cards Grid Mobile (2 Columns) */
-    .cards-row {
+    /* Mobile Grid Fix (2 Columns properly spaced, no single line) */
+    .cards-row, #anilist-results-grid {
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 10px !important;
-        padding: 15px 10px !important;
+        gap: 12px !important;
+        padding: 15px 12px !important;
         margin: 10px !important;
+        background: rgba(14, 8, 24, 0.7) !important;
+        border-radius: 16px !important;
     }
-    .card-img-wrapper { height: 180px !important; }
+    .card-img-wrapper { height: 190px !important; }
 
-    /* Episode Player Mobile Fix */
     .player-container { margin: 10px !important; }
     #vidPlayer { height: 250px !important; }
     
-    /* Episode Cards (Jo watch page pe neeche aate hain) Mobile Fix */
     .episode-selector-section { margin: 10px !important; padding: 0 !important; }
     .episode-grid-tray {
-        grid-template-columns: repeat(2, 1fr) !important; /* Mobile par episode 2 line mein */
+        grid-template-columns: repeat(2, 1fr) !important;
         padding: 8px !important;
     }
-    .episode-thumb { height: 100px !important; } /* Image height mobile ke liye kam */
+    .episode-thumb { height: 100px !important; }
 
     body { overflow-x: hidden !important; width: 100vw; }
 }
@@ -216,16 +212,14 @@ body::before {
     .nav-links a { font-size: 0.85rem; }
     .hero-message { font-size: 1rem; padding: 1rem 1rem 0; }
     .hero-banner { height: 40vh !important; }
-    .cards-row { grid-template-columns: repeat(2, 1fr) !important; }
-    .episode-grid-tray { grid-template-columns: 1fr !important; } /* Chhote phone pe 1 column */
+    .cards-row, #anilist-results-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+    .episode-grid-tray { grid-template-columns: 1fr !important; }
 }
 
 
 /* =========================================
    HERO TAGS, BUTTONS & LOAD MORE FIX
    ========================================= */
-
-/* 1. Hero Badges / Tags Fix (Overlapping hata dega) */
 .hero-content span, .featured-dynamic-tag {
     display: inline-block !important;
     white-space: nowrap !important;
@@ -233,14 +227,12 @@ body::before {
     vertical-align: middle;
 }
 
-/* 2. Hero Buttons Container Fix */
 .hero-content div[style*="display: flex"] {
     flex-wrap: wrap;
     gap: 12px;
     margin-top: 15px;
 }
 
-/* 3. Watch Now & Details Buttons (Glassmorphism UI) */
 .btn-glass-play, .btn-glass-info {
     padding: 12px 24px !important;
     border-radius: 30px !important;
@@ -279,7 +271,6 @@ body::before {
     transform: scale(1.05) !important;
 }
 
-/* 4. Load More Anime Button Fix */
 #anilist-load-more {
     background: linear-gradient(135deg, #a66bff, #6240b0) !important;
     color: white !important;
@@ -300,12 +291,11 @@ body::before {
     box-shadow: 0 15px 30px rgba(123, 44, 191, 0.6) !important;
 }
 
-/* 5. Mobile Specifically For Buttons & Tags */
 @media screen and (max-width: 850px) {
     .btn-glass-play, .btn-glass-info {
         padding: 10px 20px !important;
         font-size: 0.9rem !important;
-        flex: 1; /* Makes buttons equal width on mobile */
+        flex: 1;
         text-align: center;
     }
     .hero-content div[style*="display: flex"] {
@@ -318,7 +308,7 @@ body::before {
         margin: 3px !important;
     }
     #anilist-load-more {
-        width: 85% !important; /* Wider on phone */
+        width: 85% !important;
         font-size: 1rem !important;
         padding: 12px 20px !important;
     }
@@ -326,7 +316,7 @@ body::before {
 
 
 /* =========================================
-   TOP 10 MOST RATED ANIME (CRUNCHYROLL STYLE)
+   TOP 10 MOST RATED ANIME (TMDB DYNAMIC)
    ========================================= */
 .top-rated-container {
     display: flex;
@@ -339,17 +329,17 @@ body::before {
 
 .top-card {
     display: flex;
-    align-items: flex-end; /* Number ko image ke niche align karega */
+    align-items: flex-end;
     position: relative;
     transition: 0.3s ease;
     min-width: 130px;
+    text-decoration: none;
 }
 
 .top-card:hover {
     transform: translateY(-4px);
 }
 
-/* Crunchyroll Style Professional Numbers */
 .rank-number {
     font-size: 3.5rem;
     font-weight: 900;
@@ -357,7 +347,7 @@ body::before {
     -webkit-text-stroke: 1px #a66bff;
     text-shadow: 0 4px 10px rgba(0,0,0,0.9);
     margin-right: -12px;
-    margin-bottom: -10px; /* Thoda sa image par overlay hoga */
+    margin-bottom: -10px;
     z-index: 3;
     line-height: 1;
     font-family: 'Inter', sans-serif;
@@ -384,7 +374,6 @@ body::before {
     object-fit: cover;
 }
 
-/* Mobile Devices Ke Liye Fit */
 @media screen and (max-width: 850px) {
     .top-rated-container {
         padding: 10px 1.5rem 20px !important;
@@ -400,78 +389,5 @@ body::before {
     .top-img-box {
         width: 90px;
         height: 130px;
-    }
-}
-
-
-/* =========================================
-   TOONSTREAM STYLE MOBILE SWIPE & HEADERS
-   ========================================= */
-
-.view-more-btn { display: none; }
-
-@media screen and (max-width: 850px) {
-    /* Navbar ko mobile ke liye compact karein bina search bar badle */
-    .anime-navbar {
-        padding: 8px 12px !important;
-    }
-    .nav-links { display: none !important; } /* Choti screen pe links hide (hamburger ya clean look ke liye) */
-    .search-wrapper {
-        width: 140px !important;
-        padding: 3px 10px !important;
-    }
-    .search-wrapper input { width: 100px !important; }
-
-    /* Horizontal Swipeable Cards Grid (API cards ke liye) */
-    .cards-row {
-        display: flex !important;
-        flex-wrap: nowrap !important;
-        overflow-x: auto !important;
-        gap: 12px !important;
-        padding: 10px 15px 20px !important;
-        scroll-snap-type: x mandatory;
-        margin: 0 !important;
-        border: none !important;
-        background: transparent !important;
-        box-shadow: none !important;
-    }
-    .cards-row::-webkit-scrollbar { display: none; }
-
-    /* Individual Card Style for Swipe */
-    .premium-card, .anilist-card {
-        flex: 0 0 120px !important;
-        scroll-snap-align: start;
-        border: none !important;
-        background: transparent !important;
-        box-shadow: none !important;
-    }
-    .card-img-wrapper { height: 170px !important; border-radius: 10px !important; }
-    
-    .card-info { padding: 6px 0 0 !important; background: transparent !important; }
-    .card-title { font-size: 0.8rem !important; font-weight: 500; color: #fff; }
-
-    /* Section Header with Purple Left Border & View More */
-    .section-header {
-        display: flex !important;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 15px 5px !important;
-        font-size: 1.1rem !important;
-        text-align: left;
-    }
-    .section-header span {
-        border-left: 3px solid #a66bff;
-        padding-left: 10px;
-        color: white;
-        font-weight: 700;
-    }
-    .view-more-btn {
-        display: block !important;
-        border: 1px solid rgba(255,255,255,0.2);
-        border-radius: 20px;
-        padding: 4px 12px;
-        font-size: 0.75rem;
-        color: #bcaed4;
-        text-decoration: none;
     }
 }
