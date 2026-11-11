@@ -1,115 +1,409 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Watch Anime | Infinitytoonshub</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<link rel="stylesheet" href="style.css?v=5">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="InfinityToons">
+    <link rel="apple-touch-icon" href="images/ios-icon.png">
+    
+    <title>Infinitytoonshub - Watch</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=4">
 
-<style>
-.ambient-glow {
-  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-  width:75vw; height:75vh;
-  background:radial-gradient(circle,rgba(123,44,191,.4),rgba(0,210,255,.15) 50%,transparent 75%);
-  filter:blur(110px); z-index:-1;
-}
-.player-container {
-  max-width:950px; width:calc(100% - 24px); margin:1.5rem auto;
-  border-radius:16px; overflow:hidden; background:#000;
-  border:1px solid rgba(255,255,255,.1);
-  box-shadow:0 25px 60px rgba(0,0,0,.9);
-}
-#vidPlayer {
-  display:block; width:100%; aspect-ratio:16/9; height:auto;
-  min-height:220px; border:0; background:#000;
-}
-.player-title-box {
-  padding:18px 25px; display:flex; justify-content:space-between;
-  align-items:center; flex-wrap:wrap; gap:15px;
-  background:linear-gradient(to right,rgba(20,10,35,.95),rgba(10,5,15,.95));
-}
-.vibe-btn {
-  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15);
-  color:white; padding:7px 14px; border-radius:20px; cursor:pointer;
-}
-.vibe-btn.active { background:linear-gradient(135deg,#a66bff,#6240b0); }
-.episode-selector-section { max-width:950px; margin:2rem auto 3rem; padding:0 1rem; }
-.episode-grid-tray {
-  display:grid; grid-template-columns:repeat(auto-fill,minmax(110px,1fr));
-  gap:12px; max-height:300px; overflow-y:auto; padding:12px;
-  background:rgba(14,8,24,.6); border-radius:14px;
-}
-.ep-tray-card {
-  background:rgba(25,18,42,.7); border:1px solid rgba(166,107,255,.2);
-  border-radius:10px; padding:12px; text-align:center;
-  color:white; text-decoration:none; font-size:.85rem;
-}
-.ep-tray-card.active-ep { background:linear-gradient(135deg,#a66bff,#6240b0); }
-@media(max-width:520px) {
-  #vidPlayer { min-height:190px; }
-  .player-title-box { padding:12px; }
-}
-</style>
+    <style>
+        /* Cinematic Streaming Layout Styles */
+        .watch-hero-container {
+            position: relative;
+            width: 94%;
+            max-width: 1400px;
+            margin: 25px auto;
+            min-height: 75vh;
+            border-radius: 32px;
+            overflow: hidden;
+            background: rgba(15, 10, 25, 0.6);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.85);
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 20px;
+        }
+
+        @media screen and (max-width: 1024px) {
+            .watch-hero-container {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+        }
+
+        .watch-main-content {
+            position: relative;
+            padding: 3.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            z-index: 2;
+        }
+
+        .watch-main-content::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, #0b0714 10%, rgba(11,7,20,0.8) 50%, rgba(11,7,20,0.2) 100%);
+            z-index: -1;
+        }
+
+        .season-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #d7c2ff;
+            margin-bottom: 15px;
+            width: fit-content;
+        }
+
+        .anime-main-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.9);
+        }
+
+        .anime-description {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 700px;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .rating-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .imdb-badge {
+            background: #f5c518;
+            color: #000;
+            font-weight: 900;
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .rating-text {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-watch-primary {
+            background: #e50914;
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 25px rgba(229, 9, 20, 0.5);
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-watch-primary:hover {
+            transform: scale(1.05);
+            background: #f40612;
+        }
+
+        .btn-add-list {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-add-list:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Right Side Episodes Sidebar (Disney+/Netflix style stack) */
+        .episodes-sidebar {
+            background: rgba(11, 7, 20, 0.75);
+            backdrop-filter: blur(25px);
+            border-left: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-height: 75vh;
+            overflow-y: auto;
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+        }
+
+        .ep-side-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(25, 18, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            padding: 10px;
+            text-decoration: none;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ep-side-card:hover {
+            background: rgba(166, 107, 255, 0.2);
+            border-color: rgba(166, 107, 255, 0.5);
+            transform: translateX(4px);
+        }
+
+        .ep-side-card.active-ep {
+            background: linear-gradient(135deg, rgba(166,107,255,0.4), rgba(98,64,176,0.4));
+            border-color: #00d2ff;
+        }
+
+        .ep-thumb-box {
+            width: 100px;
+            height: 60px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            flex-shrink: 0;
+            background: #1a1a1a;
+        }
+
+        .ep-thumb-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .ep-thumb-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.3);
+            display: grid;
+            place-items: center;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .ep-info-box h4 {
+            font-size: 0.9rem;
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .ep-info-box span {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Player Section Modal / Box */
+        .player-drop-container {
+            max-width: 1400px;
+            width: 94%;
+            margin: 0 auto 3rem;
+            background: rgba(15, 10, 25, 0.7);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            display: none; /* Show when player active */
+        }
+
+        .player-wrapper {
+            position: relative;
+            width: 100%;
+            background: #000;
+            aspect-ratio: 16/9;
+        }
+
+        .player-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .player-controls-bar {
+            padding: 20px 25px;
+            background: rgba(10, 5, 18, 0.9);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .server-btn {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .server-btn.active {
+            background: linear-gradient(135deg, #a66bff, #6240b0);
+            border-color: white;
+        }
+
+        @media screen and (max-width: 850px) {
+            .watch-main-content { padding: 2rem 1.5rem; }
+            .anime-main-title { font-size: 2.3rem; }
+            .watch-hero-container { width: 95% !important; margin: 15px auto !important; }
+        }
+    </style>
 </head>
 <body>
 
-<div id="pageBackground" class="hero-background"></div>
-<div class="ambient-glow"></div>
+    <!-- Cinematic Dynamic Background -->
+    <div id="pageBackground" class="hero-background"></div>
 
-<nav class="anime-navbar">
-  <div class="nav-left">
-    <a href="index.html" class="logo"><div class="logo-icon">呪</div><span class="logo-text">Infinitytoonshub</span></a>
-    <div class="nav-links"><a href="javascript:history.back()"><i class="fas fa-arrow-left"></i> Go Back</a></div>
-  </div>
-</nav>
+    <!-- Spatial Glass Navbar -->
+    <nav class="anime-navbar">
+        <div class="nav-left">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">呪</div>
+                <span class="logo-text">Infinitytoonshub</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-compass"></i> Browse</a>
+                <a href="series.html"><i class="fas fa-star"></i> Series</a>
+                <a href="movies.html"><i class="fas fa-film"></i> Movies</a>
+            </div>
+        </div>
+        <div class="nav-right">
+            <div class="search-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="animeSearch" placeholder="Search...">
+            </div>
+            <div class="user-profile">
+                <span>Rengoku</span>
+                <div class="avatar">炎</div>
+            </div>
+        </div>
+    </nav>
 
-<div class="hero-banner" style="height:50vh">
-  <video autoplay loop muted playsinline class="hero-video" id="heroVideo">
-    <source src="videos/animeclip (17).mp4" type="video/mp4" id="heroVideoSource">
-  </video>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <span>SEASON 01 COLLECTION</span>
-    <h1 id="pageTitle">NOW STREAMING IN HD</h1>
-    <p>Choose an episode and available server.</p>
-  </div>
-</div>
+    <!-- CINEMATIC STREAMING HERO SECTION (Screenshot Style) -->
+    <div class="watch-hero-container" id="heroDetailsBox">
+        <div class="watch-main-content">
+            <div class="season-badge" id="seasonBadgeText">FEATURED SERIES</div>
+            <h1 class="anime-main-title" id="animeNameText">Loading...</h1>
+            <p class="anime-description" id="animeDescText">Streaming high-definition anime seamlessly without interruptions. Explore episodes and choose your server to begin watching instantly.</p>
+            
+            <div class="rating-box">
+                <span class="imdb-badge">IMDb</span>
+                <span class="rating-text" id="imdbRatingText">9.2/10</span>
+            </div>
 
-<div class="hero-message" style="text-align:center">
-  <span id="animeNameText">Loading...</span>
-  <span id="epNumText"></span>
-</div>
+            <div class="action-buttons">
+                <button class="btn-watch-primary" onclick="scrollToPlayer()">
+                    <i class="fas fa-play"></i> Watch Now
+                </button>
+                <button class="btn-add-list" onclick="alert('Added to your watchlist!')">
+                    <i class="fas fa-plus"></i> Add to List
+                </button>
+            </div>
+        </div>
 
-<div class="player-container">
-  <iframe id="vidPlayer" src="" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
-  <div class="player-title-box">
-    <h2 id="vidTitle">Loading Episode...</h2>
-    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-      <div style="display:flex;gap:5px">
-        <button id="srv1Btn" onclick="switchServer('server1')" class="vibe-btn active">Server 1</button>
-        <button id="srv2Btn" onclick="switchServer('server2')" class="vibe-btn">Server 2</button>
-      </div>
-      <button id="nextEpBtn" style="display:none">Next Ep <i class="fas fa-forward"></i></button>
+        <!-- Right Side Stacked Episode Thumbnails (Screenshot style) -->
+        <div class="episodes-sidebar" id="sidebarEpisodeTray">
+            <div class="sidebar-title"><i class="fas fa-film" style="color: #a66bff;"></i> Episodes</div>
+            <!-- Dynamic episode cards injected via script.js -->
+        </div>
     </div>
-  </div>
-</div>
 
-<div class="episode-selector-section">
-  <h3> <i class="fas fa-list-ul"></i> All Episodes</h3>
-  <div class="episode-grid-tray" id="episodeTray"></div>
-</div>
+    <!-- VIDEO PLAYER BOX (Appears when Watch Now is clicked) -->
+    <div class="player-drop-container" id="playerSection">
+        <div class="player-wrapper">
+            <iframe id="vidPlayer" src="" allowfullscreen></iframe>
+        </div>
+        <div class="player-controls-bar">
+            <div>
+                <h3 id="vidTitle" style="color: white; font-size: 1.1rem; font-weight: 700;">Episode Player</h3>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                <div style="display: flex; gap: 6px;">
+                    <button id="srv1Btn" onclick="switchServer('server1')" class="server-btn active">Server 1</button>
+                    <button id="srv2Btn" onclick="switchServer('server2')" class="server-btn">Server 2</button>
+                </div>
+                <button id="nextEpBtn" style="display:none; background:#e50914; color:white; border:none; padding: 8px 18px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 0.85rem;">
+                    Next <i class="fas fa-forward"></i>
+                </button>
+            </div>
+        </div>
+    </div>
 
-<script src="script.js?v=10"></script>
-<script src="infinitytoons-enhancements.js"></script>
-<script src="background-video-rotator.js"></script>
-  <!-- JioHotstar Style Mobile Bottom Navigation -->
-<div class="mobile-bottom-nav">
-    <a href="index.html" class="active"><i class="fas fa-home"></i> Home</a>
-    <a href="series.html"><i class="fas fa-tv"></i> Series</a>
-    <a href="movies.html"><i class="fas fa-film"></i> Movies</a>
-    <a href="new.html"><i class="fas fa-fire"></i> New Anime</a>
-    <a href="contact.html"><i class="fas fa-folder-open"></i> Files</a>
-</div>
+    <!-- Apple Vision / Liquid Glass Floating Mobile Bottom Navigation -->
+    <div class="mobile-bottom-nav">
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="series.html"><i class="fas fa-tv"></i> Series</a>
+        <a href="movies.html"><i class="fas fa-film"></i> Movies</a>
+        <a href="new.html"><i class="fas fa-fire"></i> New</a>
+        <a href="contact.html"><i class="fas fa-folder-open"></i> Files</a>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function scrollToPlayer() {
+            const playerBox = document.getElementById("playerSection");
+            playerBox.style.display = "block";
+            playerBox.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>
