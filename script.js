@@ -1,5 +1,5 @@
 /* ==========================================
-   INFINITYTOONS - FINAL FIXED ENGINE
+   INFINITYTOONS - FULLY OPTIMIZED & FIXED ENGINE
    AniList Pure Anime Top 10 + Universal Search + All Links Intact
    ========================================== */
 
@@ -9,6 +9,7 @@
     const ANILIST_URL = "https://graphql.anilist.co";
     const JIKAN_URL = "https://api.jikan.moe/v4";
     const KITSU_URL = "https://kitsu.io/api/edge";
+    const TMDB_API_KEY = "3fd2be6f0c70a2a598f084ddfb75487c"; 
     const PER_PAGE = 24;
 
     // 3. VIDEO LINKS DATABASE WITH SERVER 1 & SERVER 2 (Aapke saare links bilkul safe hain)
@@ -47,7 +48,7 @@
                 22: { server1: "https://playmogo.com/e/14lsewvb9onq", server2: "https://www.youtube.com/embed/xyz" },
                 23: { server1: "https://playmogo.com/e/gln2rqwdldcq", server2: "https://www.youtube.com/embed/xyz" },
                 24: { server1: "https://playmogo.com/e/5chc3cma1t4n", server2: "https://www.youtube.com/embed/xyz" },
-                25: { server1: "https://playmogo.com/e/ahl84o1b01fp", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
+                25: { server1: "https://playmogo.com/e/ahl84o1b01fp", server2: "https://www.youtube.com/embed/w1my8nj0euez" }, 
                 26: { server1: "https://playmogo.com/e/ul9nsqzrjpps", server2: "https://www.youtube.com/embed/xyz" },
                 27: { server1: "https://playmogo.com/e/oybkl22yhozb", server2: "https://www.youtube.com/embed/xyz" },
                 28: { server1: "https://playmogo.com/e/3rpvv0zbte9b", server2: "https://www.youtube.com/embed/xyz" },
@@ -157,7 +158,7 @@
                 132: { server1: "https://playmogo.com/e/3yvdkfugmrth", server2: "https://www.youtube.com/embed/xyz" },
                 133: { server1: "https://playmogo.com/e/rymvl44qgj7b", server2: "https://www.youtube.com/embed/xyz" },
                 134: { server1: "https://playmogo.com/e/qfzqwd3uf83h", server2: "https://www.youtube.com/embed/xyz" },
-                135: { server1: "https://playmogo.com/e/pp5zrwt41ime", server2: "https://www.youtube.com/embed/w1my8nj0euez" }, 
+                135: { server1: "https://playmogo.com/e/pp5zrwt41ime", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
                 136: { server1: "https://playmogo.com/e/e9sgppt5g38w", server2: "https://www.youtube.com/embed/xyz" },
                 137: { server1: "https://playmogo.com/e/639gwrh0zeqa", server2: "https://www.youtube.com/embed/xyz" },
                 138: { server1: "https://playmogo.com/e/o49bfanzj417", server2: "https://www.youtube.com/embed/xyz" },
@@ -171,7 +172,7 @@
                 146: { server1: "https://playmogo.com/e/b5hoxhfk9f5s", server2: "https://www.youtube.com/embed/xyz" },
                 147: { server1: "https://playmogo.com/e/64n9phpsxl8b", server2: "https://www.youtube.com/embed/xyz" },
                 148: { server1: "https://playmogo.com/e/fx099jb5q44t", server2: "https://www.youtube.com/embed/xyz" },
-                149: { server1: "https://playmogo.com/e/g08t878nskqq", server2: "https://www.youtube.com/embed/xyz" },
+                149: { server1: "https://playmogo.com/e/g08t878nskqq", server2: "https://playmogo.com/e/w1my8nj0euez" },
                 150: { server1: "https://playmogo.com/e/yhf6exi6zgr7", server2: "https://www.youtube.com/embed/xyz" },
                 151: { server1: "https://playmogo.com/e/gtimmhb2dr59", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
                 152: { server1: "https://playmogo.com/e/ry5yo6kyzyhx", server2: "https://www.youtube.com/embed/xyz" },
@@ -238,314 +239,6 @@
                 387: { server1: "https://filemoon.org/en/M2BGwpLNmj40/embed", server2: "https://www.youtube.com/embed/xyz" },
                 388: { server1: "https://filemoon.org/en/EL73gXkEz9Ba/embed", server2: "https://www.youtube.com/embed/xyz" }
             }
-        },
-        "tomb raider king": { 
-            name: "Tomb Raider King", 
-            episodes: { 
-                1: { server1: "https://playmogo.com/e/ab4igs6kn8mb", server2: "https://playmogo.com/e/ab4igs6kn8mb" }, 
-                2: { server1: "https://playmogo.com/e/83a06vifx6w9", server2: "https://playmogo.com/e/83a06vifx6w9" }, 
-                3: { server1: "https://playmogo.com/e/19djbuyduotk", server2: "https://playmogo.com/e/19djbuyduotk" },
-                4: { server1: "https://playmogo.com/e/yfz4ct32fjw1", server2: "https://playmogo.com/e/yfz4ct32fjw1" }, 
-                5: { server1: "https://playmogo.com/e/1ozmn41g1i1y", server2: "https://playmogo.com/e/1ozmn41g1i1y" },
-                6: { server1: "https://playmogo.com/e/af2yhpa1deud", server2: "https://playmogo.com/e/af2yhpa1deud" }, 
-                7: { server1: "https://playmogo.com/e/ik8yde5iz35v", server2: "https://playmogo.com/e/ik8yde5iz35v" },
-                8: { server1: "https://playmogo.com/e/zftabe5zr9y5", server2: "https://playmogo.com/e/zftabe5zr9y5" }, 
-                9: { server1: "https://playmogo.com/e/ssnn8a6elx9e", server2: "https://playmogo.com/e/ssnn8a6elx9e" },
-                10: { server1: "https://playmogo.com/e/ievapywxjuiz", server2: "https://playmogo.com/e/ievapywxjuiz" }, 
-                11: { server1: "https://playmogo.com/e/ni6hnlzp2h7g", server2: "https://playmogo.com/e/ni6hnlzp2h7g" },
-                12: { server1: "https://playmogo.com/e/1z7ztq0wq5oc", server2: "https://playmogo.com/e/1z7ztq0wq5oc" }
-            }
-        },
-        "black torch": { 
-            name: "Black Torch", 
-            episodes: { 
-                1: { server1: "https://playmogo.com/e/wenkxuw7r4jr", server2: "https://playmogo.com/e/wenkxuw7r4jr" }, 
-                2: { server1: "https://www.youtube.com/embed/xyz", server2: "https://filemoon.org/embed/demo" }
-            }
-        },
-        " the one piece": { 
-            name: " The One Piece", 
-            episodes: { 
-                1: { server1: "https://playmogo.com/e/1e97vy4fxhqv", server2: "https://playmogo.com/e/1e97vy4fxhqv" }, 
-                2: { server1: "https://playmogo.com/e/8147f2qyqu5y", server2: "https://playmogo.com/e/8147f2qyqu5y" },
-                3: { server1: "https://playmogo.com/e/as779mmfurut", server2: "https://playmogo.com/e/1e97vy4fxhqv" }, 
-                4: { server1: "https://playmogo.com/e/54irw88qhkxx", server2: "https://playmogo.com/e/8147f2qyqu5y" },
-                5: { server1: "https://playmogo.com/e/3v613taczdul", server2: "https://playmogo.com/e/1e97vy4fxhqv" }, 
-                6: { server1: "https://playmogo.com/e/8147f2qyqu5y", server2: "https://playmogo.com/e/8147f2qyqu5y" },
-            }
-        },
-        "lord of mysteries": { 
-            name: "Lord Of Mysteries", 
-            episodes: { 
-                1: { server1: "https://player.abyssplayer.com/hcl0dZdwt", server2: "https://playmogo.com/e/d8knxtcvzsfy" }, 
-                2: { server1: "https://player.abyssplayer.com/W9b-2Uw3h", server2: "https://playmogo.com/e/d82q5jnngv0h" },
-                3: { server1: "https://player.abyssplayer.com/Yy4JfWI1H", server2: "https://playmogo.com/e/1e97vy4fxhqv" }, 
-                4: { server1: "https://playmogo.com/e/54irw88qhkxx", server2: "https://playmogo.com/e/8147f2qyqu5y" },
-                5: { server1: "https://playmogo.com/e/3v613taczdul", server2: "https://playmogo.com/e/1e97vy4fxhqv" }, 
-                6: { server1: "https://playmogo.com/e/8147f2qyqu5y", server2: "https://playmogo.com/e/8147f2qyqu5y" },
-            }
-        },
-        "5 centimeters per second": { 
-            name: " 5 Centimeters per Second ", 
-            episodes: { 
-                1: { server1: "https://playmogo.com/e/b9xdf8q7tqm5", server2: "https://player.abyssplayer.com/iHVG_-Ow-" },
-            }
-        },
-        "jujutsu kaisen 0": { 
-            name: "JUJUTSU KAISEN 0", 
-            episodes: { 
-                1: { server1: "https://playmogo.com/e/0d9m5tcinlkd", server2: "https://playmogo.com/e/0d9m5tcinlkd" },
-            }
-        },
-        "jujutsu kaisen season 3 the culling game part 1": { 
-            name: "Jujutsu Kaisen Season 3: The Culling Game Part 1", 
-            episodes: { 
-                1: { server1: "https://playmogo.com/e/nxjgas65xk8j", server2: "https://playmogo.com/e/nxjgas65xk8j" }, 
-                2: { server1: "https://playmogo.com/e/fllc0nt4m9ri", server2: "https://playmogo.com/e/fllc0nt4m9ri" },
-                3: { server1: "https://playmogo.com/e/xbix3m9inmvz", server2: "https://playmogo.com/e/xbix3m9inmvz" }, 
-                4: { server1: "https://playmogo.com/e/ggt53obyh2ox", server2: "https://playmogo.com/e/ggt53obyh2ox" },
-                5: { server1: "https://playmogo.com/e/1t7xw492sifu", server2: "https://playmogo.com/e/1t7xw492sifu" }, 
-                6: { server1: "https://playmogo.com/e/7iyf2zgmyz83", server2: "https://playmogo.com/e/7iyf2zgmyz83" },
-                7: { server1: "https://playmogo.com/e/nxjgas65xk8j", server2: "https://playmogo.com/e/nxjgas65xk8j" }, 
-                8: { server1: " ", server2: " " },
-                9: { server1: " ", server2: " " }, 
-                10: { server1: " ", server2: " " },
-                11: { server1: " ", server2: " " }, 
-                12: { server1: " ", server2: " " }
-            }
-        },
-        "jujutsu kaisen ": { 
-            name: "Jujutsu Kaisen ", 
-            episodes: { 
-                1: { server1: "https://playmogo.com/e/o2ja8aok3ln2", server2: " " }, 
-                2: { server1: "https://playmogo.com/e/hksts3o794nw", server2: " " },
-                3: { server1: "", server2: " " }, 
-                4: { server1: "", server2: " " },
-                5: { server1: " ", server2: " " }, 
-                6: { server1: " ", server2: " " },
-                7: { server1: " ", server2: " " }, 
-                8: { server1: " ", server2: " " },
-                9: { server1: " ", server2: " " }, 
-                10: { server1: " ", server2: " " },
-                11: { server1: " ", server2: " " }, 
-                12: { server1: " ", server2: " " }
-            }
-        },
-        "dr.stone ": { 
-            name: "Dr.Stone ", 
-            episodes: { 
-                1: { server1: "https://playmogo.com/e/rzrspb9b9qob", server2: "https://player.abyssplayer.com/IRLtUmnUf" }, 
-                2: { server1: "https://playmogo.com/e/acd1mp915wpv", server2: "https://player.abyssplayer.com/vPzziMTVoE" },
-                3: { server1: "https://playmogo.com/e/dylgjy43wdb4", server2: " " }, 
-                4: { server1: "https://playmogo.com/e/l6zenx5okf14", server2: " " },
-                5: { server1: "https://playmogo.com/e/r84f7zqw7ezf", server2: " " }, 
-                6: { server1: "https://playmogo.com/e/4dyxbcy6ns85", server2: " " },
-                7: { server1: " ", server2: " " }, 
-                8: { server1: " ", server2: " " },
-                9: { server1: " ", server2: " " }, 
-                10: { server1: " ", server2: " " },
-                11: { server1: " ", server2: " " }, 
-                12: { server1: " ", server2: " " }
-            }
-        },
-        "dragon ball super": { 
-            name: "Dragon Ball Super ", 
-            episodes: { 
-                1: { server1: "https://player.abyssplayer.com/5djudzuPJm", server2: "https://player.abyssplayer.com/IRLtUmnUf" }, 
-                2: { server1: "https://player.abyssplayer.com/DQ7VJS-LW", server2: "https://player.abyssplayer.com/vPzziMTVoE" },
-                3: { server1: "https://player.abyssplayer.com/e8HSHtsYv", server2: " " }, 
-                4: { server1: "https://player.abyssplayer.com/S3Ndg8SHS", server2: " " },
-                5: { server1: "https://player.abyssplayer.com/Nj0-0oME2", server2: " " }, 
-                6: { server1: "https://player.abyssplayer.com/Rucrbq8hH", server2: " " },
-                7: { server1: "https://player.abyssplayer.com/Dlprq8qgg ", server2: " " }, 
-                8: { server1: "https://player.abyssplayer.com/JlDnNmxcI ", server2: " " },
-                9: { server1: "https://player.abyssplayer.com/m1TzY9L3z ", server2: " " }, 
-                10: { server1: "https://player.abyssplayer.com/ag__k0Lah ", server2: " " },
-                11: { server1: "https://player.abyssplayer.com/DZiTtUmVQ_a ", server2: " " }, 
-                12: { server1: "https://player.abyssplayer.com/B3FCbgy-d ", server2: " " },
-                13: { server1: "https://player.abyssplayer.com/xsJmduVs1", server2: ""},
-                14: { server1: "https://player.abyssplayer.com/tjcxeaInp", server2: ""}
-            }
-        },
-        " ameku m.d.: doctor detective ": { 
-            name: " Ameku M.D.: Doctor Detective", 
-            episodes: { 
-                1: { server1: "https://player.abyssplayer.com/ZLNghlrGL", server2: "https://playmogo.com/e/0xgtz7xs8p9n" }, 
-                2: { server1: "https://player.abyssplayer.com/h3EGNfXlc", server2: "https://playmogo.com/e/54fgmt9k1ykw" },
-                3: { server1: "https://player.abyssplayer.com/Ddr7xijDj", server2: "https://playmogo.com/e/xg5r0rhkylgz" }, 
-                4: { server1: "https://player.abyssplayer.com/Jc7uLOrP1", server2: "https://playmogo.com/e/5m4vg1mwplzd " },
-                5: { server1: "https://player.abyssplayer.com/m4pzlNy0r", server2: "https://playmogo.com/e/y7m8ggt3yubv " }, 
-                6: { server1: "https://player.abyssplayer.com/qlReVyatI", server2: "https://playmogo.com/e/txbnw0z5vo94 " },
-                7: { server1: "https://player.abyssplayer.com/Tfx8hCGjF ", server2: "https://playmogo.com/e/ocnu611ksmtg " }, 
-                8: { server1: "https://player.abyssplayer.com/zSgreW-bp ", server2: " https://playmogo.com/e/gepvdz69v1xe" },
-                9: { server1: "https://player.abyssplayer.com/rpCodjDWZ ", server2: "https://playmogo.com/e/lzohkjo8olhu " }, 
-                10: { server1: "https://player.abyssplayer.com/96DSJJ1VO", server2: " https://playmogo.com/e/91o4zjjaa7fz" },
-                11: { server1: "https://player.abyssplayer.com/ObEov_J44 ", server2: "https://playmogo.com/e/tdcu92lh4wvb " }, 
-                12: { server1: "https://player.abyssplayer.com/kF-aIF8dg ", server2: " https://playmogo.com/e/o73xubzi44uv" }
-            }
-        },
-        "gantz": { 
-            name: "Gantz", 
-            episodes: { 
-                1: { server1: "https://player.abyssplayer.com/FFwdRs9e4", server2: "https://playmogo.com/e/3lb4andlii4t " }, 
-                2: { server1: "https://player.abyssplayer.com/k1ZnBe0gq", server2: "https://playmogo.com/e/o60ir330plvz " },
-                3: { server1: "https://player.abyssplayer.com/05gdfEtHm", server2: "https://playmogo.com/e/fl6ibutce4bg" }, 
-                4: { server1: "https://player.abyssplayer.com/lS7UVAuBuM", server2: " https://playmogo.com/e/nl85uq9df414" },
-                5: { server1: "https://player.abyssplayer.com/5SE1a5plu", server2: "https://playmogo.com/e/r76aaoua7xw8 " }, 
-                6: { server1: "https://player.abyssplayer.com/qlReVyatI", server2: " https://playmogo.com/e/rl0kt1rlnbhg" },
-                7: { server1: "https://player.abyssplayer.com/Tfx8hCGjF ", server2: "https://playmogo.com/e/xdwpuea8frkv " }, 
-                8: { server1: "https://player.abyssplayer.com/zSgreW-bp ", server2: "https://playmogo.com/e/f3c7x382lj64 " },
-                9: { server1: "https://player.abyssplayer.com/rpCodjDWZ ", server2: "https://playmogo.com/e/cf8fyt35736n " }, 
-                10: { server1: "https://player.abyssplayer.com/96DSJJ1VO", server2: "https://playmogo.com/e/5goe8kyawrbw " },
-                11: { server1: "https://player.abyssplayer.com/ObEov_J44 ", server2: "https://playmogo.com/e/f8bbnx1z5rbr " }, 
-                12: { server1: "https://player.abyssplayer.com/kF-aIF8dg ", server2: "https://playmogo.com/e/vnwhsldr6nzg " }
-            }
-        },
-        "sakamoto days season 2": { 
-            name: "Sakamoto Days Season 2", 
-            episodes: { 
-                1: { server1: "https://playmogo.com/e/0jyi9678x5ug", server2: "https://player.abyssplayer.com/Eybm5vtGJ" }, 
-                2: { server1: "https://playmogo.com/e/f2ivxa6upekm", server2: "https://player.abyssplayer.com/kDFZJrRag" },
-                3: { server1: "https://playmogo.com/e/hsf36wq6m1oq", server2: "https://player.abyssplayer.com/mtNxnx_E8" }, 
-                4: { server1: "https://playmogo.com/e/ia2j6b0r0jqh", server2: "https://player.abyssplayer.com/IpMX629ZP" },
-                5: { server1: "https://playmogo.com/e/55zigmlytlnz", server2: "https://player.abyssplayer.com/VYwpxSQmd" }, 
-                6: { server1: "https://playmogo.com/e/awuhpodywiid", server2: "https://player.abyssplayer.com/dziRI2Khx" },
-                7: { server1: "https://playmogo.com/e/mr36oh2lj648", server2: "https://player.abyssplayer.com/lBgv8D8Zm" }, 
-                8: { server1: "https://playmogo.com/e/je57gv92uni7", server2: "https://player.abyssplayer.com/72_PKeavG" },
-                9: { server1: "https://playmogo.com/e/aup4tb51busp", server2: "https://player.abyssplayer.com/fdN0V7NEK" }, 
-                10: { server1: "https://playmogo.com/e/7m7gj0pt1mii", server2: "https://player.abyssplayer.com/AP5FmyVXk" },
-                11: { server1: "https://playmogo.com/e/fw9n4qxq35e8", server2: "https://player.abyssplayer.com/maw7DnuJKY" } 
-            }
-        },
-        "the drops of god": { 
-            name: "The Drops Of God", 
-            episodes: { 
-                1: { server1: "", server2: "https://player.abyssplayer.com/Eybm5vtGJ" }, 
-                2: { server1: " ", server2: "https://player.abyssplayer.com/kDFZJrRag" },
-                3: { server1: " ", server2: "https://player.abyssplayer.com/mtNxnx_E8" }, 
-                4: { server1: " ", server2: "https://player.abyssplayer.com/IpMX629ZP" },
-                5: { server1: " ", server2: "https://player.abyssplayer.com/VYwpxSQmd" }, 
-                6: { server1: " ", server2: "https://player.abyssplayer.com/dziRI2Khx" },
-                7: { server1: " ", server2: "https://player.abyssplayer.com/lBgv8D8Zm" }, 
-                8: { server1: " ", server2: "https://player.abyssplayer.com/72_PKeavG" },
-                9: { server1: " ", server2: "https://playmogo.com/e/nxjgas65xk8j" }, 
-                10: { server1: " ", server2: "https://playmogo.com/e/3omu0luzw2cl" },
-                11: { server1: " ", server2: "https://playmogo.com/e/nxjgas65xk8j" },
-                12: { server1: " ", server2: "https://playmogo.com/e/ukvo7z62flks" }
-            }
-        },
-        "trillion game": { 
-            name: "Trillion Game", 
-            episodes: { 
-                1: { server1: "https://playmogo.com/e/m08hw5af9963", server2: "https://player.abyssplayer.com/EVflorCZE" }, 
-                2: { server1: "https://playmogo.com/e/000iibrr7nj5", server2: "https://player.abyssplayer.com/ePIOhePA_" },
-                3: { server1: "https://playmogo.com/e/70ul0vxo85jk", server2: "https://player.abyssplayer.com/lSKJ8CfIW" }, 
-                4: { server1: "https://playmogo.com/e/rxstsxsl8pfj", server2: "https://player.abyssplayer.com/lPOCTUp0C" },
-                5: { server1: "https://playmogo.com/e/9b10yw6hlpjy", server2: "https://player.abyssplayer.com/VYwpxSQmd" }, 
-                6: { server1: "https://playmogo.com/e/jq3rl9g0dunx", server2: "https://player.abyssplayer.com/7V43lrJ03" },
-                7: { server1: "https://playmogo.com/e/kdvahaffj4dy", server2: "https://player.abyssplayer.com/_Oe6_Z8H7" }, 
-                8: { server1: "https://playmogo.com/e/eu80gmrygjcd", server2: "https://player.abyssplayer.com/CgybvkRyY" },
-                9: { server1: "https://playmogo.com/e/lzoa21m9ff8b", server2: "https://playmogo.com/e/nxjgas65xk8j" }, 
-                10: { server1: "https://playmogo.com/e/8r8x4rqaydej", server2: "https://playmogo.com/e/3omu0luzw2cl" },
-                11: { server1: "https://playmogo.com/e/0aqzh9y6b6w7", server2: "https://playmogo.com/e/nxjgas65xk8j" },
-                12: { server1: "https://playmogo.com/e/waxn3x78zyxm", server2: "https://playmogo.com/e/ukvo7z62flks" },
-                13: { server1: "https://playmogo.com/e/53hbif9tlyi7", server2: "https://player.abyssplayer.com/EVflorCZE" }, 
-                14: { server1: "https://playmogo.com/d/10v1i7xkim13", server2: "https://player.abyssplayer.com/ePIOhePA_" },
-                15: { server1: "https://playmogo.com/e/nbp2s0447qae", server2: "https://player.abyssplayer.com/lSKJ8CfIW" }, 
-                16: { server1: "https://playmogo.com/e/rxstsxsl8pfj", server2: "https://player.abyssplayer.com/IpMX629ZP" },
-                17: { server1: "https://playmogo.com/e/2yndqk81vgtp", server2: "https://player.abyssplayer.com/VYwpxSQmd" }, 
-                18: { server1: "https://playmogo.com/e/7q5kgxka6l06", server2: "https://player.abyssplayer.com/dziRI2Khx" },
-                19: { server1: "https://playmogo.com/e/zotz3v6v903o", server2: "https://player.abyssplayer.com/lBgv8D8Zm" }, 
-                20: { server1: "https://playmogo.com/e/kqziwjaxra7i", server2: "https://player.abyssplayer.com/72_PKeavG" },
-                21: { server1: "https://playmogo.com/e/7vynznczt1u7", server2: "https://playmogo.com/e/nxjgas65xk8j" }, 
-                22: { server1: "https://playmogo.com/e/9ic3wsw80icl", server2: "https://playmogo.com/e/3omu0luzw2cl" },
-                23: { server1: "https://playmogo.com/e/e66rp8ub8gyg", server2: "https://playmogo.com/e/nxjgas65xk8j" },
-                24: { server1: "https://playmogo.com/e/ws649ttq3a35", server2: "https://playmogo.com/e/ukvo7z62flks" },
-                25: { server1: "https://playmogo.com/e/vbmaid4x3ruo", server2: "https://playmogo.com/e/nxjgas65xk8j" },
-                26: { server1: "https://playmogo.com/e/jsm2k6pz1sx8", server2: "https://playmogo.com/e/ukvo7z62flks" }
-            }
-        },
-        "demon slayer": { 
-            name: "Demon Slayer", 
-            episodes: { 
-                1: { server1: "https://playmogo.com/e/ezuxvzl5p23f", server2: "https://playmogo.com/e/ezuxvzl5p23f" }, 
-                2: { server1: "https://playmogo.com/e/i3sc06agzf9b", server2: "https://playmogo.com/e/i3sc06agzf9b" },
-                3: { server1: "https://playmogo.com/e/mp2yy6cot1yh", server2: "https://playmogo.com/e/mp2yy6cot1yh" }, 
-                4: { server1: "https://playmogo.com/e/4vgmr5t1yk4y", server2: "https://playmogo.com/e/4vgmr5t1yk4y" },
-                5: { server1: "https://playmogo.com/e/okzfrcdfbdn4", server2: "https://playmogo.com/e/okzfrcdfbdn4" }, 
-                6: { server1: "https://playmogo.com/e/979q364m0ee6", server2: "https://playmogo.com/e/979q364m0ee6" },
-                7: { server1: "https://playmogo.com/e/4zm14t0m791k", server2: "https://playmogo.com/e/4zm14t0m791k" }, 
-                8: { server1: "https://playmogo.com/e/waztjz1gfuig", server2: "https://playmogo.com/e/waztjz1gfuig" },
-                9: { server1: "https://playmogo.com/e/nxjgas65xk8j", server2: "https://playmogo.com/e/nxjgas65xk8j" }, 
-                10: { server1: "https://playmogo.com/e/3omu0luzw2cl", server2: "https://playmogo.com/e/3omu0luzw2cl" },
-                11: { server1: "https://playmogo.com/e/nxjgas65xk8j", server2: "https://playmogo.com/e/nxjgas65xk8j" }, 
-                12: { server1: "https://playmogo.com/e/ukvo7z62flks", server2: "https://playmogo.com/e/ukvo7z62flks" }
-            }
-        },
-        "naruto": { 
-            name: "Naruto", 
-            episodes: { 
-                1: { server1: "https://filemoon.org/en/APVmaXbjGXo8/embed", server2: "https://playmogo.com/e/w1my8nj0euez" }
-            } 
-        },
-        "solo leveling": { 
-            name: "Solo Leveling", 
-            episodes: { 
-                1: { server1: "https://filemoon.org/en/APVmaXWwGXo8/embed", server2: "https://playmogo.com/e/w1my8nj0euez" }, 
-                2: { server1: "https://filemoon.org/en/0JgG7gYKGoYW/embed", server2: "https://playmogo.com/e/xzojw2qipdkt" },
-                3: { server1: "https://filemoon.org/en/2bJG8xlDGOBE/embed", server2: "https://playmogo.com/e/yal5n8xjiduw" },
-                4: { server1: "https://filemoon.org/en/2bJG8xlDGOBE/embed", server2: "https://playmogo.com/e/xx0xha6ocazf" },
-                5: { server1: "https://filemoon.org/en/LK0G1OXj3917/embed", server2: "https://playmogo.com/e/ob1eeewgl3sf" },
-                6: { server1: "https://filemoon.org/en/EL73gXo9z9Ba/embed", server2: "https://playmogo.com/e/9ziz8nl3jght" },
-                7: { server1: "https://filemoon.org/en/Xkrzow4QzBOR/embed", server2: "https://playmogo.com/e/vxj3otdrv3fn" }, 
-                8: { server1: "https://filemoon.org/en/gXeGOXldmAa7/embed", server2: "https://playmogo.com/e/pn7nh6v0mrav" }, 
-                9: { server1: "https://filemoon.org/en/N2p3DKp9mMa5/embed", server2: "https://playmogo.com/e/ymxc69rf13j6" },
-                10: { server1: "https://filemoon.org/en/QN9mEAPxm6dW/embed", server2: "https://playmogo.com/e/tizgsgz0prn1" },
-                11: { server1: "https://filemoon.org/en/M2BGwplRmj40/embed", server2: "https://playmogo.com/e/crbuscmxx5rj" },
-                12: { server1: "https://filemoon.org/en/M2BGwplRmj40/embed", server2: "https://playmogo.com/e/8t0m7rtkydnb" }
-            } 
-        },
-        "death note": { 
-            name: "Death Note", 
-            episodes: { 
-                1: { server1: "https://filemoon.org/en/b5OzdXY8zB8L/embed", server2: "https://playmogo.com/e/kc3g7giokpon" }, 
-                2: { server1: "https://filemoon.org/en/Pbe3PXRe3lX6/embed", server2: "https://playmogo.com/e/ufw1wx9x4r1j" },
-                3: { server1: "https://filemoon.org/en/jJD3VX40Ga5Q/embed", server2: "https://playmogo.com/e/7tc5qm1aragf" },
-                4: { server1: "https://filemoon.org/en/9AqGQWMg3Mn6/embed", server2: "https://playmogo.com/e/8btv7to9z4ar" },
-                5: { server1: "https://filemoon.org/en/0JgG7gNKGoYW/embed", server2: "https://playmogo.com/e/quyy8x8lfix2" },
-                6: { server1: "https://filemoon.org/en/2bJG8xw5GOBE/embed", server2: "https://playmogo.com/e/vpvc3njz6zeg" },
-                7: { server1: "https://filemoon.org/en/E1x3ARPRzyk6/embed", server2: "https://playmogo.com/e/5eqb2mqn35jv" }, 
-                8: { server1: "https://filemoon.org/en/Y2xm06QpzRO1/embed", server2: "https://playmogo.com/e/who4hjqtq84a" }, 
-                9: { server1: "https://filemoon.org/en/dZxG5r1emVjK/embed", server2: "https://playmogo.com/e/ig2eovttb3gf" },
-                10: { server1: "https://filemoon.org/en/7d5GLYrlmxRJ/embed", server2: "https://playmogo.com/e/vhhwayvasro6" },
-                11: { server1: "https://filemoon.org/en/LJlGnvVZG15w/embed", server2: "https://playmogo.com/e/1a8y9x0mm4ij" },
-                12: { server1: "https://filemoon.org/en/5pVzNQaA37wv/embed", server2: "https://playmogo.com/e/ihi56q9f0101" },
-                13: { server1: "https://filemoon.org/en/APVmaQgdmXo8/embed", server2: "https://playmogo.com/e/0tni9tblufc6" }, 
-                14: { server1: "https://filemoon.org/en/0PdzyPkL3eAR/embed", server2: "https://playmogo.com/e/fhuy0tyuwtmi" },
-                15: { server1: "https://filemoon.org/en/0JgG7xqemoYW/embed", server2: "https://playmogo.com/e/4budzzz5mgqc" },
-                16: { server1: "https://filemoon.org/en/0JgG7xqemoYW/embed", server2: "https://playmogo.com/e/bcxrsr1oy0w6" },
-                17: { server1: "https://filemoon.org/en/XkrzoErWmBOR/embed", server2: "https://playmogo.com/e/2zsspp5pnsse" }, 
-                18: { server1: "https://filemoon.org/en/E1x3AMdD3yk6/embed", server2: "https://playmogo.com/e/06fyq1s0dlaw" },
-                19: { server1: "https://filemoon.org/en/qw1zeQrxzXyn/embed", server2: "https://playmogo.com/e/giliqvk6o6kx" },
-                20: { server1: "https://filemoon.org/en/qPez4wkM3OYn/embed", server2: "https://filemoon.org/en/9AqGQWMg3Mn6/embed" },
-                21: { server1: "https://filemoon.org/en/E9Qz9JWWGOL2/embed", server2: "https://player.abyssplayer.com/TOqbLB23t" }, 
-                22: { server1: "https://filemoon.org/en/dkD3YQqO3LQK/embed", server2: "https://filemoon.org/embed/demo" },
-                23: { server1: "https://filemoon.org/en/LK0G1Dvez917/embed", server2: "https://filemoon.org/en/jJD3VX40Ga5Q/embed" },
-                24: { server1: "https://filemoon.org/en/jar3XQrZz2dD/embed", server2: "https://filemoon.org/en/9AqGQWMg3Mn6/embed" },
-                25: { server1: "https://filemoon.org/en/ex5z2v4ozKqk/embed", server2: "https://player.abyssplayer.com/TOqbLB23t" }, 
-                26: { server1: "https://filemoon.org/en/qLQ36goPz19j/embed", server2: "https://filemoon.org/embed/demo" },
-                27: { server1: "https://filemoon.org/en/jJD3VX40Ga5Q/embed", server2: "https://filemoon.org/en/jJD3VX40Ga5Q/embed" },
-                28: { server1: "https://filemoon.org/en/ZvqzllR8zaD2/embed", server2: "https://filemoon.org/en/9AqGQWMg3Mn6/embed" },
-                29: { server1: "https://filemoon.org/en/gXeGOQgK3Aa7/embed", server2: "https://filemoon.org/en/jJD3VX40Ga5Q/embed" },
-                30: { server1: "https://filemoon.org/en/N2p3DAkpzMa5/embed", server2: "https://filemoon.org/en/9AqGQWMg3Mn6/embed" },
-                31: { server1: "https://filemoon.org/en/qLQ36gp7z19j/embed", server2: "https://player.abyssplayer.com/TOqbLB23t" }, 
-                32: { server1: "https://filemoon.org/en/gXeGOQRd3Aa7/embed", server2: "https://filemoon.org/embed/demo" },
-                33: { server1: "https://filemoon.org/en/qLQ36go7z19j/embed", server2: "https://filemoon.org/en/jJD3VX40Ga5Q/embed" },
-                34: { server1: "https://filemoon.org/en/LJlGnvo4G15w/embed", server2: "https://filemoon.org/en/9AqGQWMg3Mn6/embed" },
-                35: { server1: "https://filemoon.org/en/5pVzNQxZ37wv/embed", server2: "https://player.abyssplayer.com/TOqbLB23t" }, 
-                36: { server1: "https://filemoon.org/en/EL73gQ7aG9Ba/embed", server2: "https://filemoon.org/embed/demo" },
-                37: { server1: "https://filemoon.org/en/2WVGrgdgmkx7/embed", server2: "https://filemoon.org/en/jJD3VX40Ga5Q/embed" }
-            } 
         },
         "mob psycho 100 ii": { 
             name: "Mob Psycho 100 II", 
@@ -645,7 +338,7 @@
         return null;
     }
 
-    // 1. AniList Fetcher for Search & Discovery
+    // 1. AniList Fetcher
     async function fetchAnilist(page, search, format, id) {
         try {
             const query = `
@@ -733,7 +426,7 @@
         }
     }
 
-    // 4. TMDB Fetcher (Netflix & Global Animation Shows Only)
+    // 4. TMDB Fetcher (Filtered strictly for Animation genre ID 16)
     async function fetchTMDB(search) {
         try {
             if (!search) return [];
@@ -742,7 +435,6 @@
             if (!res.ok) return [];
             const data = await res.json();
 
-            // Filter strictly for animation genre (genre_id 16 is Animation in TMDB)
             return (data.results || []).filter(item => item.genre_ids && item.genre_ids.includes(16)).map(item => ({
                 id: item.id,
                 siteUrl: `https://www.themoviedb.org/tv/${item.id}`,
@@ -762,7 +454,7 @@
         }
     }
 
-    // 5. Pure Anime Top 10 Using AniList GraphQL (No Live-Action Movies)
+    // 5. Pure Anime Top 10 Using AniList GraphQL (Guaranteed No Live Action)
     async function loadTopRatedAnime() {
         const topContainer = document.querySelector(".top-rated-container");
         if (!topContainer) return;
@@ -868,7 +560,7 @@
 
     async function loadAnime(reset = false) {
         if (loading) return;
-        const grid = document.getElementById("anilist-results-grid");
+        const grid = document.getElementById("anilist-results-grid") || document.getElementById("mixed-container");
         const moreButton = document.getElementById("anilist-load-more");
         if (!grid) return;
 
@@ -910,7 +602,7 @@
     }
 
     function initAnimeSystem() {
-        let grid = document.getElementById("anilist-results-grid");
+        let grid = document.getElementById("anilist-results-grid") || document.getElementById("mixed-container");
         const container = document.getElementById("mixed-container");
 
         if (!grid) {
@@ -932,7 +624,7 @@
             loadMoreBtn.addEventListener("click", () => loadAnime());
         }
 
-        // Universal search binding for all pages (#animeSearch and any search input)
+        // Universal search binding for all pages (#animeSearch and any input)
         const inputs = document.querySelectorAll("#animeSearch, input[type='search'], input[name='search']");
         inputs.forEach(input => {
             input.addEventListener("input", (e) => {
