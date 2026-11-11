@@ -1,6 +1,6 @@
 /* ==========================================
-   INFINITYTOONS - FULLY OPTIMIZED & FIXED ENGINE
-   AniList + Jikan + Kitsu + TMDB + Dynamic Top 10 + All Links Intact
+   INFINITYTOONS - FINAL FIXED ENGINE
+   AniList Pure Anime Top 10 + Universal Search + All Links Intact
    ========================================== */
 
 (() => {
@@ -9,7 +9,6 @@
     const ANILIST_URL = "https://graphql.anilist.co";
     const JIKAN_URL = "https://api.jikan.moe/v4";
     const KITSU_URL = "https://kitsu.io/api/edge";
-    const TMDB_API_KEY = "3fd2be6f0c70a2a598f084ddfb75487c"; 
     const PER_PAGE = 24;
 
     // 3. VIDEO LINKS DATABASE WITH SERVER 1 & SERVER 2 (Aapke saare links bilkul safe hain)
@@ -646,7 +645,7 @@
         return null;
     }
 
-    // 1. AniList Fetcher
+    // 1. AniList Fetcher for Search & Discovery
     async function fetchAnilist(page, search, format, id) {
         try {
             const query = `
@@ -734,7 +733,7 @@
         }
     }
 
-    // 4. TMDB Fetcher (Netflix & Global Shows)
+    // 4. TMDB Fetcher (Netflix & Global Animation Shows Only)
     async function fetchTMDB(search) {
         try {
             if (!search) return [];
@@ -743,7 +742,8 @@
             if (!res.ok) return [];
             const data = await res.json();
 
-            return (data.results || []).map(item => ({
+            // Filter strictly for animation genre (genre_id 16 is Animation in TMDB)
+            return (data.results || []).filter(item => item.genre_ids && item.genre_ids.includes(16)).map(item => ({
                 id: item.id,
                 siteUrl: `https://www.themoviedb.org/tv/${item.id}`,
                 format: "TV",
@@ -762,22 +762,36 @@
         }
     }
 
-    // 5. Automatic Top Rated TMDB Fetcher for Top 10 Section
-    async function loadTopRatedTMDB() {
+    // 5. Pure Anime Top 10 Using AniList GraphQL (No Live-Action Movies)
+    async function loadTopRatedAnime() {
         const topContainer = document.querySelector(".top-rated-container");
         if (!topContainer) return;
 
         try {
-            let url = `https://api.themoviedb.org/3/tv/top_rated?api_key=${TMDB_API_KEY}&language=en-US&page=1`;
-            const res = await fetch(url);
-            if (!res.ok) return;
-            const data = await res.json();
-            const results = (data.results || []).slice(0, 10);
+            const query = `
+                query {
+                    Page(page: 1, perPage: 10) {
+                        media(type: ANIME, sort: SCORE_DESC) {
+                            id
+                            siteUrl
+                            title { romaji english }
+                            coverImage { extraLarge large }
+                        }
+                    }
+                }
+            `;
+            const response = await fetch(ANILIST_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                body: JSON.stringify({ query })
+            });
+            const result = await response.json();
+            const mediaList = result?.data?.Page?.media || [];
 
-            if (results.length > 0) {
-                topContainer.innerHTML = results.map((item, index) => {
-                    const poster = item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : "";
-                    const title = item.name || "Top Rated";
+            if (mediaList.length > 0) {
+                topContainer.innerHTML = mediaList.map((item, index) => {
+                    const title = item.title.english || item.title.romaji || "Top Rated";
+                    const poster = item.coverImage?.extraLarge || item.coverImage?.large || "";
                     const rank = index + 1;
                     return `
                         <a href="watch.html?anime=${encodeURIComponent(title)}" class="top-card" target="_blank">
@@ -790,7 +804,7 @@
                 }).join("");
             }
         } catch (e) {
-            console.error("Top Rated TMDB load error:", e);
+            console.error("Top Rated Anime load error:", e);
         }
     }
 
@@ -906,7 +920,7 @@
             section.innerHTML = `
                 <h2>Global Search Results</h2>
                 <p id="anilist-status" role="status" aria-live="polite"></p>
-                <div id="anilist-results-grid" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(145px,1fr)); gap:16px;"></div>
+                <div id="anilist-results-grid"></div>
                 <button id="anilist-load-more" type="button" style="margin:24px auto;padding:12px 24px;display:block;">Load More</button>
             `;
             targetParent.insertAdjacentElement("beforeend", section);
@@ -918,7 +932,7 @@
             loadMoreBtn.addEventListener("click", () => loadAnime());
         }
 
-        // Universal search binding for all pages (#animeSearch and any input)
+        // Universal search binding for all pages (#animeSearch and any search input)
         const inputs = document.querySelectorAll("#animeSearch, input[type='search'], input[name='search']");
         inputs.forEach(input => {
             input.addEventListener("input", (e) => {
@@ -1122,7 +1136,6 @@
         }, 500);
     }
 
-    // Series/Movies page background and layout consistency fix
     function applyPageLayoutFixes() {
         const path = location.pathname.toLowerCase();
         if (path.includes("series") || path.includes("movies")) {
@@ -1137,7 +1150,7 @@
         initEpisodePlayer();
         initHeroVideoPosterFix();
         initDynamicHomePage();
-        loadTopRatedTMDB();
+        loadTopRatedAnime();
         moveFiltersToBottom();
         applyPageLayoutFixes();
     }
@@ -1200,7 +1213,7 @@
             <div class="hero-message section-header" style="width:100%; display:flex; justify-content:space-between; margin-bottom:12px;">
                 <span>${title}</span>
             </div>
-            <div class="cards-row" id="${containerId}" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(145px,1fr)); gap:16px; margin-bottom:30px;">
+            <div class="cards-row" id="${containerId}">
                 ${animeList.map(a => createCardHTML(a)).join('')}
             </div>
         `;
