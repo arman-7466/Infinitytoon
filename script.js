@@ -232,3 +232,62 @@
         initPage();
     }
 })();
+
+
+// ==========================================
+// 1. AUTOMATIC BACKGROUND ROTATOR (Har 5 Minutes Me Change Hogi)
+// ==========================================
+const bgImages = [
+    "url('https://s4.anilist.co/file/anilistcdn/media/anime/banner/16498-m5ZMNtFiCHQj.jpg')",
+    "url('https://s4.anilist.co/file/anilistcdn/media/anime/banner/21-wf37VrvodqCU.jpg')",
+    "url('https://s4.anilist.co/file/anilistcdn/media/anime/banner/101922-PEn1CTc93DQl.jpg')",
+    "url('https://s4.anilist.co/file/anilistcdn/media/anime/banner/151807-m1gX3iwfIsLu.jpg')",
+    "url('https://s4.anilist.co/file/anilistcdn/media/anime/banner/1-OQH378s0i0et.jpg')"
+];
+
+let currentBgIndex = 0;
+
+function initAutoBackground() {
+    // Check agar pehle se #bg-container nahi hai toh body mein prepend kar do
+    if (!document.getElementById("bg-container")) {
+        const bgDiv = document.createElement("div");
+        bgDiv.id = "bg-container";
+        bgDiv.style.backgroundImage = bgImages[0];
+        document.body.prepend(bgDiv);
+    }
+}
+
+function rotateBackground() {
+    const bgDiv = document.getElementById("bg-container");
+    if (bgDiv) {
+        currentBgIndex = (currentBgIndex + 1) % bgImages.length;
+        bgDiv.style.backgroundImage = bgImages[currentBgIndex];
+    }
+}
+
+// Har 5 minutes (300,000 ms) mein background change hogi
+setInterval(rotateBackground, 300000);
+
+
+// ==========================================
+// 2. MOVE A-Z / CATALOG TOOLS TO THE ABSOLUTE BOTTOM
+// ==========================================
+function moveCatalogToolsToBottom() {
+    const catalogTools = document.getElementById("catalog-tools");
+    const footer = document.querySelector("footer") || document.body;
+    
+    if (catalogTools) {
+        // Agar footer ya body ke end mein shift karna ho
+        if (footer && footer !== document.body) {
+            footer.parentNode.insertBefore(catalogTools, footer);
+        } else {
+            document.body.appendChild(catalogTools);
+        }
+    }
+}
+
+// Initialization function ke andar inhe call kar dein
+window.addEventListener("DOMContentLoaded", () => {
+    initAutoBackground();
+    moveCatalogToolsToBottom();
+});
