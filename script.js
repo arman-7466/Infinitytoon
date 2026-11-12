@@ -234,4 +234,44 @@
 })();
 
  
- 
+ // Array mein apni pasand ki anime banner images daal dein
+const bgImages = [
+    "url('https://s4.anilist.co/file/anilistcdn/media/anime/banner/16498-m5ZMNtFiCHQj.jpg')",
+    "url('https://s4.anilist.co/file/anilistcdn/media/anime/banner/21-wf37VrvodqCU.jpg')",
+    "url('https://s4.anilist.co/file/anilistcdn/media/anime/banner/101922-PEn1CTc93DQl.jpg')",
+    "url('https://s4.anilist.co/file/anilistcdn/media/anime/banner/151807-m1gX3iwfIsLu.jpg')"
+];
+
+let bgIndex = 0;
+
+function setupBackgroundRotator() {
+    // Check karein agar background div pehle se nahi hai toh banayein
+    let bgDiv = document.getElementById('dynamic-bg');
+    if (!bgDiv) {
+        bgDiv = document.createElement('div');
+        bgDiv.id = 'dynamic-bg';
+        bgDiv.style.position = 'fixed';
+        bgDiv.style.top = '0';
+        bgDiv.style.left = '0';
+        bgDiv.style.width = '100vw';
+        bgDiv.style.height = '100vh';
+        bgDiv.style.zIndex = '-999';
+        bgDiv.style.backgroundSize = 'cover';
+        bgDiv.style.backgroundPosition = 'center';
+        bgDiv.style.transition = 'background-image 1s ease-in-out';
+        bgDiv.style.filter = 'brightness(0.4)'; // Taaki piche dark rahe aur text saaf dikhe
+        document.body.prepend(bgDiv);
+    }
+
+    // Pehli image set karein
+    bgDiv.style.backgroundImage = bgImages[bgIndex];
+
+    // Har 10 seconds (10000 ms) mein image change karne ke liye timer
+    setInterval(() => {
+        bgIndex = (bgIndex + 1) % bgImages.length;
+        bgDiv.style.backgroundImage = bgImages[bgIndex];
+    }, 10000);
+}
+
+// Page load hote hi ise chala dein
+window.addEventListener('DOMContentLoaded', setupBackgroundRotator);
