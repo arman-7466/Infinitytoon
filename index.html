@@ -2,418 +2,113 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InfinityToons - Spatial Glass UI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="InfinityToons">
+    <link rel="apple-touch-icon" href="images/ios-icon.png">
+    <title>Infinitytoonshub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
-        body {
-            background-color: #050508;
-            color: #ffffff;
-            min-height: 100vh;
-            overflow-x: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        /* Cinematic Background Video/Image */
-        #bg-container {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -999;
-            object-fit: cover;
-            filter: blur(15px) brightness(0.45);
-            transform: scale(1.1);
-        }
-
-        /* Spatial Apple Vision Pro Glass Window Container */
-        .spatial-window {
-            width: 92vw;
-            max-width: 1400px;
-            height: 88vh;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(40px) saturate(200%);
-            -webkit-backdrop-filter: blur(40px) saturate(200%);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 32px;
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7), inset 0 1px 2px rgba(255, 255, 255, 0.3);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* Top Browser / Nav Bar */
-        .spatial-nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1.2rem 2.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .nav-icons {
-            display: flex;
-            gap: 15px;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1.1rem;
-        }
-
-        .url-bar {
-            background: rgba(255, 255, 255, 0.06);
-            padding: 8px 30px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.8);
-            letter-spacing: 0.5px;
-        }
-
-        .user-pill {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.06);
-            padding: 5px 15px 5px 5px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .user-pill img {
-            width: 32px; height: 32px; border-radius: 50%; object-fit: cover;
-        }
-
-        /* Main Workspace Inside Window */
-        .spatial-body {
-            display: flex;
-            flex: 1;
-            overflow: hidden;
-        }
-
-        /* Left Floating Sidebar */
-        .spatial-sidebar {
-            width: 80px;
-            border-right: 1px solid rgba(255, 255, 255, 0.08);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2rem 0;
-            gap: 25px;
-            background: rgba(255, 255, 255, 0.01);
-        }
-
-        .sidebar-icon {
-            width: 45px; height: 45px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255, 255, 255, 0.6);
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            transition: 0.3s;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .sidebar-icon:hover, .sidebar-icon.active {
-            background: rgba(166, 107, 255, 0.25);
-            color: #fff;
-            border-color: rgba(166, 107, 255, 0.5);
-            box-shadow: 0 0 20px rgba(166, 107, 255, 0.4);
-        }
-
-        /* Content Area */
-        .spatial-content {
-            flex: 1;
-            padding: 2.5rem;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .spatial-content::-webkit-scrollbar {
-            width: 6px;
-        }
-        .spatial-content::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 10px;
-        }
-
-        /* Top Search & Filter Categories */
-        .filter-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .search-box {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            padding: 12px 20px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            width: 320px;
-            backdrop-filter: blur(10px);
-        }
-
-        .search-box input {
-            background: transparent;
-            border: none;
-            outline: none;
-            color: white;
-            font-size: 0.95rem;
-            width: 100%;
-        }
-
-        .category-chips {
-            display: flex;
-            gap: 12px;
-            overflow-x: auto;
-        }
-
-        .chip {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 10px 22px;
-            border-radius: 20px;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.9rem;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            transition: 0.3s;
-            white-space: nowrap;
-        }
-
-        .chip:hover, .chip.active {
-            background: rgba(255, 255, 255, 0.18);
-            color: #fff;
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        /* Featured Hero Banner inside Window */
-        .featured-banner {
-            width: 100%;
-            height: 340px;
-            border-radius: 24px;
-            overflow: hidden;
-            position: relative;
-            background: url('https://s4.anilist.co/file/anilistcdn/media/anime/banner/16498-m5ZMNtFiCHQj.jpg') center/cover;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            display: flex;
-            align-items: flex-end;
-            padding: 2.5rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-        }
-
-        .featured-banner::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(5,5,8,0.95) 10%, rgba(5,5,8,0.4) 60%, transparent 100%);
-        }
-
-        .featured-info {
-            position: relative;
-            z-index: 2;
-            max-width: 600px;
-        }
-
-        .featured-info h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-            letter-spacing: -0.5px;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .btn-glass {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            padding: 12px 28px;
-            border-radius: 30px;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.3s;
-            text-decoration: none;
-        }
-
-        .btn-glass.primary {
-            background: linear-gradient(135deg, #a66bff, #6240b0);
-            border-color: rgba(255,255,255,0.4);
-            box-shadow: 0 8px 25px rgba(166, 107, 255, 0.4);
-        }
-
-        .btn-glass:hover {
-            transform: scale(1.05);
-            background: rgba(255, 255, 255, 0.25);
-        }
-
-        /* Grid Rows for Cards */
-        .section-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 20px;
-        }
-
-        .anime-card {
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 18px;
-            overflow: hidden;
-            transition: 0.35s;
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .anime-card:hover {
-            transform: translateY(-8px) scale(1.03);
-            border-color: rgba(166, 107, 255, 0.5);
-            box-shadow: 0 15px 35px rgba(166, 107, 255, 0.2);
-        }
-
-        .card-poster {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-        }
-
-        .card-details {
-            padding: 14px;
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        .card-title {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #fff;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="manifest" href="/manifest.json">
 </head>
 <body>
 
-    <!-- Background Ambient Video -->
-    <video autoplay muted loop id="bg-container">
-        <source src="videos/animeclip (11).mp4" type="video/mp4">
-    </video>
+    <!-- Background Image Container -->
+    <div id="pageBackground" class="hero-background" style="background-image: url('https://s4.anilist.co/file/anilistcdn/media/anime/banner/21-wf37VakJmZqs.jpg');"></div>
 
-    <!-- Apple Vision Pro Spatial Window -->
-    <div class="spatial-window">
-        <!-- Top Nav -->
-        <div class="spatial-nav">
-            <div class="nav-icons">
-                <i class="fas fa-circle" style="color: #ff5f56; font-size: 0.75rem;"></i>
-                <i class="fas fa-circle" style="color: #ffbd2e; font-size: 0.75rem;"></i>
-                <i class="fas fa-circle" style="color: #27c93f; font-size: 0.75rem;"></i>
-            </div>
-            <div class="url-bar"><i class="fas fa-lock" style="font-size: 0.8rem; margin-right: 8px;"></i> infinitytoonshub.com</div>
-            <div class="user-pill">
-                <div style="background: linear-gradient(135deg, #a66bff, #6240b0); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem;">炎</div>
-                <span style="font-size: 0.85rem; font-weight: 600;">Arman</span>
+    <!-- Navbar -->
+    <nav class="anime-navbar">
+        <div class="nav-left">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">呪</div>
+                <span class="logo-text">Infinitytoonshub</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="active"><i class="fas fa-compass"></i> Browse</a>
+                <a href="series.html"><i class="fas fa-star"></i> Anime Series</a>
+                <a href="movies.html"><i class="fas fa-film"></i> Movies</a>
+                <a href="new.html"><i class="fas fa-calendar-alt"></i> New & AI</a>
+                <a href="about.html"><i class="fas fa-info-circle"></i> About Us</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
             </div>
         </div>
-
-        <div class="spatial-body">
-            <!-- Left Sidebar -->
-            <div class="spatial-sidebar">
-                <a href="index.html" class="sidebar-icon active"><i class="fas fa-home"></i></a>
-                <a href="series.html" class="sidebar-icon"><i class="fas fa-layer-group"></i></a>
-                <a href="movies.html" class="sidebar-icon"><i class="fas fa-film"></i></a>
-                <a href="contact.html" class="sidebar-icon"><i class="fas fa-envelope"></i></a>
+        <div class="nav-right">
+            <div class="search-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="animeSearch" placeholder="Search anime...">
             </div>
+            <div class="user-profile">
+                <span>Rengoku</span>
+                <div class="avatar">炎</div>
+            </div>
+        </div>
+    </nav>
 
-            <!-- Content Area -->
-            <div class="spatial-content">
-                <!-- Search & Filters -->
-                <div class="filter-header">
-                    <div class="search-box">
-                        <i class="fas fa-search" style="color: rgba(255,255,255,0.5);"></i>
-                        <input type="text" placeholder="Search anime universe...">
-                    </div>
-                    <div class="category-chips">
-                        <div class="chip active">All Movies</div>
-                        <div class="chip">Action</div>
-                        <div class="chip">Animation</div>
-                        <div class="chip">Mystery</div>
-                        <div class="chip">Sci-Fi</div>
-                    </div>
-                </div>
-
-                <!-- Featured Hero -->
-                <div class="featured-banner">
-                    <div class="featured-info">
-                        <span style="background: rgba(166,107,255,0.3); border:1px solid rgba(166,107,255,0.6); padding: 5px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px;">TRENDING NOW</span>
-                        <h1>Vinland Saga</h1>
-                        <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem;">Experience high-definition spatial streaming with zero interruptions and multi-server support.</p>
-                        <div class="action-buttons">
-                            <a href="watch.html?anime=attack%20on%20titan" class="btn-glass primary"><i class="fas fa-play"></i> Watch Now</a>
-                            <a href="#" class="btn-glass"><i class="fas fa-download"></i> Download</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Top Rated Grid -->
-                <div>
-                    <div class="section-title">⚡ Top Rated Anime — Fan Favorites</div>
-                    <div class="cards-grid">
-                        <a href="watch.html?anime=naruto%20shippuden" class="anime-card">
-                            <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx20-YJvLbgJQPCoI.jpg" class="card-poster" alt="Naruto">
-                            <div class="card-details"><div class="card-title">Naruto Shippuden</div></div>
-                        </a>
-                        <a href="watch.html?anime=attack%20on%20titan" class="anime-card">
-                            <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx16498-m5ZMNtFiCHQj.png" class="card-poster" alt="AOT">
-                            <div class="card-details"><div class="card-title">Attack on Titan</div></div>
-                        </a>
-                        <a href="watch.html?anime=solo%20leveling" class="anime-card">
-                            <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx151807-m1gX3iwfIsLu.png" class="card-poster" alt="Solo Leveling">
-                            <div class="card-details"><div class="card-title">Solo Leveling</div></div>
-                        </a>
-                        <a href="watch.html?anime=demon%20slayer" class="anime-card">
-                            <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx101922-PEn1CTc93DQl.jpg" class="card-poster" alt="Demon Slayer">
-                            <div class="card-details"><div class="card-title">Demon Slayer</div></div>
-                        </a>
-                    </div>
-                </div>
+    <!-- Netflix Style Hero Video Banner -->
+    <div class="hero-banner">
+        <video autoplay loop muted playsinline class="hero-video">
+            <source src="videos/animeclip (11).mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span style="background: rgba(166,107,255,0.2); border:1px solid rgba(166,107,255,0.5); backdrop-filter:blur(10px); color: #c5a9ff; padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 0.8rem; letter-spacing: 1px;">#1 TRENDING WORLDWIDE</span>
+            <h1 style="color: white; font-size: 3.8rem; margin: 12px 0; font-weight: 900; text-shadow: 0 10px 30px rgba(0,0,0,0.8);">Anime Universe</h1>
+            <p style="color: #d1c4e9; font-size: 1.05rem; line-height: 1.6; margin-bottom: 25px; font-weight: 300;">"Welcome to Infinitytoonshub—your ultimate gateway to the limitless universe of anime!"</p>
+            <div style="display: flex; gap: 15px;">
+                <button class="btn-glass-play"><i class="fas fa-play"></i> Watch Now</button>
+                <button class="btn-glass-info"><i class="fas fa-info-circle"></i> Details</button>
             </div>
         </div>
     </div>
 
+    <!-- =====================================
+         1. TOP RATED ANIME SECTION (Fixed Images)
+         ===================================== -->
+    <div class="hero-message" style="margin-top: 15px;">
+        ⚡ <span>Top Rated Anime</span> — Fan Favorites <i class="fas fa-fire" style="color: #ff5722;"></i>
+    </div>
+    
+    <div class="top-rated-container">
+        <div class="top-card">
+            <div class="rank-number">1</div>
+            <div class="top-img-box"><a href="watch.html?anime=naruto%20shippuden"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx20-YJvLbgJQPCoI.jpg" alt="Naruto"></a></div>
+        </div>
+        <div class="top-card">
+            <div class="rank-number">2</div>
+            <div class="top-img-box"><a href="watch.html?anime=attack%20on%20titan"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx16498-m5ZMNtFiCHQj.png" alt="AOT"></a></div>
+        </div>
+        <div class="top-card">
+            <div class="rank-number">3</div>
+            <div class="top-img-box"><a href="watch.html?anime=solo%20leveling"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx151807-m1gX3iwfIsLu.png" alt="Solo Leveling"></a></div>
+        </div>
+        <div class="top-card">
+            <div class="rank-number">4</div>
+            <div class="top-img-box"><a href="watch.html?anime=demon%20slayer"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx101922-PEn1CTc93DQl.jpg" alt="Demon Slayer"></a></div>
+        </div>
+        <div class="top-card">
+            <div class="rank-number">5</div>
+            <div class="top-img-box"><a href="watch.html?anime=death%20note"><img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1535-ZhzrVgi3A6vE.png" alt="Death Note"></a></div>
+        </div>
+    </div>
+
+    <!-- =====================================
+         2. DYNAMIC MULTI-ROW SECTIONS TARGET
+         ===================================== -->
+    <div id="dynamic-anime-sections">
+        <!-- Script.js will automatically inject Series, Movies, New, and Popular here -->
+    </div>
+    
+    <!-- Old mixed container kept hidden for fallback compatibility -->
+    <div class="cards-row" id="mixed-container" data-filter="ALL" style="display:none;"></div>
+
+    <!-- =====================================
+         3. TARGET BOX FOR FILTERS (Sabse aakhir mein)
+         ===================================== -->
+    <div id="bottom-filter-destination"></div>
+
+    <script src="script.js"></script>
+    <script src="infinitytoons-enhancements.js"></script>
+    <script src="background-video-rotator.js"></script>
 </body>
 </html>
