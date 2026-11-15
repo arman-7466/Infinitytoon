@@ -2,13 +2,19 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
 
-/* 1. True Transparent Body */
-body {
-    background-color: transparent !important;
-    color: #ffffff;
-    min-height: 100vh;
-    overflow-x: hidden;
-    position: relative;
+/* Background Image Container with Dark Gradient Overlay (No White Glare) */
+#dynamic-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -999;
+    background-size: cover;
+    background-position: center;
+    /* Yeh linear-gradient upar se dark shade dega taaki white sky ya brightness pareshan na kare */
+    background-image: linear-gradient(to bottom, rgba(5, 3, 10, 0.85), rgba(5, 3, 10, 0.92)), var(--bg-url);
+    transition: all 1.2s ease-in-out;
 }
 
 /* 2. Dynamic 10-Second Background Rotator Container */
